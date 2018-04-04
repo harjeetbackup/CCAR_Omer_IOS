@@ -128,6 +128,8 @@ NSArray *allDates;
     [self getStartAndEndDates];
 }
 
+
+
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
@@ -195,7 +197,6 @@ NSArray *allDates;
             [self.navigationController setNavigationBarHidden:NO animated:animated];
         [super viewWillDisappear:animated];
     }
-    
 }
 
 - (void)dealloc
@@ -215,13 +216,7 @@ NSArray *allDates;
     [_BlessingToolBarHEight release];
     [super dealloc];
 }
-/*-(void)viewWillAppear:(BOOL)animated{
- 
- [super viewWillAppear:animated];
- 
- self.navigationItem.hidesBackButton=YES;
- 
- }*/
+
 #pragma mark -
 #pragma mark UITableView delegates
 
@@ -317,11 +312,6 @@ NSArray *allDates;
     
     return cell;}
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//	cell.backgroundColor = [UIColor colorWithRed:0.0 green:0.322 blue:0.369 alpha:1.0];
-//
-//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -346,17 +336,12 @@ NSArray *allDates;
                 
             case 1:
             {
-                /* NSString *path = [[NSBundle mainBundle] pathForResource:@"testCalendar" ofType:@"ics"];
-                 NSURL *url = [NSURL fileURLWithPath:path];
-                 UIDocumentInteractionController *dc = [UIDocumentInteractionController interactionControllerWithURL:url];
-                 dc.delegate = self;
-                 [dc presentPreviewAnimated:YES];*/
                 [AppDelegate_iPhone delegate].isBookMarked = NO;
                 deckArray = [_cardDecks.todayReadingDeck  getCardsList];
                 Reachability* wifiReach = [Reachability reachabilityWithHostName: @"www.google.com"];
                 NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
                 
-                if (!netStatus==NotReachable)
+                if (!netStatus == NotReachable)
                 {
                     [self findMyCurrentLocation];
                 }
@@ -434,6 +419,11 @@ NSArray *allDates;
         [detail release];
     }
     //  cell.backgroundColor = [Utils colorFromString:[Utils getValueForVar:kIndexRowColor]];    
+}
+
+- (void)getTodaysReading
+{
+     [self findMyCurrentLocation];
 }
 
 -(void)findMyCurrentLocation

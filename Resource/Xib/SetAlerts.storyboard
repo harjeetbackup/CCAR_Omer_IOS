@@ -111,6 +111,7 @@
                         <outlet property="sendAlertSwitch" destination="099-mT-eB5" id="6kt-aa-Neu"/>
                         <outlet property="setAlertAtSunsetButton" destination="khr-dL-54K" id="zb3-wy-fec"/>
                         <outlet property="timePicker" destination="TOZ-NV-kuw" id="gdw-nK-g36"/>
+                        <outlet property="verticalSpacing" destination="Hed-ZM-HnM" id="aPp-lj-ffh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5zW-5s-n8E" userLabel="First Responder" sceneMemberID="firstResponder"/>

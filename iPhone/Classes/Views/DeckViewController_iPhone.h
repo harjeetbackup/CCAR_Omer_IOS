@@ -12,20 +12,22 @@
 #include <CoreLocation/CLLocation.h>
 #include <CoreLocation/CLLocationManager.h>
 #import "EDSunriseSet.h"
+#import "Omer_Flash_Card-Swift.h"
+
 
 @class FlashCardDeckList;
 
 @interface DeckViewController_iPhone : UIViewController <UITableViewDelegate, 
 												UITableViewDataSource, 
 												UINavigationControllerDelegate,
-												UIActionSheetDelegate,UIDocumentInteractionControllerDelegate,CLLocationManagerDelegate>
+												UIActionSheetDelegate,UIDocumentInteractionControllerDelegate,CLLocationManagerDelegate,GetTodaysReadingDelegate>
 {
     CLLocationManager* locationmanager;
     
     CLLocation* location;
 	IBOutlet UITableView*	_tableView;
 	FlashCardDeckList*		_cardDecks;
-
+    
 }
 
 @property (nonatomic, retain) FlashCardDeckList*	cardDecks;
@@ -61,6 +63,6 @@
 - (void)getMonthString;
 - (void)getDayString;
 - (void)getStartAndEndDates;
-
+- (void)getTodaysReading;
 
 @end
