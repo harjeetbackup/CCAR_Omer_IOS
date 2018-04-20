@@ -26,6 +26,7 @@
 		187F81BA213EBC0E00E1386B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187F81B8213EBC0D00E1386B /* Fabric.framework */; };
 		187F81BB213EBC0E00E1386B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187F81B9213EBC0E00E1386B /* Crashlytics.framework */; };
 		18C76AB321898BA20086BA99 /* allItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C76AB221898BA10086BA99 /* allItems.swift */; };
+		18EC202221A3D5C800CD257A /* introduction.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EC202121A3D5C700CD257A /* introduction.png */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -463,6 +464,7 @@
 		187F81B8213EBC0D00E1386B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		187F81B9213EBC0E00E1386B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		18C76AB221898BA10086BA99 /* allItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = allItems.swift; sourceTree = "<group>"; };
+		18EC202121A3D5C700CD257A /* introduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = introduction.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Omer_Flash_Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Omer_Flash_Card.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1622,6 +1624,7 @@
 				1857ED242188362D0041F28E /* check-box-filled.png */,
 				1857ED262188362E0041F28E /* check-box-filled@2x.png */,
 				1851054A219EE36000D2C5E5 /* quit.png */,
+				18EC202121A3D5C700CD257A /* introduction.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -2053,6 +2056,7 @@
 				C3F11A441C21980B002092EE /* 53A.html in Resources */,
 				C3F11A351C21980B002092EE /* 42B.html in Resources */,
 				C328D09E1C201AF1005A3B24 /* RobotoCondensed-Bold.ttf in Resources */,
+				18EC202221A3D5C800CD257A /* introduction.png in Resources */,
 				C3F11A0A1C21980B002092EE /* 12A.html in Resources */,
 				C3E5FCCC1B55089800B2127B /* mf_david-regular.woff in Resources */,
 				528996B816AFF5B8001E4730 /* Default-Landscape.png in Resources */,

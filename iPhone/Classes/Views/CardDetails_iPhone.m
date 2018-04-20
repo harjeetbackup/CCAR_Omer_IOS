@@ -18,6 +18,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "UIFont+Font.h"
 #import "CardDetails_iPhone.h"
+
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -60,7 +61,7 @@ NSInteger todayOmerIndex_iPhone=0;
     buttonPrevious.frame = CGRectMake(40.0, 7.0, 30.0, 30.0);
     buttonPrevious.contentMode=UIViewContentModeScaleAspectFit;
     buttonPrevious.hidden = NO;
-   // [self.view addSubview: button];
+    // [self.view addSubview: button];
     [self.customToolBarBottom addSubview: buttonPrevious];
     buttonNext = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonNext.tintColor = [UIColor blackColor];
@@ -287,7 +288,6 @@ NSInteger todayOmerIndex_iPhone=0;
             [deckList release];
             [controller release];
 		}
-        
 	}
 }
 
@@ -442,7 +442,7 @@ NSInteger todayOmerIndex_iPhone=0;
 	_totalCard = [_arrayOfCards count];
 	int count = (_arrayOfCards.count > 3) ? 3 : _arrayOfCards.count;
     _scrlView.contentSize = CGSizeMake(self.view.frame.size.width * ([_arrayOfCards count] + 1), self.view.frame.size.height);
-	 _scrlView.scrollEnabled = YES;
+    _scrlView.scrollEnabled = YES;
 	NSInteger index;
 	NSInteger tempIndex=_selectedCardIndex;
 	
@@ -461,7 +461,7 @@ NSInteger todayOmerIndex_iPhone=0;
 		
 		//Card* card = [[_arrayOfCards objectAtIndex:index] getCardOfType: kCardTypeFront];
 		CustomWebView_iPhone* page = [[CustomWebView_iPhone alloc] initWithFrame:self.view.bounds];
-//        page.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        page.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         Card* card = [[_arrayOfCards objectAtIndex:index] getCardOfType: kCardTypeFront];
 
 		page.tag = 1000 + i;

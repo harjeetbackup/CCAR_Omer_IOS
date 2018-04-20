@@ -145,9 +145,8 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    
     UIApplicationState state = [application applicationState];
-    if (state == UIApplicationStateInactive) {
+    if (state == UIApplicationStateInactive){
         application.applicationIconBadgeNumber = 0;
         self.launchedFromLoacalNotification = true;
     } else {
@@ -155,8 +154,13 @@
     }
 }
 
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void(^)())completionHandler{
+    printf("recieved notification");
+}
+
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     printf("active");
+   
 //    if (locationNotification) {
 //        // Set icon badge number to zero
 //        application.applicationIconBadgeNumber = 0;

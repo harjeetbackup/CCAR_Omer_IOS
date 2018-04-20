@@ -71,12 +71,10 @@ extern NSString* RowImages[];
 	UIColor*		_deckColor;
 	NSString*		_deckImage;
 	NSString*		_deckTitle;
-	
 	NSUInteger		_deckId;
-    BOOL		_isHeader;
+    BOOL		    _isHeader;
 	NSUInteger		_cardCount;
 	CGFloat			_proficiency;
-	
 	CardDeckType	_deckType;
 }
 

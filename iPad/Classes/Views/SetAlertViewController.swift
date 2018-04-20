@@ -109,7 +109,7 @@ import CoreLocation
     }
     
     @IBAction func timePickerTapped(_ sender: UIDatePicker){
-        if sendAlertSwitch.imageView?.image == #imageLiteral(resourceName: "check-box-filled.png") {
+        if datePickerHeight.constant == 250.0 {
             self.removeAllActiveNotification()
             getDatePicketSetTime()
         } else {

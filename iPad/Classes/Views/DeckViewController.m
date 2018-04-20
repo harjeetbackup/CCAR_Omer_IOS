@@ -67,13 +67,23 @@ int endDateYear;
 {
 	[_extraNavigationBar setNeedsDisplay];
 	[super viewDidAppear:animated];
+    if ([[AppDelegate_iPad delegate] launchedFromLoacalNotification]) {
+        AppDelegate_iPhone.delegate.launchedFromLoacalNotification = false;
+        [self findMyCurrentLocation];
+    }
 }
+
 -(void)viewWillAppear:(BOOL)animated{
     isTappedTodaysReading=NO;
     [super viewWillAppear:animated];
     
     self.navigationItem.hidesBackButton=YES;
     //[self setProperRotation:YES];
+//    if ([[AppDelegate_iPad delegate] launchedFromLoacalNotification]) {
+//        AppDelegate_iPhone.delegate.launchedFromLoacalNotification = false;
+//        [self findMyCurrentLocation];
+//    }
+    
     
 }
 // This method will display the card details page for a particular index

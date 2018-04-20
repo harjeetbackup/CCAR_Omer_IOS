@@ -27,9 +27,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.view setFrame:CGRectMake(self.view.frame.origin.x, 20, self.view.frame.size.width, self.view.frame.size.height)];
-    if ([[AppDelegate_iPhone delegate] launchedFromLoacalNotification]) {
-        [self loadHomeScreen];
-    }
+//    if ([[AppDelegate_iPhone delegate] launchedFromLoacalNotification]) {
+//        [self loadHomeScreen];
+//    }
     
 }
 
@@ -71,7 +71,6 @@
 - (void)viewDidUnload 
 {
     [super viewDidUnload];
-    
 }
 
 - (void)dealloc 
@@ -81,6 +80,7 @@
 
 - (void)loadHomeViewFromNotification {
     if ([[AppDelegate_iPhone delegate] launchedFromLoacalNotification]) {
+       //[self.navigationController popViewControllerAnimated:NO];
         [self loadHomeScreen];
     }
 }
@@ -96,7 +96,6 @@
     self.navigationItem.hidesBackButton=YES;
     [deckList release];
     [controller release];
-    
 }
 
 - (IBAction)openHomeView
@@ -105,14 +104,10 @@
     if([[[Utils getValueForVar:kAudioOnTapToStart] lowercaseString] isEqualToString:@"yes"])
     {
         NSError* err = nil;
-        
         NSString* audioFileName = [[NSBundle mainBundle] pathForResource:[Utils getValueForVar:kStartSoundFile] ofType:nil inDirectory:nil];
-        
         if (audioFileName == nil)
             return;
-        
         //audioFileName = [[NSBundle mainBundle] pathForResource:audioFileName ofType:nil inDirectory:nil];
-        
         AVAudioPlayer* player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:audioFileName] error:&err];
         //player.delegate=self;
         [player play];

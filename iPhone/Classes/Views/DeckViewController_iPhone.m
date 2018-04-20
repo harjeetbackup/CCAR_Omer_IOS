@@ -1,3 +1,4 @@
+
 //
 //  DeckViewController.m
 //  FlashCardDB
@@ -516,15 +517,7 @@ NSArray *allDates;
             NSInteger dayDifference=[difference day];
             if(dayDifference>48)
                 dayDifference=48;
-            //   if(dayDifference>39)
-            // dayDifference=dayDifference-1;
-            /*  NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
-             CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
-             detail.arrCards=deckArray;
-             detail._selectedCardIndex=0;
-             detail.basicCall=YES;
-             [self.navigationController pushViewController:detail animated:YES];*/
-            //NSMutableArray*  deckArray = [_cardDecks.allCardDeck  getCardsList];
+    
             if ([startSunsetTime compare:sunsetTime] ==  NSOrderedSame && dayDifference==0)
             {
                 NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];

@@ -163,11 +163,11 @@ NSString* RowImages[] = {@"deck1.png", @"deck2.png", @"deck3.png", @"deck4.png"}
 	_introDeck.deckType = kIntroDeck;
 	//_allCardDeck.deckColor = kDeckRowAllBackgroundColor;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        _introDeck.deckImage = @"intoduction.png";
+        _introDeck.deckImage = @"introduction.png";
         _introDeck.deckColor = [UIColor colorWithRed:211.0/255 green:243.0/255 blue:255.0/255 alpha:1];
     }
     else{
-    _introDeck.deckImage = @"intoduction.png";
+    _introDeck.deckImage = @"introduction.png";
 	_introDeck.deckColor = [Utils colorFromString:[Utils getValueForVar:kIntroDeckColor]];
     }
 }
