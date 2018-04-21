@@ -433,10 +433,7 @@ NSArray *allDates;
         //[detail loadArrayOfCards:deckArray];
         [detail release];
     }
-    
-    
-    //  cell.backgroundColor = [Utils colorFromString:[Utils getValueForVar:kIndexRowColor]];
-    
+    //  cell.backgroundColor = [Utils colorFromString:[Utils getValueForVar:kIndexRowColor]];    
 }
 
 -(void)findMyCurrentLocation
@@ -643,8 +640,7 @@ NSArray *allDates;
     [indexView release];
 }
 
-- (void) myComments{
-    
+- (void) myComments{    
     MyCommentsViewController_iPhone* commentsView = [[MyCommentsViewController_iPhone alloc] initWithNibName:@"MyCommentsView_iPhone" bundle:nil];
     [self.navigationController pushViewController:commentsView animated:YES];
     [commentsView release];

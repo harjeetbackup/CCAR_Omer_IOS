@@ -24,6 +24,7 @@ class Server: NSObject{
             }
             print("**************************\n")
             guard let json = response.result.value as? [String: Any] else {
+                print("**error** \(response.result.error) *****")
                 completion(nil, response.result.error)
                 return
             }

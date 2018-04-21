@@ -92,17 +92,6 @@ NSInteger todayOmerIndex_iPhone=0;
     
     self.navigationItem.leftBarButtonItem=leftButton;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        
-        
-//        CGRect myFrameScrollView= _scrlView.frame;
-//        myFrameScrollView.origin.y = -44;
-//        _scrlView.frame = myFrameScrollView;
-//        _scrlView.autoresizingMask =(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-//
-//        CGRect myFrameScrollViewHeight = _scrlView.frame;
-//        myFrameScrollViewHeight.size.height = 524;
-//        _scrlView.frame = myFrameScrollViewHeight;
-        
     }
  	
 	[_prevButton setNeedsDisplay];
@@ -453,7 +442,6 @@ NSInteger todayOmerIndex_iPhone=0;
 	int count = (_arrayOfCards.count > 3) ? 3 : _arrayOfCards.count;
     _scrlView.contentSize = CGSizeMake(_scrlView.frame.size.width * ([_arrayOfCards count] + 1), _scrlView.frame.origin.y - 84 );
 	 _scrlView.scrollEnabled = YES;
-	
 	NSInteger index;
 	NSInteger tempIndex=_selectedCardIndex;
 	
