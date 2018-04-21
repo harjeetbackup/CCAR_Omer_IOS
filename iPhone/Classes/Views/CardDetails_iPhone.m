@@ -200,6 +200,7 @@ NSInteger todayOmerIndex_iPhone=0;
     _prevButton.enabled = NO;
     buttonPrevious.enabled = NO;
     buttonNext.enabled = NO;
+    _scrlView.scrollEnabled = NO;
     }
 }
 
@@ -504,6 +505,7 @@ NSInteger todayOmerIndex_iPhone=0;
 	} else if (_totalCard==1) {
 		_nextButton.enabled=NO;
         buttonNext.enabled = NO;
+    
 	}
 }
 

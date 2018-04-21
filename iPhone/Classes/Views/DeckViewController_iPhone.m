@@ -600,7 +600,7 @@ NSArray *allDates;
     navBar=NO;
     ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kContentTypeSetting];
     [model setParentCtrl:self];
-    [self.navigationController pushViewController:model animated:NO];
+    [self.navigationController pushViewController:model animated:YES];
     //[self presentModalViewController:model animated:YES];
     [model release];
 }
@@ -610,7 +610,7 @@ NSArray *allDates;
     navBar=NO;
     ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kContentTypeHelp];
     [model setParentCtrl:self];
-    [self.navigationController pushViewController:model animated:NO];
+    [self.navigationController pushViewController:model animated:YES];
     //[self presentModalViewController:model animated:YES];
     [model release];
 }
@@ -620,7 +620,7 @@ NSArray *allDates;
     navBar=NO;
     ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kContentTypeInfo];
     [model setParentCtrl:self];
-    [self.navigationController pushViewController:model animated:NO];
+    [self.navigationController pushViewController:model animated:YES];
     //[self presentModalViewController:model animated:YES];
     [model release];
 }
