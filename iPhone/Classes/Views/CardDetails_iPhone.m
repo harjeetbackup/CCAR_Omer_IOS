@@ -100,7 +100,6 @@ NSInteger todayOmerIndex_iPhone=0;
 //        CGRect myFrameScrollViewHeight = _scrlView.frame;
 //        myFrameScrollViewHeight.size.height = 524;
 //        _scrlView.frame = myFrameScrollViewHeight;
-//       _scrlView.frame = CGRectMake(0, -44, self.view.frame.size.width, 524);
         
     }
  	
@@ -212,14 +211,15 @@ NSInteger todayOmerIndex_iPhone=0;
     buttonNext.enabled = NO;
     }
 }
--(void)viewDidAppear:(BOOL)animated
-{
-
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
-   
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -448,7 +448,7 @@ NSInteger todayOmerIndex_iPhone=0;
 	 
 	_totalCard = [_arrayOfCards count];
 	int count = (_arrayOfCards.count > 3) ? 3 : _arrayOfCards.count;
-    _scrlView.contentSize = CGSizeMake(_scrlView.frame.size.width * ([_arrayOfCards count] + 1), _scrlView.frame.origin.y - 64 );
+    _scrlView.contentSize = CGSizeMake(_scrlView.frame.size.width * ([_arrayOfCards count] + 1), _scrlView.frame.origin.y - 84 );
 	 _scrlView.scrollEnabled = YES;
 	
 	NSInteger index;
@@ -501,7 +501,6 @@ NSInteger todayOmerIndex_iPhone=0;
     else
 	self.title = [NSString stringWithFormat:@"%d of %d", _selectedCardIndex + 1, [_arrayOfCards count]];
     
-
 	//scrollview
 	[self updateCardDetails];
 	
@@ -511,11 +510,10 @@ NSInteger todayOmerIndex_iPhone=0;
         [_scrlView setContentOffset:CGPointMake(_scrlView.frame.size.width * _selectedCardIndex, _scrlView.frame.size.height) animated:YES];
 		[self updateFlashDetails];
 		
-	}else if (_totalCard==1) {
+	} else if (_totalCard==1) {
 		_nextButton.enabled=NO;
         buttonNext.enabled = NO;
 	}
-	
 
 }
 
@@ -800,7 +798,7 @@ NSInteger todayOmerIndex_iPhone=0;
 	UIScrollView* scrollView = [timer userInfo];
     CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
 	_selectedCardIndex = scrollView.contentOffset.x / width;
-    [_scrlView setContentOffset:CGPointMake(_scrlView.frame.size.width * _selectedCardIndex, _scrlView.frame.origin.y -84 ) animated:YES];
+    [_scrlView setContentOffset:CGPointMake(_scrlView.frame.size.width * _selectedCardIndex, _scrlView.frame.origin.y - 84 ) animated:YES];
     _cardType = kCardTypeFront;
 	[self updateFlashCard];
 	[self updateFlashDetails];

@@ -1,0 +1,6 @@
+module Pods_Omer_Flash_Card {
+  umbrella header "Pods-Omer_Flash_Card-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "37B805CE209311BCD2522FCCEF66D1EA"
-               BlueprintName = "Pods-Omer_Flash_Card"
+               BlueprintIdentifier = "95C31791CC30F4487BB91E6A0F9757CE"
+               BlueprintName = "Alamofire"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libPods-Omer_Flash_Card.a">
+               BuildableName = "libAlamofire.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

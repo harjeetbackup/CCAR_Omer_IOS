@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		186490C22175A6FF00317E83 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186490C12175A6FF00317E83 /* Server.swift */; };
 		187F81BA213EBC0E00E1386B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187F81B8213EBC0D00E1386B /* Fabric.framework */; };
 		187F81BB213EBC0E00E1386B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187F81B9213EBC0E00E1386B /* Crashlytics.framework */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -428,6 +429,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		186490C12175A6FF00317E83 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		186D4CD82170C21A0074640B /* Omer_Flash_Card-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Omer_Flash_Card-Bridging-Header.h"; sourceTree = "<group>"; };
 		187F81B8213EBC0D00E1386B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		187F81B9213EBC0E00E1386B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1328,6 +1331,7 @@
 				2860E327111B887F00E27156 /* MainWindow_iPhone.xib */,
 				4EC80F5C1423B88B00BFCC4D /* CardDetails_iPhone.h */,
 				4EC80F5D1423B88B00BFCC4D /* CardDetails_iPhone.m */,
+				186490C12175A6FF00317E83 /* Server.swift */,
 				4EC80F5E1423B88B00BFCC4D /* CommentsViewController_iPhone.h */,
 				4EC80F5F1423B88B00BFCC4D /* CommentsViewController_iPhone.m */,
 				4EC80F601423B88B00BFCC4D /* CustomWebView_iPhone.h */,
@@ -1354,6 +1358,7 @@
 				4EC80F771423B88B00BFCC4D /* VoiceNotesViewController_iPhone.m */,
 				4EC80F781423B88B00BFCC4D /* VoiceRecordingViewController_iPhone.h */,
 				4EC80F791423B88B00BFCC4D /* VoiceRecordingViewController_iPhone.m */,
+				186D4CD82170C21A0074640B /* Omer_Flash_Card-Bridging-Header.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1657,6 +1662,7 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = MTLWNYBR52;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -2054,7 +2060,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 956b994af50d54bc7b2728a79c4dbae09edbeefc b5cfcbc476582b34f3f4b1ae33ac1bbf56e765bea90069edbfb44b39c73027ee";
+			shellScript = "#./Fabric.framework/run 956b994af50d54bc7b2728a79c4dbae09edbeefc b5cfcbc476582b34f3f4b1ae33ac1bbf56e765bea90069edbfb44b39c73027ee";
 		};
 		D545D1A9149BA2B8248642FB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2126,6 +2132,7 @@
 				4EC811CD1423E3A900BFCC4D /* VideoGallaryViewController.m in Sources */,
 				4B9F8CEB1438B596002DD869 /* TapDetectingWindow.m in Sources */,
 				E0D9E55014C44F1900D836F0 /* CardList_iPhone.m in Sources */,
+				186490C22175A6FF00317E83 /* Server.swift in Sources */,
 				E0BEA2F614D2930300A92664 /* ActionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2139,6 +2146,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Central Conference of American Rabbis (MTLWNYBR52)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -2159,6 +2167,7 @@
 				);
 				INFOPLIST_FILE = "Omer_Flash_Card-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../..\"",
@@ -2169,6 +2178,9 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "iPhone/Classes/Views/Omer_Flash_Card-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "APIs/facebook/src/**";
 				VALID_ARCHS = "armv7 armv7s armv6 arm64";
 			};
@@ -2180,6 +2192,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Central Conference of American Rabbis (MTLWNYBR52)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -2198,6 +2211,7 @@
 				);
 				INFOPLIST_FILE = "Omer_Flash_Card-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../..\"",
@@ -2207,6 +2221,8 @@
 				PRODUCT_NAME = Omer_Flash_Card;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "iPhone/Classes/Views/Omer_Flash_Card-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "APIs/facebook/src/**";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s armv6 arm64";

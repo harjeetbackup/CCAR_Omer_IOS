@@ -203,6 +203,7 @@ bool navBar=YES;
     
 }
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section>0)
@@ -657,8 +658,6 @@ bool navBar=YES;
         
         [self presentViewController:facebookSheet animated:YES completion:nil];
     }
-    
-	
 }
 
 
