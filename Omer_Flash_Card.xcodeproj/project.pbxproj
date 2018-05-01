@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		181E7EE82182FB71004FDA0E /* info_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 181E7EE62182FB6F004FDA0E /* info_btn.png */; };
 		181E7EE92182FB71004FDA0E /* info_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181E7EE72182FB71004FDA0E /* info_btn@2x.png */; };
+		18215E82219BF57A00C2F006 /* dismissIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18215E80219BF57800C2F006 /* dismissIcon.png */; };
+		18215E83219BF57A00C2F006 /* dismissIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18215E81219BF57900C2F006 /* dismissIcon@2x.png */; };
 		1857ED21218828BA0041F28E /* SetAlerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1857ED20218828BA0041F28E /* SetAlerts.storyboard */; };
 		1857ED232188294A0041F28E /* SetAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1857ED222188294A0041F28E /* SetAlertViewController.swift */; };
 		1857ED28218836300041F28E /* check-box-filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 1857ED242188362D0041F28E /* check-box-filled.png */; };
@@ -442,6 +444,8 @@
 /* Begin PBXFileReference section */
 		181E7EE62182FB6F004FDA0E /* info_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_btn.png; sourceTree = "<group>"; };
 		181E7EE72182FB71004FDA0E /* info_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info_btn@2x.png"; sourceTree = "<group>"; };
+		18215E80219BF57800C2F006 /* dismissIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dismissIcon.png; sourceTree = "<group>"; };
+		18215E81219BF57900C2F006 /* dismissIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dismissIcon@2x.png"; sourceTree = "<group>"; };
 		1857ED20218828BA0041F28E /* SetAlerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetAlerts.storyboard; sourceTree = "<group>"; };
 		1857ED222188294A0041F28E /* SetAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlertViewController.swift; sourceTree = "<group>"; };
 		1857ED242188362D0041F28E /* check-box-filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-filled.png"; sourceTree = "<group>"; };
@@ -1510,6 +1514,8 @@
 				C3AA403F1C3145B000686724 /* week1@2x.png */,
 				C3AA40401C3145B000686724 /* week2_bg.png */,
 				C3AA40411C3145B000686724 /* week2_bg@2x.png */,
+				18215E80219BF57800C2F006 /* dismissIcon.png */,
+				18215E81219BF57900C2F006 /* dismissIcon@2x.png */,
 				C3AA40421C3145B000686724 /* week2.png */,
 				C3AA40431C3145B000686724 /* week2@2x.png */,
 				C3AA40441C3145B000686724 /* week3_bg.png */,
@@ -1821,6 +1827,7 @@
 				C3F78F6E1C1EF238007C3638 /* bg_intro@2x.png in Resources */,
 				4EC80F491423B86600BFCC4D /* VoiceNotesView_iPhone.xib in Resources */,
 				C3AA405D1C3145B000686724 /* week2_bg@2x.png in Resources */,
+				18215E83219BF57A00C2F006 /* dismissIcon@2x.png in Resources */,
 				4EC80F4A1423B86600BFCC4D /* VoiceRecordingView_iPhone.xib in Resources */,
 				C3F11A2F1C21980B002092EE /* 36B.html in Resources */,
 				C3B48F611C3D28A100D03B04 /* week1_bg_iPhone.png in Resources */,
@@ -1975,6 +1982,7 @@
 				C3F11A611C21980B002092EE /* 73B.html in Resources */,
 				4B7EFD9414D7739100CE5527 /* SearchSpacer.png in Resources */,
 				C3F78F6F1C1EF238007C3638 /* bg_today-reading.png in Resources */,
+				18215E82219BF57A00C2F006 /* dismissIcon.png in Resources */,
 				C3F11A4E1C21980B002092EE /* 61A.html in Resources */,
 				C3F11A261C21980B002092EE /* 32A.html in Resources */,
 				C3AA406F1C3145B000686724 /* week6@2x.png in Resources */,

@@ -19,7 +19,7 @@
 #import "MyCommentsViewController.h"
 #import "MyVoiceNotesViewController.h"
 #import <CoreLocation/CoreLocation.h>
-
+#import "Omer_Flash_Card-Swift.h"
 #import "Utils.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Reachability.h"
@@ -43,8 +43,17 @@
 @end
 
 @implementation DeckViewController
-@synthesize cardDecks = _cardDecks;
+@synthesize cardDecks = _cardDecks,isTappedTodaysReading;
+
 @synthesize _detail,_navLabel;
+NSString * startDate;
+NSString * endDate ;
+int startDateDay;
+int startDateMonth;
+int startDateYear;
+int endDateDay;
+int endDateMonth;
+int endDateYear;
 
 - (void)didReceiveMemoryWarning
 {
@@ -57,11 +66,10 @@
 - (void) viewDidAppear:(BOOL)animated
 {
 	[_extraNavigationBar setNeedsDisplay];
-   
 	[super viewDidAppear:animated];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    
+    isTappedTodaysReading=NO;
     [super viewWillAppear:animated];
     
     self.navigationItem.hidesBackButton=YES;
@@ -91,6 +99,7 @@
     }*/
 	[self.view addSubview:_detail.view];
 }
+
 
 - (void) showIndexViewForDeck:(FlashCardDeck *)objDeck
 {
@@ -137,9 +146,7 @@
 
 
 - (void)viewDidLoad 
-{
-    [super viewDidLoad];
-   
+{    [super viewDidLoad];
     _tableView.contentInset = UIEdgeInsetsMake(-1.0, 0.0, 57.0, 0.0);
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
         // iOS 7
@@ -159,14 +166,47 @@
     [_navLabel setHidden:YES];
     [_aLabel setHidden:YES];
 	[self performSelector:@selector(openFirstView) withObject:self afterDelay:0.3];
-	
-
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self getStartAndEndDates];
+    });
 }
+
+- (void)getStartAndEndDates
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    NSString *yearString = [formatter stringFromDate:[NSDate date]];
+    
+    [Server.shared getOmerDatesByYearWithId:yearString completion:^(NSArray * res, NSError * error) {
+        if (res != NULL) {
+            if (res.firstObject[@"date"] != NULL) {
+                startDate = res.firstObject[@"date"];
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:@"yyyy-MM-dd"];
+                NSDate *now = [formatter dateFromString:startDate];
+                NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:now];
+                startDateDay = [components day];
+                startDateMonth = [components month];
+                startDateYear = [components year];
+            }
+            if (res.lastObject[@"date"] != NULL) {
+                endDate = res.lastObject[@"date"];
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:@"yyyy-MM-dd"];
+                NSDate *now = [formatter dateFromString:endDate];
+                NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:now];
+                endDateDay = [components day];
+                endDateMonth = [components month];
+                endDateYear = [components year];
+            }
+        }
+    }];
+}
+
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
 }
-
 
 - (void)setProperRotation:(BOOL)animated
 {
@@ -624,68 +664,67 @@
 #pragma mark - CLLocationManagerDelegate
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    
-    
-    NSLog(@"locations %@",locations);
+    if(!isTappedTodaysReading) {
+        NSLog(@"locations %@",locations);
     //CLLocation* location = [locations lastObject];
-    [locationmanager stopUpdatingLocation];
-    NSDateComponents *startDatecomps = [[NSDateComponents alloc] init];
-    [startDatecomps setDay:31];
-    [startDatecomps setMonth:3];
-    [startDatecomps setYear:2018];
-    NSDate *currentDateTime=[NSDate date];
-    NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
-    NSDate *dateInLocalTimezone = [currentDateTime dateByAddingTimeInterval:timeZoneSeconds];
-    NSCalendar *gregorian = [[NSCalendar alloc]
+        [locationmanager stopUpdatingLocation];
+        NSDateComponents *startDatecomps = [[NSDateComponents alloc] init];
+        [startDatecomps setDay:startDateDay];
+        [startDatecomps setMonth:startDateMonth];
+        [startDatecomps setYear:startDateYear];
+        NSDate *currentDateTime=[NSDate date];
+        NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
+        NSDate *dateInLocalTimezone = [currentDateTime dateByAddingTimeInterval:timeZoneSeconds];
+        NSCalendar *gregorian = [[NSCalendar alloc]
                              initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *startDate = [gregorian dateFromComponents:startDatecomps];
-    EDSunriseSet *startDateSunInfo = [EDSunriseSet sunrisesetWithDate:startDate timezone:[NSTimeZone localTimeZone]
+        NSDate *startDate = [gregorian dateFromComponents:startDatecomps];
+        EDSunriseSet *startDateSunInfo = [EDSunriseSet sunrisesetWithDate:startDate timezone:[NSTimeZone localTimeZone]
                                                     latitude:location.coordinate.latitude
                                                    longitude:location.coordinate.longitude];
-    NSDate *startSunsetTime= startDateSunInfo.sunset;
-    NSDateComponents *endDatecomps = [[NSDateComponents alloc] init];
-    [endDatecomps setDay:19];
-    [endDatecomps setMonth:5];
-    [endDatecomps setYear:2018];
-    NSDate *endDate = [gregorian dateFromComponents:endDatecomps];
-    EDSunriseSet *endDateSunInfo = [EDSunriseSet sunrisesetWithDate:endDate timezone:[NSTimeZone localTimeZone]
+        NSDate *startSunsetTime= startDateSunInfo.sunset;
+        NSDateComponents *endDatecomps = [[NSDateComponents alloc] init];
+        [endDatecomps setDay:endDateDay];
+        [endDatecomps setMonth:endDateMonth];
+        [endDatecomps setYear:endDateYear];
+        NSDate *endDate = [gregorian dateFromComponents:endDatecomps];
+        EDSunriseSet *endDateSunInfo = [EDSunriseSet sunrisesetWithDate:endDate timezone:[NSTimeZone localTimeZone]
                                                              latitude:location.coordinate.latitude
                                                             longitude:location.coordinate.longitude];
-    NSDate *endSunsetTime= endDateSunInfo.sunset;
-    if ([dateInLocalTimezone compare:startSunsetTime] ==  NSOrderedAscending)
-    {
-        ModalViewCtrl* model = [[ModalViewCtrl alloc] initWithNibName:@"ModalViewiPad" bundle:nil contentType:kcontentTypeBeforeCard];
-        [model setParentCtrl:self];
-        model.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+        NSDate *endSunsetTime= endDateSunInfo.sunset;
+        if ([dateInLocalTimezone compare:startSunsetTime] ==  NSOrderedAscending)
+        {
+            ModalViewCtrl* model = [[ModalViewCtrl alloc] initWithNibName:@"ModalViewiPad" bundle:nil contentType:kcontentTypeBeforeCard];
+            [model setParentCtrl:self];
+            model.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
         //CGRectMake(382, 0, kDetailViewWidth+2, 768);
-        model.view.tag = 1;
+            model.view.tag = 1;
         if([self.view viewWithTag:1]!=nil)
-        {
-            [[self.view viewWithTag:1] removeFromSuperview];
+            {
+                [[self.view viewWithTag:1] removeFromSuperview];
+            }
+                [self.view addSubview:model.view];
         }
-        [self.view addSubview:model.view];
-    }
     
-    else if ([endSunsetTime compare:dateInLocalTimezone] ==  NSOrderedAscending)
-    {
-        ModalViewCtrl* model = [[ModalViewCtrl alloc] initWithNibName:@"ModalViewiPad" bundle:nil contentType:kcontentTypeAfterCard];
-        [model setParentCtrl:self];
-        model.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+        else if ([endSunsetTime compare:dateInLocalTimezone] ==  NSOrderedAscending)
+        {
+            ModalViewCtrl* model = [[ModalViewCtrl alloc] initWithNibName:@"ModalViewiPad" bundle:nil contentType:kcontentTypeAfterCard];
+            [model setParentCtrl:self];
+            model.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
        // CGRectMake(382, 0, kDetailViewWidth+2, 768);
-        model.view.tag = 1;
+            model.view.tag = 1;
         if([self.view viewWithTag:1]!=nil)
         {
             [[self.view viewWithTag:1] removeFromSuperview];
         }
-        [self.view addSubview:model.view];
+            [self.view addSubview:model.view];
     }
     else
     {
-    EDSunriseSet *sunInfo = [EDSunriseSet sunrisesetWithDate:dateInLocalTimezone timezone:[NSTimeZone localTimeZone]
+        EDSunriseSet *sunInfo = [EDSunriseSet sunrisesetWithDate:dateInLocalTimezone timezone:[NSTimeZone localTimeZone]
                                                         latitude:location.coordinate.latitude
                                                        longitude:location.coordinate.longitude];
    
-    NSDate *sunsetTime= sunInfo.sunset;
+        NSDate *sunsetTime= sunInfo.sunset;
         NSDateComponents *difference = [gregorian components:NSCalendarUnitDay
                                                     fromDate:startSunsetTime toDate:sunsetTime options:0];
         NSInteger dayDifference=[difference day];
@@ -701,16 +740,17 @@
             NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
             [self showDetailViewWithArray:deckArray cardIndex:0 caller:@"self"];
         }
-    else if ([dateInLocalTimezone compare:sunsetTime] ==  NSOrderedAscending || dayDifference==48)
-    {
-         NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
-       [self showDetailViewWithArray:deckArray cardIndex:0 caller:@"self"];
-    }
+        else if ([dateInLocalTimezone compare:sunsetTime] ==  NSOrderedAscending || dayDifference==48)
+        {
+            NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
+            [self showDetailViewWithArray:deckArray cardIndex:0 caller:@"self"];
+        }
         else
         {
              NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
         
              [self showDetailViewWithArray:deckArray cardIndex:0 caller:@"self"];
+            }
         }
     }
 }

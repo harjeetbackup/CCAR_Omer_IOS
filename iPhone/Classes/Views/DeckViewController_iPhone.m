@@ -13,7 +13,6 @@
 #import "FlashCard.h"
 #import "CardList_iPhone.h"
 #import "ModalViewCtrl_iPhone.h"
-
 #import "DeckViewController_iPhone.h"
 #import "SearchViewController_iPhone.h"
 #import "IndexViewController_iPhone.h"

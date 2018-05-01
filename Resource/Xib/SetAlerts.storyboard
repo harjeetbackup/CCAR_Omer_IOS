@@ -73,13 +73,19 @@
                                     <action selector="timePickerTapped:" destination="uIh-Mh-rIs" eventType="valueChanged" id="Xx7-5p-xfd"/>
                                 </connections>
                             </datePicker>
-                            <navigationBar contentMode="scaleToFill" backIndicatorImage="back_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="wy3-eC-GDM">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wy3-eC-GDM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="PWr-85-M9Q"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Set Alerts" id="0Qd-Eg-b3B"/>
+                                    <navigationItem title="Set Alerts" id="0Qd-Eg-b3B">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="dismissIcon.png" id="6B2-nj-TuZ">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="uIh-Mh-rIs" id="vvi-EU-OMz"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -118,7 +124,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back_1.png" width="50" height="20"/>
         <image name="check-box-empty.png" width="30" height="30"/>
+        <image name="dismissIcon.png" width="14" height="14"/>
     </resources>
 </document>

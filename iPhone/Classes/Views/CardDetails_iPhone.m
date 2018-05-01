@@ -733,8 +733,7 @@ NSInteger todayOmerIndex_iPhone=0;
         }
         
         //[flipCard setImage:[UIImage imageNamed:@"exter-green.png"] forState:UIControlStateNormal];
-        
-        
+
     }
 }
 - (void) updateFlashDetails
@@ -830,8 +829,6 @@ NSInteger todayOmerIndex_iPhone=0;
 	[actionSheet release]; 
 
 }
-
-
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	

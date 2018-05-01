@@ -48,6 +48,8 @@
 @property (nonatomic, retain) FlashCardDeckList* cardDecks;
 @property (nonatomic, retain) CardDetails*	_detail;
 @property (nonatomic, retain) UILabel *_navLabel;
+@property (nonatomic, assign) BOOL    isTappedTodaysReading;
+
 @property (retain, nonatomic) IBOutlet UINavigationBar *aNavBar;
 @property (retain, nonatomic) IBOutlet CustomDeckToolBar *dailyBlessingToolBar;
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *searchButton;

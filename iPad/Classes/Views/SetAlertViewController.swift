@@ -11,14 +11,14 @@ import UserNotifications
 import CoreLocation
 
 @objc class SetAlertViewController: UIViewController,CLLocationManagerDelegate {
-
+//each time when timer set the previous notifications are to be stopped.
     @IBOutlet var timePicker: UIDatePicker!
     @IBOutlet var sendAlertSwitch: UISwitch!
     @IBOutlet var setAlertAtSunsetButton: UIButton!
 
     var locationmanager = CLLocationManager()
     let notification = UILocalNotification()
-    let isFromiPad = false
+    var isFromiPad = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -191,5 +191,9 @@ import CoreLocation
         notification.alertBody = "Yeh it works!"
         notification.applicationIconBadgeNumber = 1
         UIApplication.shared.scheduleLocalNotification(notification)
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

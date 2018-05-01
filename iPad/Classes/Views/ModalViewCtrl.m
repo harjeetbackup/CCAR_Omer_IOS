@@ -284,7 +284,6 @@
 	}
 	*/
 	return cell;
-	
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -296,7 +295,6 @@
             NSString * storyboardName = @"SetAlerts";
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
             UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SetAlertViewController"];
-            
             vc.modalPresentationStyle = UIModalPresentationFormSheet;
             [self presentViewController:vc animated:true completion:nil];
             
