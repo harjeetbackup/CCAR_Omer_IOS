@@ -1,0 +1,44 @@
+DIV.poem
+{
+    background-color: lightcyan;
+}
+
+DIV.heb DIV.poem
+{
+    background-color: inherit;
+}
+
+P.english-poetry-attribution
+{
+    background-color: cyan;
+}
+
+P.eng-misc
+{
+    background-color: lavender;
+}
+
+P.instructions, SPAN.repeat
+{
+    background-color: gold;
+}
+
+P.instructions SPAN.romanization
+{
+    background-color: orange;
+}
+
+DIV.heb
+{
+    background-color: pink;
+}
+
+DIV.rheb
+{
+    background-color: lightgreen;
+}
+
+DIV.etoh
+{
+    background-color: lightblue;
+}

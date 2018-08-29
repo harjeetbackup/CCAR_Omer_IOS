@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>VoiceNotes</key>
+	<true/>
+	<key>Comments</key>
+	<true/>
+	<key>Twitter</key>
+	<true/>
+	<key>Facebook</key>
+	<true/>
+	<key>DeckHeader</key>
+	<string>Blessings by Theme</string>
+	<key>DBName</key>
+	<string>flashCard.db3</string>
+	<key>HeaderTitle</key>
+	<string>NFTY’s Bencher by CCAR</string>
+	<key>FacebookHeader</key>
+	<string>NFTY’s Bencher by CCAR</string>
+	<key>FacebookAppID </key>
+	<string>136422206434654</string>
+	<key>FacebookAppSecretKey</key>
+	<string>d9b94a7b6157859be29f2556d00fadde</string>
+	<key>TwitterOAuthConsumerKey</key>
+	<string>KtcHiQHeCg1K9QlbTPYl1w</string>
+	<key>TwitterOAuthConsumerSecret</key>
+	<string>XJPpP67jTeSJAqZILE6aamRwSBUIbmNKUKqgewaqQ</string>
+	<key>AppiraterIAppID</key>
+	<string>470966357</string>
+	<key>AllCardsDeckColor</key>
+	<string>206,191,143</string>
+	<key>IndexRowColor</key>
+	<string>252,224,156</string>
+	<key>BookmarkedCardsDeckColor</key>
+	<string>206,191,143</string>
+	<key>TwitterUrlCallback</key>
+	<string>http://www.spearheadinc.com</string>
+	<key>AllCardsTextColor</key>
+	<string>0,0,0</string>
+	<key>BookmarkedCardsTextColor</key>
+	<string>0,0,0</string>
+	<key>DeckCardsTextColor</key>
+	<string>0,0,0</string>
+	<key>DeckHeaderTextColor</key>
+	<string>0,0,0</string>
+	<key>CardList</key>
+	<string>yes</string>
+	<key>RandomOption</key>
+	<string>no</string>
+	<key>SelectedCardsColor</key>
+	<string>0,0,0</string>
+	<key>SelectedDeckColor</key>
+	<string>0,0,0</string>
+	<key>FlipOnTap</key>
+	<string>No</string>
+	<key>IsProficiencyEnable</key>
+	<string>no</string>
+	<key>CardListColor</key>
+	<string>52,145,207</string>
+	<key>SearchCardListColor</key>
+	<string>52,145,207</string>
+	<key>AudioOnTapToStart</key>
+	<string>no</string>
+	<key>FacebookMessage</key>
+	<string>I like Prayer app.</string>
+	<key>TwitterMessage</key>
+	<string>I like Prayer app.</string>
+	<key>IsIntroScreen</key>
+	<string>yes</string>
+	<key>StartSoundFile</key>
+	<string>tigernew.mp3</string>
+	<key>IntroDeckColor</key>
+	<string>134,166,98</string>
+</dict>
+</plist>

@@ -1,0 +1,73 @@
+@font-face{
+	font-family:"RobotoThin";
+	src:url("Roboto-Thin.ttf");
+}
+
+@font-face{
+	font-family:"RobotoRegular";
+	src:url("Roboto-Regular.ttf");
+}
+@font-face{
+	font-family:"RobotoBold";
+	src:url("Roboto-Bold.ttf");
+}
+
+body{
+	margin:12% 5% 12% 5%;padding:0;
+	background-position:bottom center; /* bottom center OR 0% 0% */
+	background-size:cover; /* cover OR 100% 100% */
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+}
+
+body.dWeek1A{background-image:url('PHOTO-week-1.jpg');}
+body.dWeek2A{background-image:url('PHOTO-week-2.jpg');}
+body.dWeek3A{background-image:url('PHOTO-week-3.jpg');}
+body.dWeek4A{background-image:url('PHOTO-week-4.jpg');}
+body.dWeek5A{background-image:url('PHOTO-week-5.jpg');}
+body.dWeek6A{background-image:url('PHOTO-week-6.jpg');}
+body.dWeek7A{background-image:url('PHOTO-week-7.jpg');}
+
+body.dWeek1B{background-image:url('PHOTO-week-1-back.jpg');}
+body.dWeek2B{background-image:url('PHOTO-week-2-back.jpg');}
+body.dWeek3B{background-image:url('PHOTO-week-3-back.jpg');}
+body.dWeek4B{background-image:url('PHOTO-week-4-back.jpg');}
+body.dWeek5B{background-image:url('PHOTO-week-5-back.jpg');}
+body.dWeek6B{background-image:url('PHOTO-week-6-back.jpg');}
+body.dWeek7B{background-image:url('PHOTO-week-7-back.jpg');}
+
+
+div.dOuter{
+	background-color:white;
+	height:100%;
+	filter: alpha(opacity=80);
+	-moz-opacity: 0.8;
+	opacity: 0.8;
+	-moz-border-radius:30px;
+	-webkit-border-radius:30px;
+	border-radius:30px;
+}
+
+div.dInner{
+	height:90%;
+	padding:5% 0;
+}
+
+div.dContentsBox{
+overflow-y:auto;width:90%;height:100%;margin:0 5%;
+}
+
+table.dContents{
+	height:100%;width:100%;
+}
+table.dContents td{
+	padding:0 5%;
+	text-align:justify;
+}
+
+img.dLangText{
+	width:100%;
+}
+
+.dCenter{text-align:center;}
+

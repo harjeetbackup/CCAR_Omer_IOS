@@ -1,0 +1,16 @@
+DIV.heb-n-rheb
+{
+    direction: ltr;
+}
+
+DIV.heb
+{
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+
+DIV.rheb
+{
+    margin-left: 0.5rem;
+    margin-right: 0;
+}

@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'MFDavidRegular';
+    src: url('mf_david-regular.eot');
+    src: url('mf_david-regular.eot') format('embedded-opentype'),
+         url('mf_david-regular.woff') format('woff'),
+         url('mf_david-regular.ttf') format('truetype'),
+         url('mf_david-regular.svg#MFDavidRegular') format('svg');
+}

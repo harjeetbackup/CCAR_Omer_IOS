@@ -1,0 +1,15 @@
+div.dContentsBox{
+	height:100%;margin:0 5%;
+}
+
+table.dContents{
+	font-family:RobotoRegular;font-size:3.6vmin;
+}
+table.dContents td{
+	padding:0 5%;
+	vertical-align:top;
+}
+@media only screen and (min-device-width:320px) and (max-device-width:480px){
+    table.dContents{font-size:5vmin;}
+    
+}

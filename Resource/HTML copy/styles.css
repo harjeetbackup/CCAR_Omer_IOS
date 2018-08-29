@@ -1,0 +1,152 @@
+html,body{background-color:#fff;}
+
+
+body {margin:0 auto;padding:0;font:250% sans-serif;}
+
+h1{padding:1% 2%;margin: 0 -2% 2% -2%;font:bold 150% sans-serif;color:#fff;}
+
+.titleColor,h1{background-color:#c61d25;}
+
+.headingColor,h2{color:#c61d25;}
+
+.subheadingColor,h3{color:#1b69ae;}
+
+h2{font:bold 125% sans-serif;margin-bottom:2%;}
+h3{font:bold 110% sans-serif;margin-bottom:2%;}
+h4{font:bold 100% sans-serif;margin-bottom:2%;}
+h5{font:bold 100% sans-serif;margin-bottom:2%;}
+
+
+img{border:none;}
+
+		div.headerImage img{
+		width:100%;
+		vertical-align:bottom;
+		}
+
+	 	audio{
+
+			/*width:100%;
+			height:27px;*/
+            width:95%;
+            height:100px;
+            position:absolute;
+                  display:block;
+            overflow:hidden;
+            margin:2em 0 1em 0;
+            border:none;
+            -webkit-box-shadow: -1px 0px 1px white;
+            -moz-box-shadow: -1px 0px 1px white;
+             box-shadow: -1px 0px 1px white;
+           /* border:1px solid white;*/
+
+		}
+
+		.dContents{
+			padding:0 2%;
+		}
+		
+		img.prayerLang1{
+			width:100%;
+		}
+		
+		p.prayerLang2{
+		font-style:italic;
+        
+		}
+
+/*audio
+{
+    width:95%;
+    height:100px;
+    position:absolute;
+}*/
+
+.prayerLang1{
+    margin-top:180px;
+}
+
+/* iPhone Styles */
+@media screen and (device-height: 568px){
+    p.prayerLang2{		
+        font-size:125%;
+    }
+    p.prayerLang3{
+        font-size:125%;
+    }
+
+}
+		/*
+		p{
+			 text-shadow: #cccccc 1px 1px 3px;
+		}
+		*/
+	
+/* Bullets and Numbers styling */
+
+/*Imporant setting of p for bullets and numbers styling */
+p{margin:0 0 5% 0;}
+
+ul{margin:0;padding:0;margin-left:20px;padding-bottom:2%;}
+ul li{padding-left:20px;padding-top:2%;}
+ul li:first-child{padding-top:0;}
+ul li ul{margin:0;padding:0;margin-left:20px;padding-top:0;}
+ul li ul li:first-child{padding-top:2%;}
+
+
+ol{margin-left:20px;margin-top:0;margin-bottom:0;padding-bottom:2%;}
+ol li{padding-left:10px;padding-top:2%}
+ol li:first-child{padding-top:0;}
+ol li ol{padding-bottom:0;}
+ol li ol li:first-child{padding-top:2%;}
+
+
+ul li ol {padding-bottom:0;}
+ul li ol li:first-child{padding-top:2%;}
+
+ol li ul{padding-bottom:0;}
+ol li ul li:first-child{padding-top:2%;}
+
+sub {vertical-align:baseline;position:relative;bottom:-0.3em;}
+sup{vertical-align:baseline;position:relative;bottom:0.3em;}
+
+.level1{padding-left:2%;}
+.level2{padding-left:4%;}
+.level3{padding-left:6%;}
+
+table.withBorder{border-collapse:collapse;}
+table.withBorder td{border:1px solid black;}
+
+/* bA=Border All, bT=Border Top */
+td.bA, th.bA, td.ba, th.ba{border:1px solid #000;}
+td.bT, th.bT, td.bt, th.bt{border-top:1px solid #000;}
+td.bR, th.bR, td.br, th.br{border-right:1px solid #000;}
+td.bB, th.bB, td.bb, th.bb{border-bottom:1px solid #000;}
+td.bL, th.bL, td.bl, th.bl{border-left:1px solid #000;}
+
+/* btb = Border Top Black  btr = Border Top Red */
+.btb {border-top:1px solid #000;}
+.bbb {border-bottom:1px solid #000;}
+.btr {border-top:1px solid #955281;}
+.bbr {border-bottom:1px solid #955281;}
+
+.dCenter{text-align:center;}
+
+/* Equal division of table columns. Same but separate code for th and td tags */
+table th.Col1By2,table th.Col2By2{width:48%;}/* (100% - 4% (2% each column))/2  */
+table th.Col1By3,table th.Col2By3,table th.Col3By3{width:31.33%;}/* 100% - 6% / 3 */
+table th.Col1By4,table th.Col2By4,table th.Col3By4,table th.Col4By4{width:23%;} /* 100% - 8% / 4 */
+table th.Col1By5,table th.Col2By5,table th.Col3By5,table th.Col4By5,table th.Col5By5{width:18%;} /* 100% - 10% / 5 */
+table th.Col1By6,table th.Col2By6,table th.Col3By6,table th.Col4By6,table th.Col5By6,table th.Col6By6{width:14.66%;}
+table th.Col1By7,table th.Col2By7,table th.Col3By7,table th.Col4By7,table th.Col5By7,table th.Col6By7,table th.Col7By7{width:12.28%;}
+table th.Col1By8,table th.Col2By8,table th.Col3By8,table th.Col4By8,table th.Col5By8,table th.Col6By8,table th.Col7By8,table th.Col8By8{width:10.5%;}
+table th.Col1By9,table th.Col2By9,table th.Col3By9,table th.Col4By9,table th.Col5By9,table th.Col6By9,table th.Col7By9,table th.Col8By9,table th.Col9By9{width:9.11%;}
+
+table td.Col1By2,table td.Col2By2{width:48%;}/* (100% - 4% (2% each column))/2  */
+table td.Col1By3,table td.Col2By3,table td.Col3By3{width:31.33%;}/* 100% - 6% / 3 */
+table td.Col1By4,table td.Col2By4,table td.Col3By4,table td.Col4By4{width:23%;} /* 100% - 8% / 4 */
+table td.Col1By5,table td.Col2By5,table td.Col3By5,table td.Col4By5,table td.Col5By5{width:18%;} /* 100% - 10% / 5 */
+table td.Col1By6,table td.Col2By6,table td.Col3By6,table td.Col4By6,table td.Col5By6,table td.Col6By6{width:14.66%;}
+table td.Col1By7,table td.Col2By7,table td.Col3By7,table td.Col4By7,table td.Col5By7,table td.Col6By7,table td.Col7By7{width:12.28%;}
+table td.Col1By8,table td.Col2By8,table td.Col3By8,table td.Col4By8,table td.Col5By8,table td.Col6By8,table td.Col7By8,table td.Col8By8{width:10.5%;}
+table td.Col1By9,table td.Col2By9,table td.Col3By9,table td.Col4By9,table td.Col5By9,table td.Col6By9,table td.Col7By9,table td.Col8By9,table td.Col9By9{width:9.11%;}

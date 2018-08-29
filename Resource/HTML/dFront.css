@@ -1,0 +1,16 @@
+div.dContentsBox{
+	height:80%;margin:5%;
+}
+
+table.dContents{
+	font-family:RobotoBold;font-size:4vmin;
+}
+
+div.dFooter{
+position:absolute;right:10%;width:80%;text-align:right;font-family:RobotoRegular;font-size:3.6vmin;padding:0 4%;
+}
+
+@media only screen and (min-device-width:320px) and (max-device-width:480px){
+    table.dContents{font-size:5vmin;}
+    div.dFooter{font-size:5vmin;}
+    }

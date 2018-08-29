@@ -1,0 +1,11 @@
+BODY
+{
+    color: white;
+    background-color: black;
+}
+
+DIV.on-shabbat,
+DIV.on-yom-tov
+{
+    background-color: dimgray;
+}
