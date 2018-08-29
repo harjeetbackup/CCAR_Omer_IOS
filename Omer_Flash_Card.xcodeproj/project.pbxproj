@@ -124,6 +124,7 @@
 		528FF9AC1740B40400B49345 /* info_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 528FF9A51740B40300B49345 /* info_btn.png */; };
 		528FF9AD1740B40400B49345 /* info_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528FF9A61740B40300B49345 /* info_btn@2x.png */; };
 		528FF9AE1740B40400B49345 /* right_arw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528FF9A71740B40300B49345 /* right_arw@2x.png */; };
+		55C10BEDA88BBE1DE5405AA4 /* libPods-Omer_Flash_Card.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B587E5568313433AC0CA9C /* libPods-Omer_Flash_Card.a */; };
 		C312E64F1B56319B00A78D9C /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C312E64B1B56319A00A78D9C /* StringHelper.m */; };
 		C312E6501B56319B00A78D9C /* RCLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C312E64C1B56319A00A78D9C /* RCLabel.m */; };
 		C328D07D1C201AA9005A3B24 /* League_Gothic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C328D0791C201AA9005A3B24 /* League_Gothic-webfont.ttf */; };
@@ -427,6 +428,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Omer_Flash_Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Omer_Flash_Card.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		232288F1A9185A30AFFD6791 /* Pods-Omer_Flash_Card.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omer_Flash_Card.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Omer_Flash_Card/Pods-Omer_Flash_Card.debug.xcconfig"; sourceTree = "<group>"; };
 		2860E325111B887F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_iPhone.h; path = ../../AppDelegate_iPhone.h; sourceTree = "<group>"; };
 		2860E326111B887F00E27156 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate_iPhone.m; path = ../../AppDelegate_iPhone.m; sourceTree = "<group>"; };
 		2860E327111B887F00E27156 /* MainWindow_iPhone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow_iPhone.xib; path = ../../MainWindow_iPhone.xib; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Omer_Flash_Card_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Omer_Flash_Card_Prefix.pch; sourceTree = "<group>"; };
+		34822FD11C59CDC43769290A /* Pods-Omer_Flash_Card.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omer_Flash_Card.release.xcconfig"; path = "Pods/Target Support Files/Pods-Omer_Flash_Card/Pods-Omer_Flash_Card.release.xcconfig"; sourceTree = "<group>"; };
 		4B7EFD1114D7739100CE5527 /* all-cards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all-cards.png"; sourceTree = "<group>"; };
 		4B7EFD1214D7739100CE5527 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		4B7EFD1614D7739100CE5527 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
@@ -883,6 +886,7 @@
 		E6F5BC50180845FF00381C15 /* Launching_iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launching_iphone@2x.png"; sourceTree = "<group>"; };
 		E6F5BC521808468800381C15 /* launching@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launching@2x.png"; sourceTree = "<group>"; };
 		E6F5BC5418084CD600381C15 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F9B587E5568313433AC0CA9C /* libPods-Omer_Flash_Card.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Omer_Flash_Card.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE0B6D2516709B09002C80D3 /* dylib1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = dylib1.o; path = usr/lib/dylib1.o; sourceTree = SDKROOT; };
 		FE1E0AA7166CD50C00AD8C65 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		FE2F109C1670B3B500AE6B88 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth.a; path = APIs/libOAuth.a; sourceTree = "<group>"; };
@@ -924,6 +928,7 @@
 				4EC80FB61423BC7900BFCC4D /* MessageUI.framework in Frameworks */,
 				4EC80FB81423BCCA00BFCC4D /* libsqlite3.dylib in Frameworks */,
 				4EC80FC21423BDBE00BFCC4D /* MediaPlayer.framework in Frameworks */,
+				55C10BEDA88BBE1DE5405AA4 /* libPods-Omer_Flash_Card.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,7 +970,7 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+		29B97314FDCFA39411CA2CEA = {
 			isa = PBXGroup;
 			children = (
 				C328D0781C201AA9005A3B24 /* Font */,
@@ -1005,6 +1010,7 @@
 				4EC80FB51423BC7900BFCC4D /* MessageUI.framework */,
 				4EC80FB71423BCCA00BFCC4D /* libsqlite3.dylib */,
 				4EC80FC11423BDBE00BFCC4D /* MediaPlayer.framework */,
+				5544B5FD971EF2E61F083716 /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1029,6 +1035,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				F9B587E5568313433AC0CA9C /* libPods-Omer_Flash_Card.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1561,6 +1568,15 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		5544B5FD971EF2E61F083716 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				232288F1A9185A30AFFD6791 /* Pods-Omer_Flash_Card.debug.xcconfig */,
+				34822FD11C59CDC43769290A /* Pods-Omer_Flash_Card.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C328D0781C201AA9005A3B24 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -1605,6 +1621,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Omer_Flash_Card" */;
 			buildPhases = (
+				D545D1A9149BA2B8248642FB /* [CP] Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
@@ -1644,7 +1661,8 @@
 				de,
 				en,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			mainGroup = 29B97314FDCFA39411CA2CEA;
+			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -2011,6 +2029,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D545D1A9149BA2B8248642FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Omer_Flash_Card-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -2070,6 +2113,7 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 232288F1A9185A30AFFD6791 /* Pods-Omer_Flash_Card.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2107,6 +2151,7 @@
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34822FD11C59CDC43769290A /* Pods-Omer_Flash_Card.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
