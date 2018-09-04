@@ -396,6 +396,7 @@
 		E0BEA2F714D2930300A92664 /* ActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0BEA2F514D2930300A92664 /* ActionViewController.xib */; };
 		E0D9E54C14C44EF200D836F0 /* CardList_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D9E54B14C44EF200D836F0 /* CardList_iPhone.xib */; };
 		E0D9E55014C44F1900D836F0 /* CardList_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D9E54F14C44F1900D836F0 /* CardList_iPhone.m */; };
+		E2E5C3F82137B4F600ECC1AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2E5C3F72137B4F600ECC1AC /* Main.storyboard */; };
 		E609527E17CB4E9B00C80402 /* backNew.png in Resources */ = {isa = PBXBuildFile; fileRef = E609527D17CB4E5200C80402 /* backNew.png */; };
 		E609528417CB54A700C80402 /* backNew_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E609528317CB549600C80402 /* backNew_1.png */; };
 		E609529017CB7D0200C80402 /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B7EFD1B14D7739100CE5527 /* bookmark.png */; };
@@ -873,6 +874,7 @@
 		E0D9E54B14C44EF200D836F0 /* CardList_iPhone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardList_iPhone.xib; sourceTree = "<group>"; };
 		E0D9E54E14C44F1900D836F0 /* CardList_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardList_iPhone.h; sourceTree = "<group>"; };
 		E0D9E54F14C44F1900D836F0 /* CardList_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardList_iPhone.m; sourceTree = "<group>"; };
+		E2E5C3F72137B4F600ECC1AC /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E609527D17CB4E5200C80402 /* backNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backNew.png; sourceTree = "<group>"; };
 		E609528317CB549600C80402 /* backNew_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backNew_1.png; sourceTree = "<group>"; };
 		E64FADB117CC9DCA006BDF68 /* backNew_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backNew_1@2x.png"; sourceTree = "<group>"; };
@@ -970,7 +972,7 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA = {
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
 				C328D0781C201AA9005A3B24 /* Font */,
@@ -1259,6 +1261,7 @@
 				4EC80D741423B86600BFCC4D /* SearchView_iPhone.xib */,
 				4EC80D751423B86600BFCC4D /* VoiceNotesView_iPhone.xib */,
 				4EC80D761423B86600BFCC4D /* VoiceRecordingView_iPhone.xib */,
+				E2E5C3F72137B4F600ECC1AC /* Main.storyboard */,
 			);
 			name = Xib;
 			path = ../Resource/Xib;
@@ -1661,7 +1664,7 @@
 				de,
 				en,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1835,6 +1838,7 @@
 				C3F11A3D1C21980B002092EE /* 46B.html in Resources */,
 				C3F11A141C21980B002092EE /* 17A.html in Resources */,
 				C3F11A821C21980B002092EE /* styles.css in Resources */,
+				E2E5C3F82137B4F600ECC1AC /* Main.storyboard in Resources */,
 				C3F11A621C21980B002092EE /* 74A.html in Resources */,
 				4B7EFD6414D7739100CE5527 /* bookmark-cards.png in Resources */,
 				4B7EFD6614D7739100CE5527 /* bookmarkTop_ic.png in Resources */,
@@ -2035,15 +2039,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Omer_Flash_Card-checkManifestLockResult.txt",
 			);
@@ -2117,7 +2117,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Central Conference of American Rabbis (MTLWNYBR52)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -2133,7 +2132,7 @@
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "Omer_Flash_Card-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../..\"",
@@ -2155,7 +2154,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Central Conference of American Rabbis (MTLWNYBR52)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -2169,7 +2167,7 @@
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "Omer_Flash_Card-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../..\"",
