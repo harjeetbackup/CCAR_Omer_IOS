@@ -44,7 +44,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.tblCardNames.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
+
     if(![backgroundImageName isEqualToString:@""])
     {
     self.tblCardNames.backgroundColor=[UIColor clearColor];
@@ -79,6 +81,7 @@
     
 }
 -(void)viewDidAppear:(BOOL)animated
+
 {
     
     if ([arrCards count]==0) {

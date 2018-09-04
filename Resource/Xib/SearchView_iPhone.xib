@@ -1,8 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController_iPhone">
@@ -17,9 +22,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" text="" placeholder="Search Cards" showsSearchResultsButton="YES" id="25">
-                    <rect key="frame" x="0.0" y="59" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpK-m1-SyH">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="oDY-me-Jku"/>
+                    </constraints>
+                </view>
+                <searchBar contentMode="redraw" text="" placeholder="Search Cards" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="25">
+                    <rect key="frame" x="0.0" y="15" width="320" height="56"/>
                     <textInputTraits key="textInputTraits"/>
                     <scopeButtonTitles>
                         <string>Scope</string>
@@ -29,27 +41,33 @@
                         <outlet property="delegate" destination="-1" id="36"/>
                     </connections>
                 </searchBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5">
-                    <rect key="frame" x="0.0" y="103" width="320" height="357"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5">
+                    <rect key="frame" x="0.0" y="71" width="320" height="389"/>
+                    <color key="backgroundColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="6"/>
                         <outlet property="delegate" destination="-1" id="7"/>
                     </connections>
                 </tableView>
-                <view contentMode="scaleToFill" id="QpK-m1-SyH">
-                    <rect key="frame" x="0.0" y="44" width="320" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="25" firstAttribute="leading" secondItem="qMo-cQ-OnD" secondAttribute="leading" id="4Od-IA-oRi"/>
+                <constraint firstItem="5" firstAttribute="top" secondItem="25" secondAttribute="bottom" id="5TV-xa-cWf"/>
+                <constraint firstItem="QpK-m1-SyH" firstAttribute="leading" secondItem="qMo-cQ-OnD" secondAttribute="leading" id="9FF-7B-fY9"/>
+                <constraint firstItem="5" firstAttribute="leading" secondItem="qMo-cQ-OnD" secondAttribute="leading" id="D5u-dA-afU"/>
+                <constraint firstItem="5" firstAttribute="bottom" secondItem="qMo-cQ-OnD" secondAttribute="bottom" id="Ezw-GK-lfF"/>
+                <constraint firstItem="5" firstAttribute="trailing" secondItem="qMo-cQ-OnD" secondAttribute="trailing" id="KPx-UT-e4R"/>
+                <constraint firstItem="QpK-m1-SyH" firstAttribute="top" secondItem="qMo-cQ-OnD" secondAttribute="top" id="Pud-gu-UJR"/>
+                <constraint firstItem="25" firstAttribute="top" secondItem="QpK-m1-SyH" secondAttribute="bottom" id="Sb3-wa-F2J"/>
+                <constraint firstItem="QpK-m1-SyH" firstAttribute="trailing" secondItem="qMo-cQ-OnD" secondAttribute="trailing" id="hW3-gB-lyq"/>
+                <constraint firstItem="25" firstAttribute="trailing" secondItem="qMo-cQ-OnD" secondAttribute="trailing" id="o7B-4k-cxy"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="qMo-cQ-OnD"/>
         </view>
     </objects>
 </document>

@@ -80,6 +80,8 @@ bool navBar=YES;
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         // code here
+       
+
                self.view.backgroundColor = [UIColor clearColor];
        /* CGRect copyRight = self.coprrightLabel.frame;
         copyRight.origin.y = 505;
@@ -102,7 +104,7 @@ bool navBar=YES;
         CGRect myFrameTableHeight = self.blessingTable.frame;
         myFrameTableHeight.size.height = 395;
       //  self.blessingTable.frame = myFrameTableHeight;
-       
+
     }
    
 	self.navigationController.navigationBarHidden = NO;
@@ -194,16 +196,16 @@ bool navBar=YES;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return  1;
+    return 1.0f;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section>0)
-        return 61;
+        return 64;
     else
-        return 48;
+        return 50;
 }
 
 
