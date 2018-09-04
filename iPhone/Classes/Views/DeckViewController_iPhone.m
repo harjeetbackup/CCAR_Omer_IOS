@@ -196,7 +196,7 @@ bool navBar=YES;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 1.0f;
+    return 1;
     
 }
 
@@ -205,7 +205,7 @@ bool navBar=YES;
     if(indexPath.section>0)
         return 64;
     else
-        return 50;
+        return 56;
 }
 
 
