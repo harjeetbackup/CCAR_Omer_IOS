@@ -9,6 +9,9 @@
 #import "DBAccess.h"
 
 #import "AppDelegate_iPhone.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 
 
@@ -36,7 +39,8 @@
 		// Add the navigation controller's view to the window and display.
     
 
-	
+    [Fabric with:@[[Crashlytics class]]];
+
 	navigationController.navigationBarHidden = YES;
    // window.tintColor = [UIColor purpleColor];
 	[window setRootViewController:navigationController];

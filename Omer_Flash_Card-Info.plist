@@ -26,6 +26,20 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.12</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>956b994af50d54bc7b2728a79c4dbae09edbeefc</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>

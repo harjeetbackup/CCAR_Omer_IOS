@@ -6,5 +6,7 @@ target 'Omer_Flash_Card' do
   # use_frameworks!
 
   # Pods for Omer_Flash_Card
+  pod 'Fabric', '~> 1.7'
+  pod 'Crashlytics', '~> 3.10'
 
 end
