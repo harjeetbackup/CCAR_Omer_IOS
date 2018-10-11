@@ -53,10 +53,10 @@ NSInteger todayOmerIndex_iPhone=0;
         [buttonPrevious setImage:[UIImage imageNamed:@"left_arw.png"] forState:UIControlStateNormal];
     }
     
-    buttonPrevious.frame = CGRectMake(16.0, 7.0, 30.0, 30.0);
+    buttonPrevious.frame = CGRectMake(40.0, 7.0, 30.0, 30.0);
     buttonPrevious.contentMode=UIViewContentModeScaleAspectFit;
     buttonPrevious.hidden = NO;
-    //[self.view addSubview: button];
+   // [self.view addSubview: button];
     [self.customToolBarBottom addSubview: buttonPrevious];
     
     buttonNext = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -75,10 +75,10 @@ NSInteger todayOmerIndex_iPhone=0;
         [buttonNext setImage:[UIImage imageNamed:@"right_arw.png"] forState:UIControlStateNormal];
         
     }
-    buttonNext.frame = CGRectMake(274.0, 7.0, 30.0, 30.0);
+    buttonNext.frame = CGRectMake(300.0, 7.0, 30.0, 30.0);
     buttonNext.contentMode=UIViewContentModeScaleAspectFit;
     buttonNext.hidden = NO;
-    //[self.view addSubview: button];
+  //  [self.view addSubview: button];
     [self.customToolBarBottom addSubview: buttonNext];
     UIButton *leftButtonImg = [[UIButton alloc] initWithFrame:CGRectMake(5, 7, 50, 20)];
     [leftButtonImg setImage:[UIImage imageNamed:@"backNew_1.png"] forState:UIControlStateNormal];
