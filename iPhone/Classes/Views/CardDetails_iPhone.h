@@ -62,6 +62,8 @@ UIScrollViewDelegate, TapDetectingWindowDelegate>
 @property (retain, nonatomic) IBOutlet UIButton *toggle_note_btn;
 @property (nonatomic,retain) NSArray* arrCards;
 @property (retain, nonatomic) IBOutlet CustomToolBar *customToolBarBottom;
+@property (nonatomic) CGFloat lastContentOffset;
+
 - (void)loadArrayOfCards:(NSArray*)cards;
 - (IBAction)loadNextCardDetails;
 - (IBAction)loadPrevCardDetails;
