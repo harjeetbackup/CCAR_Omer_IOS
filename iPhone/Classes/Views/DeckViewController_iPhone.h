@@ -43,6 +43,9 @@
 @property (retain, nonatomic) IBOutlet UIImageView *dailyBlessingImg;
 @property (retain, nonatomic) IBOutlet UILabel *myLabelSeven;
 
+
+
+
 - (IBAction)displaySettings;
 - (IBAction)displayHelp;
 - (IBAction)displayInfo;
@@ -55,5 +58,9 @@
 - (void) publishToTwitter;
 - (void) myComments;
 - (void) myVoiceNotes;
+- (void)getYearString;
+- (void)getMonthString;
+- (void)getDayString;
+
 
 @end

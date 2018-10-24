@@ -7,7 +7,7 @@
 import Foundation
 import Alamofire
 
-class Server {
+class Server: NSObject{
     
     static let shared = Server()
     

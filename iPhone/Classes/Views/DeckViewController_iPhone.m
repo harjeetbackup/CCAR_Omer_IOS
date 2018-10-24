@@ -25,6 +25,9 @@
 #import <Social/Social.h>
 #import <QuartzCore/QuartzCore.h>
 #import <Crashlytics/Crashlytics.h>
+#import "Omer_Flash_Card-Swift.h"
+
+
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
@@ -39,18 +42,11 @@
 //static NSString *facebookAppSecretKey=@"d9b94a7b6157859be29f2556d00fadde";
 
 
-
 @implementation DeckViewController_iPhone
 @synthesize cardDecks = _cardDecks,isTappedTodaysReading;
 bool navBar=YES;
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
+NSString * startDate;
+NSString * endDate ;
 
 - (void)viewDidLoad 
 {
@@ -65,7 +61,7 @@ bool navBar=YES;
         // iOS 6
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     }
-	//[_tableView setBackgroundColor:[UIColor clearColor]];
+    //[_tableView setBackgroundColor:[UIColor clearColor]];
     _tableView.contentInset = UIEdgeInsetsMake(-1.0, 0.0, 55.0, 0.0);
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         // code here
@@ -78,21 +74,18 @@ bool navBar=YES;
         self.settingButton.tintColor = [UIColor whiteColor];
         self.helpButton.tintColor = [UIColor whiteColor];
         self.infoButton.tintColor = [UIColor whiteColor];
-          }
+    }
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        // code here
-       
-
-               self.view.backgroundColor = [UIColor clearColor];
-       /* CGRect copyRight = self.coprrightLabel.frame;
-        copyRight.origin.y = 505;
-        self.coprrightLabel.frame = copyRight;*/
-
-       // self.coprrightLabel.backgroundColor = [UIColor redColor];
+        self.view.backgroundColor = [UIColor clearColor];
+        /* CGRect copyRight = self.coprrightLabel.frame;
+         copyRight.origin.y = 505;
+         self.coprrightLabel.frame = copyRight;*/
+        
+        // self.coprrightLabel.backgroundColor = [UIColor redColor];
         // UIImage *image = [UIImage imageNamed:@"Launching_iphone568@2x.png"];
         //[self.dailyBlessingImgView setImage:image];
-    
+        
         CGRect myFrameImg = self.dailyBlessingImg.frame;
         // myFrame.origin.x = 634;
         myFrameImg.origin.y = -2;
@@ -105,24 +98,22 @@ bool navBar=YES;
         
         CGRect myFrameTableHeight = self.blessingTable.frame;
         myFrameTableHeight.size.height = 395;
-      //  self.blessingTable.frame = myFrameTableHeight;
-
+        //  self.blessingTable.frame = myFrameTableHeight;
+        
     }
-   
-	self.navigationController.navigationBarHidden = NO;
-	self.navigationController.delegate = self;
-	//self.title = @"Antibiotic Manual";
-	//self.title = [Utils getValueForVar:kHeaderTitle];
-	UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 250, 40)];
-	tlabel.text=[Utils getValueForVar:kHeaderTitle];
+    
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.delegate = self;
+    //self.title = @"Antibiotic Manual";
+    //self.title = [Utils getValueForVar:kHeaderTitle];
+    UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 250, 40)];
+    tlabel.text=[Utils getValueForVar:kHeaderTitle];
     tlabel.textColor=[UIColor whiteColor];
     tlabel.backgroundColor =[UIColor clearColor];
     tlabel.adjustsFontSizeToFitWidth=YES;
-	tlabel.font = [UIFont boldSystemFontOfSize:18];
-	[tlabel setTextAlignment:UITextAlignmentCenter];
-   // self.navigationItem.titleView=tlabel;
-
-	
+    tlabel.font = [UIFont boldSystemFontOfSize:18];
+    [tlabel setTextAlignment:UITextAlignmentCenter];
+    // self.navigationItem.titleView=tlabel;
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -158,7 +149,7 @@ bool navBar=YES;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
     {
         if(navBar)
-        [self.navigationController setNavigationBarHidden:NO animated:animated];
+            [self.navigationController setNavigationBarHidden:NO animated:animated];
         [super viewWillDisappear:animated];
     }
     
@@ -180,21 +171,21 @@ bool navBar=YES;
     [super dealloc];
 }
 /*-(void)viewWillAppear:(BOOL)animated{
-    
-    [super viewWillAppear:animated];
-    
-    self.navigationItem.hidesBackButton=YES;
-    
-}*/
+ 
+ [super viewWillAppear:animated];
+ 
+ self.navigationItem.hidesBackButton=YES;
+ 
+ }*/
 #pragma mark -
 #pragma mark UITableView delegates
 
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section
 {
-        if(section == 1)
-            return _cardDecks.flashCardDeckList.count;
-        return 4;
-   
+    if(section == 1)
+        return _cardDecks.flashCardDeckList.count;
+    return 4;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -222,56 +213,56 @@ bool navBar=YES;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DeckCell_iPhone* cell = nil;
-   
+    
     UIView *bgColorView = [[[UIView alloc] init] autorelease];
     [bgColorView setBackgroundColor:[[Utils colorFromString:[Utils getValueForVar:kSelectedDeckColor]]colorWithAlphaComponent:0.2]];
     //[bgColorView setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5]];
     bgColorView.alpha=.2f;
-        UITableViewCell* introCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
-        if(indexPath.section==0)
+    UITableViewCell* introCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+    if(indexPath.section==0)
+    {
+        switch (indexPath.row)
         {
-            switch (indexPath.row)
+            case 0:
+                
+                tableView.separatorColor = [UIColor whiteColor];
+                introCell.textLabel.text=@"Introduction";
+                introCell.textLabel.textColor=[UIColor whiteColor];
+                introCell.backgroundColor=[UIColor clearColor];
+                introCell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_intro.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+                [introCell setSelectedBackgroundView:bgColorView];
+                return introCell;
+                break;
+            case 1:
             {
-                case 0:
-                    
-                    tableView.separatorColor = [UIColor whiteColor];
-                    introCell.textLabel.text=@"Introduction";
-                    introCell.textLabel.textColor=[UIColor whiteColor];
-                    introCell.backgroundColor=[UIColor clearColor];
-                    introCell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_intro.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
-                    [introCell setSelectedBackgroundView:bgColorView];
-                    return introCell;
-                    break;
-                case 1:
-                {
-                   
+                
                 cell = [DeckCell_iPhone creatCellViewWithFlashCardDeck:_cardDecks.todayReadingDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kBookmarkedCardsTextColor]]];
-                    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_today-reading.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
-                    break;
-                }
-                case 2:
-                    tableView.separatorColor = [UIColor whiteColor];
-                    cell = [DeckCell_iPhone creatCellViewWithFlashCardDeck:_cardDecks.allCardDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kAllCardsTextColor]]];
-                    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_all-card.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
-                    break;
-                    
-                case 3:
-                    tableView.separatorColor = [UIColor whiteColor];
-                    cell = [DeckCell_iPhone creatCellViewWithFlashCardDeck:_cardDecks.bookMarkedCardDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kBookmarkedCardsTextColor]]];
-                    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_bookmark.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
-                    
-                    break;
-              
+                cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_today-reading.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+                break;
             }
+            case 2:
+                tableView.separatorColor = [UIColor whiteColor];
+                cell = [DeckCell_iPhone creatCellViewWithFlashCardDeck:_cardDecks.allCardDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kAllCardsTextColor]]];
+                cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_all-card.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+                break;
+                
+            case 3:
+                tableView.separatorColor = [UIColor whiteColor];
+                cell = [DeckCell_iPhone creatCellViewWithFlashCardDeck:_cardDecks.bookMarkedCardDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kBookmarkedCardsTextColor]]];
+                cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_bookmark.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+                
+                break;
+                
         }
-        else
-        {
-            //tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-            //tableView.separatorColor = [Utils colorFromString:@"180,180,180"];
-            cell = [DeckCell_iPhone creatCellViewWithFlashCardDeck:[_cardDecks.flashCardDeckList objectAtIndex:indexPath.row] withTextColor:[Utils colorFromString:[Utils getValueForVar:kDeckCardsTextColor]]];
-            
-        }
-   
+    }
+    else
+    {
+        //tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+        //tableView.separatorColor = [Utils colorFromString:@"180,180,180"];
+        cell = [DeckCell_iPhone creatCellViewWithFlashCardDeck:[_cardDecks.flashCardDeckList objectAtIndex:indexPath.row] withTextColor:[Utils colorFromString:[Utils getValueForVar:kDeckCardsTextColor]]];
+        
+    }
+    
     
     [cell setSelectedBackgroundView:bgColorView];
     // cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -290,9 +281,9 @@ bool navBar=YES;
         return;
     
     NSMutableArray* deckArray=nil;
-        ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kcontentTypeIntro];
-        if(indexPath.section==0)
-        {
+    ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kcontentTypeIntro];
+    if(indexPath.section==0)
+    {
         switch (indexPath.row)
         {
             case 0:
@@ -306,12 +297,12 @@ bool navBar=YES;
                 
             case 1:
             {
-               /* NSString *path = [[NSBundle mainBundle] pathForResource:@"testCalendar" ofType:@"ics"];
-                NSURL *url = [NSURL fileURLWithPath:path];
-                UIDocumentInteractionController *dc = [UIDocumentInteractionController interactionControllerWithURL:url];
-                dc.delegate = self;
-                [dc presentPreviewAnimated:YES];*/
-               [AppDelegate_iPhone delegate].isBookMarked = NO;
+                /* NSString *path = [[NSBundle mainBundle] pathForResource:@"testCalendar" ofType:@"ics"];
+                 NSURL *url = [NSURL fileURLWithPath:path];
+                 UIDocumentInteractionController *dc = [UIDocumentInteractionController interactionControllerWithURL:url];
+                 dc.delegate = self;
+                 [dc presentPreviewAnimated:YES];*/
+                [AppDelegate_iPhone delegate].isBookMarked = NO;
                 deckArray = [_cardDecks.todayReadingDeck  getCardsList];
                 Reachability* wifiReach = [Reachability reachabilityWithHostName: @"www.google.com"];
                 NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
@@ -334,7 +325,7 @@ bool navBar=YES;
                 deckArray = [_cardDecks.allCardDeck  getCardsList];
                 
                 break;
-           
+                
             case 3:
                 [AppDelegate_iPhone delegate].isBookMarked = YES;
                 deckArray = [_cardDecks.bookMarkedCardDeck  getCardsList];
@@ -349,55 +340,55 @@ bool navBar=YES;
                 
                 
         }
-        }
-            else
-            {
-                [AppDelegate_iPhone delegate].isBookMarked = NO;
-                deckArray = [[_cardDecks.flashCardDeckList objectAtIndex:indexPath.row]  getCardsList];
-               
-            }
+    }
+    else
+    {
+        [AppDelegate_iPhone delegate].isBookMarked = NO;
+        deckArray = [[_cardDecks.flashCardDeckList objectAtIndex:indexPath.row]  getCardsList];
+        
+    }
     
-        if([[[Utils getValueForVar:kCardList] lowercaseString] isEqualToString:@"yes"])
+    if([[[Utils getValueForVar:kCardList] lowercaseString] isEqualToString:@"yes"])
+    {
+        CardListIPhone* cardListView = [[CardListIPhone alloc] initWithNibName:@"CardList_iPhone" bundle:nil];
+        
+        if(indexPath.section == 1)
         {
-            CardListIPhone* cardListView = [[CardListIPhone alloc] initWithNibName:@"CardList_iPhone" bundle:nil];
-           
-            if(indexPath.section == 1)
-            {
-                 [self.navigationController pushViewController:cardListView animated:YES];
-                [cardListView showCardsForDeck:indexPath.row+1];
-            }
-            else
-            {
-                
+            [self.navigationController pushViewController:cardListView animated:YES];
+            [cardListView showCardsForDeck:indexPath.row+1];
+        }
+        else
+        {
+            
             if(indexPath.row == 2)
             {
-                 [self.navigationController pushViewController:cardListView animated:YES];
+                [self.navigationController pushViewController:cardListView animated:YES];
                 [cardListView showAllCards];
             }
             else if(indexPath.row == 3)
             {
-                 [self.navigationController pushViewController:cardListView animated:YES];
-                   [cardListView showBookmarkCards];
-            }
-             
-           
-            }
-            [cardListView release];
-        }
-        else
-        {
-            CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
-            detail.arrCards=deckArray;
-            [self.navigationController pushViewController:detail animated:YES];
-            if([AppDelegate_iPhone delegate].isRandomCard == 1)
-            {
-                [Utils randomizeArray:deckArray];
+                [self.navigationController pushViewController:cardListView animated:YES];
+                [cardListView showBookmarkCards];
             }
             
-            //[detail loadArrayOfCards:deckArray];
-            [detail release];
+            
         }
-  
+        [cardListView release];
+    }
+    else
+    {
+        CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
+        detail.arrCards=deckArray;
+        [self.navigationController pushViewController:detail animated:YES];
+        if([AppDelegate_iPhone delegate].isRandomCard == 1)
+        {
+            [Utils randomizeArray:deckArray];
+        }
+        
+        //[detail loadArrayOfCards:deckArray];
+        [detail release];
+    }
+    
     
     //  cell.backgroundColor = [Utils colorFromString:[Utils getValueForVar:kIndexRowColor]];
     
@@ -417,103 +408,138 @@ bool navBar=YES;
 #pragma mark - CLLocationManagerDelegate
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    NSString *yearString = [formatter stringFromDate:[NSDate date]];
+    
+    [Server.shared getOmerDatesByYearWithId:yearString completion:^(NSArray * res, NSError * error) {
+        if (res != NULL) {
+            if (res.firstObject[@"date"] != NULL) {
+                startDate = res.firstObject[@"date"];
+            }
+            if (res.lastObject[@"date"] != NULL) {
+                endDate = res.lastObject[@"date"];
+            }
+        }
+    }];
+
     if(!isTappedTodaysReading)
     {
-    isTappedTodaysReading=YES;
-    NSLog(@"locations %@",locations);
-    //CLLocation* location = [locations lastObject];
-    [locationmanager stopUpdatingLocation];
-    NSDateComponents *startDatecomps = [[NSDateComponents alloc] init];
-    [startDatecomps setDay:31];
-    [startDatecomps setMonth:3];
-    [startDatecomps setYear:2018];
-    NSDate *currentDateTime=[NSDate date];
-    NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
-    NSDate *dateInLocalTimezone = [currentDateTime dateByAddingTimeInterval:timeZoneSeconds];
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *startDate = [gregorian dateFromComponents:startDatecomps];
-    EDSunriseSet *startDateSunInfo = [EDSunriseSet sunrisesetWithDate:startDate timezone:[NSTimeZone localTimeZone]
-                                                             latitude:location.coordinate.latitude
-                                                            longitude:location.coordinate.longitude];
-    NSDate *startSunsetTime= startDateSunInfo.sunset;
-    NSDateComponents *endDatecomps = [[NSDateComponents alloc] init];
-    [endDatecomps setDay:19];
-    [endDatecomps setMonth:5];
-    [endDatecomps setYear:2018];
-    NSDate *endDate = [gregorian dateFromComponents:endDatecomps];
-    EDSunriseSet *endDateSunInfo = [EDSunriseSet sunrisesetWithDate:endDate timezone:[NSTimeZone localTimeZone]
-                                                           latitude:location.coordinate.latitude
-                                                          longitude:location.coordinate.longitude];
-    NSDate *endSunsetTime= endDateSunInfo.sunset;
-    if ([dateInLocalTimezone compare:startSunsetTime] ==  NSOrderedAscending)
-    {
-        ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kcontentTypeBeforeCard];
-        navBar=NO;
-        [model setParentCtrl:self];
-        [self presentModalViewController:model animated:YES];
-        [model release];
-    }
-    
-    else if ([endSunsetTime compare:dateInLocalTimezone] ==  NSOrderedAscending)
-    {
-        ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kcontentTypeAfterCard];
-        navBar = NO;
-        [model setParentCtrl:self];
-        [self presentModalViewController:model animated:YES];
-        [model release];
-    }
-    else
-    {
-        EDSunriseSet *sunInfo = [EDSunriseSet sunrisesetWithDate:[NSDate date] timezone:[NSTimeZone localTimeZone]
-                                                        latitude:location.coordinate.latitude
-                                                       longitude:location.coordinate.longitude];
+        isTappedTodaysReading=YES;
+        NSLog(@"locations %@",locations);
+        //CLLocation* location = [locations lastObject];
+        [locationmanager stopUpdatingLocation];
+        NSDateComponents *startDatecomps = [[NSDateComponents alloc] init];
+        [startDatecomps setDay: 1];
+        [startDatecomps setMonth:4];
+        [startDatecomps setYear:2018];
         
-        NSDate *sunsetTime= sunInfo.sunset;
-        NSDateComponents *difference = [gregorian components:NSCalendarUnitDay
-                                                    fromDate:startSunsetTime toDate:sunsetTime options:0];
-        NSInteger dayDifference=[difference day];
-        if(dayDifference>48)
-            dayDifference=48;
-     //   if(dayDifference>39)
-           // dayDifference=dayDifference-1;
-      /*  NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
-        CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
-        detail.arrCards=deckArray;
-        detail._selectedCardIndex=0;
-        detail.basicCall=YES;
-        [self.navigationController pushViewController:detail animated:YES];*/
-        //NSMutableArray*  deckArray = [_cardDecks.allCardDeck  getCardsList];
-        if ([startSunsetTime compare:sunsetTime] ==  NSOrderedSame && dayDifference==0)
+        NSDate *currentDateTime=[NSDate date];
+        NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
+        NSDate *dateInLocalTimezone = [currentDateTime dateByAddingTimeInterval:timeZoneSeconds];
+        NSCalendar *gregorian = [[NSCalendar alloc]
+                                 initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDate *startDate = [gregorian dateFromComponents:startDatecomps];
+        EDSunriseSet *startDateSunInfo = [EDSunriseSet sunrisesetWithDate:startDate timezone:[NSTimeZone localTimeZone]
+                                                                 latitude:location.coordinate.latitude
+                                                                longitude:location.coordinate.longitude];
+        NSDate *startSunsetTime= startDateSunInfo.sunset;
+        NSDateComponents *endDatecomps = [[NSDateComponents alloc] init];
+        [endDatecomps setDay:19];
+        [endDatecomps setMonth:5];
+        [endDatecomps setYear:2018];
+        NSDate *endDate = [gregorian dateFromComponents:endDatecomps];
+        EDSunriseSet *endDateSunInfo = [EDSunriseSet sunrisesetWithDate:endDate timezone:[NSTimeZone localTimeZone]
+                                                               latitude:location.coordinate.latitude
+                                                              longitude:location.coordinate.longitude];
+        NSDate *endSunsetTime= endDateSunInfo.sunset;
+        if ([dateInLocalTimezone compare:startSunsetTime] ==  NSOrderedAscending)
         {
-            NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
-            CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
-            detail.arrCards=deckArray;
-            detail._selectedCardIndex=0;
-            detail.basicCall=YES;
-            [self.navigationController pushViewController:detail animated:YES];
+            ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kcontentTypeBeforeCard];
+            navBar=NO;
+            [model setParentCtrl:self];
+            [self presentModalViewController:model animated:YES];
+            [model release];
         }
-        else if ([dateInLocalTimezone compare:sunsetTime] ==  NSOrderedAscending || dayDifference==48)
+        
+        else if ([endSunsetTime compare:dateInLocalTimezone] ==  NSOrderedAscending)
         {
-             NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
-            CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
-            detail.arrCards=deckArray;
-            detail._selectedCardIndex=0;
-            detail.basicCall=YES;
-            [self.navigationController pushViewController:detail animated:YES];
+            ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kcontentTypeAfterCard];
+            navBar = NO;
+            [model setParentCtrl:self];
+            [self presentModalViewController:model animated:YES];
+            [model release];
         }
         else
         {
-             NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+2];
-            CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
-            detail.arrCards=deckArray;
-            detail._selectedCardIndex=0;
-            detail.basicCall=YES;
-            [self.navigationController pushViewController:detail animated:YES];
+            EDSunriseSet *sunInfo = [EDSunriseSet sunrisesetWithDate:[NSDate date] timezone:[NSTimeZone localTimeZone]
+                                                            latitude:location.coordinate.latitude
+                                                           longitude:location.coordinate.longitude];
+            
+            NSDate *sunsetTime= sunInfo.sunset;
+            NSDateComponents *difference = [gregorian components:NSCalendarUnitDay
+                                                        fromDate:startSunsetTime toDate:sunsetTime options:0];
+            NSInteger dayDifference=[difference day];
+            if(dayDifference>48)
+                dayDifference=48;
+            //   if(dayDifference>39)
+            // dayDifference=dayDifference-1;
+            /*  NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
+             CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
+             detail.arrCards=deckArray;
+             detail._selectedCardIndex=0;
+             detail.basicCall=YES;
+             [self.navigationController pushViewController:detail animated:YES];*/
+            //NSMutableArray*  deckArray = [_cardDecks.allCardDeck  getCardsList];
+            if ([startSunsetTime compare:sunsetTime] ==  NSOrderedSame && dayDifference==0)
+            {
+                NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
+                CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
+                detail.arrCards=deckArray;
+                detail._selectedCardIndex=0;
+                detail.basicCall=YES;
+                [self.navigationController pushViewController:detail animated:YES];
+            }
+            else if ([dateInLocalTimezone compare:sunsetTime] ==  NSOrderedAscending || dayDifference==48)
+            {
+                NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
+                CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
+                detail.arrCards=deckArray;
+                detail._selectedCardIndex=0;
+                detail.basicCall=YES;
+                [self.navigationController pushViewController:detail animated:YES];
+            }
+            else
+            {
+                NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+2];
+                CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
+                detail.arrCards=deckArray;
+                detail._selectedCardIndex=0;
+                detail.basicCall=YES;
+                [self.navigationController pushViewController:detail animated:YES];
+            }
         }
     }
-    }
 }
+
+-(void) getYearString {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    NSString *yearStr = [formatter stringFromDate:[NSDate date]];
+}
+-(void) getMonthString {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM"];
+    NSString *monthStr = [formatter stringFromDate:[NSDate date]];
+}
+
+- (void) getDayString:( NSString *) value
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd"];
+    NSString *dayStr = [formatter stringFromDate:[NSDate date]];
+};
+
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
@@ -529,125 +555,124 @@ bool navBar=YES;
 - (IBAction)displaySettings
 {
     navBar=NO;
-	ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kContentTypeSetting];
-	[model setParentCtrl:self];
-	[self presentModalViewController:model animated:YES];
-	[model release];
+    ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kContentTypeSetting];
+    [model setParentCtrl:self];
+    [self presentModalViewController:model animated:YES];
+    [model release];
 }
 
 - (IBAction)displayHelp
 {
     navBar=NO;
-	ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kContentTypeHelp];
-	[model setParentCtrl:self];
-	[self presentModalViewController:model animated:YES];
-	[model release];
+    ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kContentTypeHelp];
+    [model setParentCtrl:self];
+    [self presentModalViewController:model animated:YES];
+    [model release];
 }
 
 - (IBAction)displayInfo
 {
     navBar=NO;
-	ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kContentTypeInfo];
-	[model setParentCtrl:self];
-	[self presentModalViewController:model animated:YES];
-	[model release];
+    ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kContentTypeInfo];
+    [model setParentCtrl:self];
+    [self presentModalViewController:model animated:YES];
+    [model release];
 }
 
 
 - (IBAction)searchCards
 {
-	SearchViewController_iPhone* searchView = [[SearchViewController_iPhone alloc] initWithNibName:@"SearchView_iPhone" bundle:nil];
-	[self.navigationController pushViewController:searchView animated:YES];
-	[searchView release];
+    SearchViewController_iPhone* searchView = [[SearchViewController_iPhone alloc] initWithNibName:@"SearchView_iPhone" bundle:nil];
+    [self.navigationController pushViewController:searchView animated:YES];
+    [searchView release];
 }
-        
+
 - (IBAction)cardIndex
 {
-	IndexViewController_iPhone* indexView = [[IndexViewController_iPhone alloc] initWithNibName:@"IndexView_iPhone" bundle:nil];
-	[self.navigationController pushViewController:indexView animated:YES];
-	[indexView release];
+    IndexViewController_iPhone* indexView = [[IndexViewController_iPhone alloc] initWithNibName:@"IndexView_iPhone" bundle:nil];
+    [self.navigationController pushViewController:indexView animated:YES];
+    [indexView release];
 }
 
 
 - (void) myComments{
     
-	MyCommentsViewController_iPhone* commentsView = [[MyCommentsViewController_iPhone alloc] initWithNibName:@"MyCommentsView_iPhone" bundle:nil];
-	[self.navigationController pushViewController:commentsView animated:YES];
-	[commentsView release];
-	
+    MyCommentsViewController_iPhone* commentsView = [[MyCommentsViewController_iPhone alloc] initWithNibName:@"MyCommentsView_iPhone" bundle:nil];
+    [self.navigationController pushViewController:commentsView animated:YES];
+    [commentsView release];
+    
 }
 
 - (void) myVoiceNotes{
-	
-	MyVoiceNotesViewController_iPhone* notesView = [[MyVoiceNotesViewController_iPhone alloc] initWithNibName:@"MyVoiceNotesView_iPhone" bundle:nil];
-	[self.navigationController pushViewController:notesView animated:YES];
-	[notesView release];
+    
+    MyVoiceNotesViewController_iPhone* notesView = [[MyVoiceNotesViewController_iPhone alloc] initWithNibName:@"MyVoiceNotesView_iPhone" bundle:nil];
+    [self.navigationController pushViewController:notesView animated:YES];
+    [notesView release];
 }
 
 
 /* Added By Ravindra */
 
 -(IBAction) showActionSheet{
-	
-	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@""
-															 delegate:self
-													cancelButtonTitle:nil
-											   destructiveButtonTitle:nil
-													otherButtonTitles:nil];
-	
-	
-	[actionSheet addButtonWithTitle:@"Info"];
-	
-	if ([AppDelegate_iPhone delegate].isVoiceNotesEnabled) {
-		[actionSheet addButtonWithTitle:@"My Voice Notes"];
-	}
-	
-	if ([AppDelegate_iPhone delegate].isCommentsEnabled) {
-		[actionSheet addButtonWithTitle:@"My Text Notes"];
-	}
-	
-	
-	if ([AppDelegate_iPhone delegate].isFacebookEnabled) {
-		[actionSheet addButtonWithTitle:@"Publish to Facebook"];
-	}
-	
-	if ([AppDelegate_iPhone delegate].isTwitterEnabled) {
-		[actionSheet addButtonWithTitle:@"Publish to Twitter"];
-	}
-	
-	[actionSheet addButtonWithTitle:@"Cancel"];
-	actionSheet.cancelButtonIndex = actionSheet.numberOfButtons - 1;
-
-	[actionSheet showInView:self.view];
-	[actionSheet release]; 	
-	
+    
+    UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@""
+                                                             delegate:self
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
+    
+    
+    [actionSheet addButtonWithTitle:@"Info"];
+    
+    if ([AppDelegate_iPhone delegate].isVoiceNotesEnabled) {
+        [actionSheet addButtonWithTitle:@"My Voice Notes"];
+    }
+    
+    if ([AppDelegate_iPhone delegate].isCommentsEnabled) {
+        [actionSheet addButtonWithTitle:@"My Text Notes"];
+    }
+    
+    
+    if ([AppDelegate_iPhone delegate].isFacebookEnabled) {
+        [actionSheet addButtonWithTitle:@"Publish to Facebook"];
+    }
+    
+    if ([AppDelegate_iPhone delegate].isTwitterEnabled) {
+        [actionSheet addButtonWithTitle:@"Publish to Twitter"];
+    }
+    
+    [actionSheet addButtonWithTitle:@"Cancel"];
+    actionSheet.cancelButtonIndex = actionSheet.numberOfButtons - 1;
+    
+    [actionSheet showInView:self.view];
+    [actionSheet release];
+    
 }
 
-
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	
-	NSString *title=[actionSheet buttonTitleAtIndex:buttonIndex];
-	if ([title isEqualToString:@"Info"]) {
-		[self displayInfo];
-	}
-	
-	else if ([title isEqualToString:@"Publish to Facebook"]) {
-		[self publishToFacebook];
-	}
-	
-	else if ([title isEqualToString:@"Publish to Twitter"]) {
-		[self publishToTwitter];
-	}
-	
-	else if ([title isEqualToString:@"My Voice Notes"]) {
-		[self myVoiceNotes];
-	}
-	
-	else if ([title isEqualToString:@"My Text Notes"]) {
-		[self myComments];
-	}
-	
-	//[title release];
+    
+    NSString *title=[actionSheet buttonTitleAtIndex:buttonIndex];
+    if ([title isEqualToString:@"Info"]) {
+        [self displayInfo];
+    }
+    
+    else if ([title isEqualToString:@"Publish to Facebook"]) {
+        [self publishToFacebook];
+    }
+    
+    else if ([title isEqualToString:@"Publish to Twitter"]) {
+        [self publishToTwitter];
+    }
+    
+    else if ([title isEqualToString:@"My Voice Notes"]) {
+        [self myVoiceNotes];
+    }
+    
+    else if ([title isEqualToString:@"My Text Notes"]) {
+        [self myComments];
+    }
+    
+    //[title release];
 }
 
 
@@ -663,27 +688,27 @@ bool navBar=YES;
 
 
 -(void) publishToTwitter{
-	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
+    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
         SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         [tweetSheet setInitialText:[Utils getValueForVar:kTwitterMessage]];
         [self presentModalViewController:tweetSheet animated:YES];
     }
-   
-	
+    
+    
 }
 
 /* End of Updated Code By Ravindra */
 
 - (void)updateInfo
 {
-	[_cardDecks updateProficiency];
-	[_tableView reloadData];
+    [_cardDecks updateProficiency];
+    [_tableView reloadData];
 }
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-	if (viewController == self)
-		[self updateInfo];
+    if (viewController == self)
+        [self updateInfo];
 }
 
 -(UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller
@@ -706,3 +731,5 @@ bool navBar=YES;
     [super viewDidUnload];
 }
 @end
+
+

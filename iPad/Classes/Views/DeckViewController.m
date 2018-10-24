@@ -591,11 +591,9 @@
 	
 }
 
-
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	
 	if(buttonIndex==-1) return;
-	
 	
 	NSString *title=[actionSheet buttonTitleAtIndex:buttonIndex];
 	if ([title isEqualToString:@"Info"]) {
@@ -631,6 +629,8 @@
 #pragma mark - CLLocationManagerDelegate
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
+    
+    
     NSLog(@"locations %@",locations);
     //CLLocation* location = [locations lastObject];
     [locationmanager stopUpdatingLocation];
