@@ -11,7 +11,7 @@
 @interface LaunchView_iPhone : UIViewController 
 {
 	IBOutlet UIButton* _imgButton;
-}
+} 
 
 - (IBAction)openHomeView;
 @end

@@ -37,8 +37,6 @@
 		// Override point for customization after application launch.
     
 		// Add the navigation controller's view to the window and display.
-    
-
     [Fabric with:@[[Crashlytics class]]];
 
 	navigationController.navigationBarHidden = YES;
@@ -46,10 +44,8 @@
 	[window setRootViewController:navigationController];
    // [window addSubview:navigationController.view];
     [window makeKeyAndVisible];
-	
 	_dbAccess = [[DBAccess alloc] init];
 	[_dbAccess createDatabaseIfNeeded];
-	
 	
 		// Initialize Features
 	
@@ -90,14 +86,14 @@
 	isRandomCard=[[featuresDict objectForKey:@"Random"] intValue];
   
    
-		//[[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
     return YES;
 }
+
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
 }
-
 
 + (DBAccess*) getDBAccess
 {

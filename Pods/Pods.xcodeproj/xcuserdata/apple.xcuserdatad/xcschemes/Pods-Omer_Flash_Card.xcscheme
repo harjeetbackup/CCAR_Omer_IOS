@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "37B805CE209311BCD2522FCCEF66D1EA"
+               BlueprintIdentifier = "5B53791495B258BB751FDA59F10E5401"
                BlueprintName = "Pods-Omer_Flash_Card"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPods-Omer_Flash_Card.a">

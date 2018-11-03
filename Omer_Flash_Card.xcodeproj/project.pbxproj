@@ -7,11 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181E7EE82182FB71004FDA0E /* info_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 181E7EE62182FB6F004FDA0E /* info_btn.png */; };
+		181E7EE92182FB71004FDA0E /* info_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181E7EE72182FB71004FDA0E /* info_btn@2x.png */; };
+		1857ED21218828BA0041F28E /* SetAlerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1857ED20218828BA0041F28E /* SetAlerts.storyboard */; };
+		1857ED232188294A0041F28E /* SetAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1857ED222188294A0041F28E /* SetAlertViewController.swift */; };
+		1857ED28218836300041F28E /* check-box-filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 1857ED242188362D0041F28E /* check-box-filled.png */; };
+		1857ED29218836300041F28E /* check-box-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 1857ED252188362D0041F28E /* check-box-empty.png */; };
+		1857ED2A218836300041F28E /* check-box-filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1857ED262188362E0041F28E /* check-box-filled@2x.png */; };
+		1857ED2B218836300041F28E /* check-box-empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1857ED272188362F0041F28E /* check-box-empty@2x.png */; };
 		185D8CD6217DC36F00D1D655 /* OmerDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D8CD5217DC36F00D1D655 /* OmerDateManager.swift */; };
 		185D8CD8217DE87700D1D655 /* Sever + OmerDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D8CD7217DE87700D1D655 /* Sever + OmerDays.swift */; };
 		186490C22175A6FF00317E83 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186490C12175A6FF00317E83 /* Server.swift */; };
+		1877CC942182F52C0028DAA9 /* intoduction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877CC922182F52B0028DAA9 /* intoduction@2x.png */; };
+		1877CC952182F52C0028DAA9 /* intoduction.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877CC932182F52C0028DAA9 /* intoduction.png */; };
 		187F81BA213EBC0E00E1386B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187F81B8213EBC0D00E1386B /* Fabric.framework */; };
 		187F81BB213EBC0E00E1386B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187F81B9213EBC0E00E1386B /* Crashlytics.framework */; };
+		18C76AB321898BA20086BA99 /* allItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C76AB221898BA10086BA99 /* allItems.swift */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -126,8 +137,6 @@
 		52872B1E16B7A3E000C37183 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52872B1616B7A3E000C37183 /* logo@2x.png */; };
 		528996B816AFF5B8001E4730 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 528996B716AFF5B8001E4730 /* Default-Landscape.png */; };
 		528996B916AFF5CE001E4730 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FED0D52C1676077C009426D3 /* Default.png */; };
-		528FF9AC1740B40400B49345 /* info_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 528FF9A51740B40300B49345 /* info_btn.png */; };
-		528FF9AD1740B40400B49345 /* info_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528FF9A61740B40300B49345 /* info_btn@2x.png */; };
 		528FF9AE1740B40400B49345 /* right_arw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528FF9A71740B40300B49345 /* right_arw@2x.png */; };
 		55C10BEDA88BBE1DE5405AA4 /* libPods-Omer_Flash_Card.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B587E5568313433AC0CA9C /* libPods-Omer_Flash_Card.a */; };
 		C312E64F1B56319B00A78D9C /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C312E64B1B56319A00A78D9C /* StringHelper.m */; };
@@ -431,12 +440,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181E7EE62182FB6F004FDA0E /* info_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_btn.png; sourceTree = "<group>"; };
+		181E7EE72182FB71004FDA0E /* info_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info_btn@2x.png"; sourceTree = "<group>"; };
+		1857ED20218828BA0041F28E /* SetAlerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetAlerts.storyboard; sourceTree = "<group>"; };
+		1857ED222188294A0041F28E /* SetAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlertViewController.swift; sourceTree = "<group>"; };
+		1857ED242188362D0041F28E /* check-box-filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-filled.png"; sourceTree = "<group>"; };
+		1857ED252188362D0041F28E /* check-box-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-empty.png"; sourceTree = "<group>"; };
+		1857ED262188362E0041F28E /* check-box-filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-filled@2x.png"; sourceTree = "<group>"; };
+		1857ED272188362F0041F28E /* check-box-empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-empty@2x.png"; sourceTree = "<group>"; };
 		185D8CD5217DC36F00D1D655 /* OmerDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmerDateManager.swift; sourceTree = "<group>"; };
 		185D8CD7217DE87700D1D655 /* Sever + OmerDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sever + OmerDays.swift"; sourceTree = "<group>"; };
 		186490C12175A6FF00317E83 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		186D4CD82170C21A0074640B /* Omer_Flash_Card-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Omer_Flash_Card-Bridging-Header.h"; sourceTree = "<group>"; };
+		1877CC922182F52B0028DAA9 /* intoduction@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intoduction@2x.png"; sourceTree = "<group>"; };
+		1877CC932182F52C0028DAA9 /* intoduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intoduction.png; sourceTree = "<group>"; };
 		187F81B8213EBC0D00E1386B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		187F81B9213EBC0E00E1386B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		18C76AB221898BA10086BA99 /* allItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = allItems.swift; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Omer_Flash_Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Omer_Flash_Card.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -596,8 +616,6 @@
 		52197982174B72BC0001839E /* logo_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_iPad@2x.png"; sourceTree = "<group>"; };
 		52872B1616B7A3E000C37183 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		528996B716AFF5B8001E4730 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
-		528FF9A51740B40300B49345 /* info_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_btn.png; sourceTree = "<group>"; };
-		528FF9A61740B40300B49345 /* info_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info_btn@2x.png"; sourceTree = "<group>"; };
 		528FF9A71740B40300B49345 /* right_arw@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_arw@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Omer_Flash_Card-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Omer_Flash_Card-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C312E64B1B56319A00A78D9C /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
@@ -1066,6 +1084,7 @@
 				4EC80B1C1423B85B00BFCC4D /* Appirater.h */,
 				4EC80B1D1423B85B00BFCC4D /* Appirater.m */,
 				4EC80B781423B85B00BFCC4D /* xmacros.h */,
+				18C76AB221898BA10086BA99 /* allItems.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -1268,6 +1287,7 @@
 				4EC80D6C1423B86600BFCC4D /* CommentsView_iPhone.xib */,
 				4EC80D6B1423B86600BFCC4D /* CardDetails_iPhone.xib */,
 				4EC80D6D1423B86600BFCC4D /* DeckViewController_iPhone.xib */,
+				1857ED20218828BA0041F28E /* SetAlerts.storyboard */,
 				4EC80D6E1423B86600BFCC4D /* IndexView_iPhone.xib */,
 				4EC80D6F1423B86600BFCC4D /* LaunchView_iPhone.xib */,
 				4EC80D711423B86600BFCC4D /* ModalView_iPhone.xib */,
@@ -1407,6 +1427,7 @@
 				4EC811A81423E3A900BFCC4D /* VoiceRecordingViewController.h */,
 				4EC811A91423E3A900BFCC4D /* VoiceRecordingViewController.m */,
 				4EC811AA1423E3A900BFCC4D /* CardDetails.h */,
+				1857ED222188294A0041F28E /* SetAlertViewController.swift */,
 				4EC811AB1423E3A900BFCC4D /* CardDetails.m */,
 				4EC811AC1423E3A900BFCC4D /* DeckViewController.h */,
 				4EC811AD1423E3A900BFCC4D /* DeckViewController.m */,
@@ -1540,8 +1561,6 @@
 				E609527D17CB4E5200C80402 /* backNew.png */,
 				52197981174B72AB0001839E /* logo_iPad.png */,
 				52197982174B72BC0001839E /* logo_iPad@2x.png */,
-				528FF9A51740B40300B49345 /* info_btn.png */,
-				528FF9A61740B40300B49345 /* info_btn@2x.png */,
 				528FF9A71740B40300B49345 /* right_arw@2x.png */,
 				E6F5BC521808468800381C15 /* launching@2x.png */,
 				52872B1616B7A3E000C37183 /* logo@2x.png */,
@@ -1550,6 +1569,8 @@
 				FEFBE526167F24C900157C95 /* add_btn.png */,
 				FEFBE527167F24CC00157C95 /* add_btn@2x.png */,
 				FEFBE528167F24CF00157C95 /* arrow@2x.png */,
+				181E7EE62182FB6F004FDA0E /* info_btn.png */,
+				181E7EE72182FB71004FDA0E /* info_btn@2x.png */,
 				FEFBE532167F24E700157C95 /* help_btn.png */,
 				FEFBE533167F24E900157C95 /* help_btn@2x.png */,
 				FEFBE535167F24ED00157C95 /* help@2x.png */,
@@ -1585,7 +1606,13 @@
 				4B7EFD4C14D7739100CE5527 /* settings_btn.png */,
 				4B7EFD4F14D7739100CE5527 /* top_bar_bg.png */,
 				4B7EFD5014D7739100CE5527 /* TopBar.png */,
+				1877CC932182F52C0028DAA9 /* intoduction.png */,
+				1877CC922182F52B0028DAA9 /* intoduction@2x.png */,
 				4B7EFD5914D7739100CE5527 /* zoom_selected.png */,
+				1857ED252188362D0041F28E /* check-box-empty.png */,
+				1857ED272188362F0041F28E /* check-box-empty@2x.png */,
+				1857ED242188362D0041F28E /* check-box-filled.png */,
+				1857ED262188362E0041F28E /* check-box-filled@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1705,6 +1732,7 @@
 				C3AA40651C3145B000686724 /* week4_bg@2x.png in Resources */,
 				C3AA40801C3153A200686724 /* bottom_read_tick_btn.png in Resources */,
 				C3F11A661C21980B002092EE /* 76A.html in Resources */,
+				1857ED21218828BA0041F28E /* SetAlerts.storyboard in Resources */,
 				C3F11A781C21980B002092EE /* PHOTO-week-4.jpg in Resources */,
 				C328D0981C201AF1005A3B24 /* Roboto-LightItalic.ttf in Resources */,
 				C328D0951C201AF1005A3B24 /* Roboto-BoldItalic.ttf in Resources */,
@@ -1770,6 +1798,7 @@
 				C3F119891C215528002092EE /* today-reading.png in Resources */,
 				C3AA40621C3145B000686724 /* week3.png in Resources */,
 				C3C54C541C50A34A0035D7C0 /* Help_All_Cards.png in Resources */,
+				1857ED2B218836300041F28E /* check-box-empty@2x.png in Resources */,
 				C3F11A2D1C21980B002092EE /* 35B.html in Resources */,
 				4EC80F401423B86600BFCC4D /* CommentsView_iPhone.xib in Resources */,
 				C328D0971C201AF1005A3B24 /* Roboto-Light.ttf in Resources */,
@@ -1805,6 +1834,7 @@
 				4EC812291423EAF800BFCC4D /* DeckViewControlleriPad.xib in Resources */,
 				C3AA405E1C3145B000686724 /* week2.png in Resources */,
 				4EC8122A1423EAF800BFCC4D /* MyCommentsViewiPad.xib in Resources */,
+				1857ED29218836300041F28E /* check-box-empty.png in Resources */,
 				C3AA405F1C3145B000686724 /* week2@2x.png in Resources */,
 				4EC8122B1423EAF800BFCC4D /* MyVoiceNotesViewiPad.xib in Resources */,
 				4EC8122C1423EAF800BFCC4D /* SearchViewiPad.xib in Resources */,
@@ -1817,6 +1847,7 @@
 				C3F11A1D1C21980B002092EE /* 24B.html in Resources */,
 				4EC8122F1423EAF800BFCC4D /* CardDetailsiPad.xib in Resources */,
 				C3492F531C3A78950082D53B /* musical_notes-96.png in Resources */,
+				1877CC952182F52C0028DAA9 /* intoduction.png in Resources */,
 				4EC812301423EAF800BFCC4D /* LaunchViewiPad.xib in Resources */,
 				4EC812311423EAF800BFCC4D /* ModalViewiPad.xib in Resources */,
 				C3F11A381C21980B002092EE /* 44A.html in Resources */,
@@ -1835,6 +1866,7 @@
 				4B7EFD5C14D7739100CE5527 /* arrow.png in Resources */,
 				C3F11A791C21980B002092EE /* PHOTO-week-5-back.jpg in Resources */,
 				C3F11A3C1C21980B002092EE /* 46A.html in Resources */,
+				1857ED28218836300041F28E /* check-box-filled.png in Resources */,
 				C3F11A711C21980B002092EE /* PHOTO-week-1-back.jpg in Resources */,
 				C328D0A31C201AF1005A3B24 /* RobotoCondensed-Regular.ttf in Resources */,
 				4B7EFD6014D7739100CE5527 /* background.png in Resources */,
@@ -1847,6 +1879,7 @@
 				C3F11A0D1C21980B002092EE /* 13B.html in Resources */,
 				C3F11A1E1C21980B002092EE /* 25A.html in Resources */,
 				C3AA40681C3145B000686724 /* week5_bg.png in Resources */,
+				181E7EE92182FB71004FDA0E /* info_btn@2x.png in Resources */,
 				C3E5FCC41B55089800B2127B /* style-heb-in-lat-only.css in Resources */,
 				C3B48F671C3D28A100D03B04 /* week7_bg_iPhone.png in Resources */,
 				C3F11A6A1C21980B002092EE /* dBack.css in Resources */,
@@ -1895,12 +1928,14 @@
 				C3F11A211C21980B002092EE /* 26B.html in Resources */,
 				4B7EFD8A14D7739100CE5527 /* Launching_iPhone.png in Resources */,
 				4B7EFD8B14D7739100CE5527 /* Launching.png in Resources */,
+				1877CC942182F52C0028DAA9 /* intoduction@2x.png in Resources */,
 				C3F11A151C21980B002092EE /* 17B.html in Resources */,
 				C3E5FCC51B55089800B2127B /* style-heb-on-the-left.css in Resources */,
 				C3F11A111C21980B002092EE /* 15B.html in Resources */,
 				C3F11A4A1C21980B002092EE /* 56A.html in Resources */,
 				C3F78F691C1EF238007C3638 /* bg_all-card.png in Resources */,
 				C3C54C571C50A34A0035D7C0 /* Help_Flip_Card.png in Resources */,
+				1857ED2A218836300041F28E /* check-box-filled@2x.png in Resources */,
 				C37A2E0A1C7AD71500F3E069 /* help_all-cards.png in Resources */,
 				C3F11A131C21980B002092EE /* 16B.html in Resources */,
 				C3AA405C1C3145B000686724 /* week2_bg.png in Resources */,
@@ -1954,6 +1989,7 @@
 				C3F78F6A1C1EF238007C3638 /* bg_all-card@2x.png in Resources */,
 				C3E5FCC81B55089800B2127B /* mf_david-regular.css in Resources */,
 				C3C54C551C50A34A0035D7C0 /* Help_Bookmarks_and_Notes.png in Resources */,
+				181E7EE82182FB71004FDA0E /* info_btn.png in Resources */,
 				C39587C11BA168810043D5CB /* red-menu-background.jpg in Resources */,
 				C3AA40821C3153A200686724 /* flip_back_default.png in Resources */,
 				C328D07D1C201AA9005A3B24 /* League_Gothic-webfont.ttf in Resources */,
@@ -2025,13 +2061,11 @@
 				C3C54C561C50A34A0035D7C0 /* Help_Check_Mark.png in Resources */,
 				C3F11A091C21980B002092EE /* 11B.html in Resources */,
 				C3F1198A1C215528002092EE /* today-reading@2x.png in Resources */,
-				528FF9AC1740B40400B49345 /* info_btn.png in Resources */,
 				C3AA406E1C3145B000686724 /* week6.png in Resources */,
 				C328D0941C201AF1005A3B24 /* Roboto-Bold.ttf in Resources */,
 				C3F11A731C21980B002092EE /* PHOTO-week-2-back.jpg in Resources */,
 				C3F11A331C21980B002092EE /* 41B.html in Resources */,
 				C37431B71C7314C700AE714F /* aftercard.html in Resources */,
-				528FF9AD1740B40400B49345 /* info_btn@2x.png in Resources */,
 				528FF9AE1740B40400B49345 /* right_arw@2x.png in Resources */,
 				C3F11A7F1C21980B002092EE /* Roboto-Bold.ttf in Resources */,
 				C3492F521C3A78950082D53B /* birthday-104.png in Resources */,
@@ -2111,6 +2145,7 @@
 				C328D07F1C201AA9005A3B24 /* UIFont+Font.m in Sources */,
 				4EC80F851423B88B00BFCC4D /* IndexViewController_iPhone.m in Sources */,
 				4EC80F861423B88B00BFCC4D /* LaunchView_iPhone.m in Sources */,
+				1857ED232188294A0041F28E /* SetAlertViewController.swift in Sources */,
 				4EC80F871423B88B00BFCC4D /* ModalViewCtrl_iPhone.m in Sources */,
 				4EC80F881423B88B00BFCC4D /* MyCommentsViewController_iPhone.m in Sources */,
 				4EC80F891423B88B00BFCC4D /* MyVoiceNotesViewController_iPhone.m in Sources */,
@@ -2131,6 +2166,7 @@
 				4EC811C61423E3A900BFCC4D /* VoiceRecordingViewController.m in Sources */,
 				4EC811C71423E3A900BFCC4D /* CardDetails.m in Sources */,
 				4EC811C81423E3A900BFCC4D /* DeckViewController.m in Sources */,
+				18C76AB321898BA20086BA99 /* allItems.swift in Sources */,
 				4EC811C91423E3A900BFCC4D /* LaunchView.m in Sources */,
 				185D8CD6217DC36F00D1D655 /* OmerDateManager.swift in Sources */,
 				4EC811CA1423E3A900BFCC4D /* ModalViewCtrl.m in Sources */,
@@ -2187,6 +2223,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "iPhone/Classes/Views/Omer_Flash_Card-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
@@ -2232,6 +2269,7 @@
 				PRODUCT_NAME = Omer_Flash_Card;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "iPhone/Classes/Views/Omer_Flash_Card-Bridging-Header.h";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 3.0;

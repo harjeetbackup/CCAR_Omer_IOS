@@ -42,8 +42,7 @@
 @property (retain, nonatomic) IBOutlet UITableView *blessingTable;
 @property (retain, nonatomic) IBOutlet UIImageView *dailyBlessingImg;
 @property (retain, nonatomic) IBOutlet UILabel *myLabelSeven;
-
-
+@property (retain, nonatomic) IBOutlet NSLayoutConstraint *BlessingToolBarHEight;
 
 
 - (IBAction)displaySettings;
@@ -61,6 +60,7 @@
 - (void)getYearString;
 - (void)getMonthString;
 - (void)getDayString;
+- (void)getStartAndEndDates;
 
 
 @end

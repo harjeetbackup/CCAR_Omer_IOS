@@ -13,15 +13,11 @@
 
 @interface AppDelegate_iPhone : NSObject <UIApplicationDelegate>
 {
-    
     IBOutlet UIWindow*					window;
     IBOutlet UINavigationController*	navigationController;
 	
 	BOOL				_isBookMarked;
 	DBAccess*			_dbAccess;
-	
-	
-	
 	BOOL				isFacebookEnabled;
 	BOOL				isTwitterEnabled;
 	BOOL				isVoiceNotesEnabled;
@@ -41,6 +37,7 @@
 @property (nonatomic) BOOL	isSearchingEnabled;
 @property (nonatomic) BOOL	isIndexingEnabled;
 @property (nonatomic) int	isRandomCard;
+@property (nonatomic) BOOL  isSetAlert;
 @property (nonatomic,strong)LaunchView_iPhone *rootViewVontroller;
 
 + (DBAccess*) getDBAccess;

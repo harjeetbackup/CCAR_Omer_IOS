@@ -10,9 +10,10 @@
 #import "DeckViewController_iPhone.h"
 #import "AppDelegate_iPhone.h"
 #import "Appirater.h"
-
 #import "ModalViewCtrl_iPhone.h"
 #import "Utils.h"
+#import "Omer_Flash_Card-Swift.h"
+
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -31,6 +32,10 @@
 	}
 	
 	_settingButtons=[[NSMutableArray alloc] init];
+    AppDelegate_iPhone.delegate.isSetAlert = true;
+    if ([AppDelegate_iPhone delegate].isSetAlert) {
+        [_settingButtons addObject:@"Set Alerts"];
+    }
 	if([[[Utils getValueForVar:kProficiencyEnable] lowercaseString] isEqualToString:@"yes"])
     {
 	[_settingButtons addObject:@"Clear All Proficiency"];
@@ -66,6 +71,12 @@
 }
 -(void)viewDidLoad
 {
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.barTintColor = [UIColor clearColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = YES;
+   
     if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
     {
        UIImage *image = [UIImage imageNamed:@"background.png"];
@@ -82,36 +93,36 @@
          myFrameWebView.origin.y = 0;
          _webView.frame = myFrameWebView;
      }
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.tintColor = [UIColor blackColor];
-    [button addTarget:self
-               action:@selector(aMethod:)
-     forControlEvents:UIControlEventTouchUpInside];
-    //[button setTitle:@"" forState:UIControlStateNormal];
-    // [button setBackgroundImage:[UIImage imageNamed:@"backSeven.png"] forState:UIControlStateNormal];
-    if ( SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
-    {
-    [button setImage:[UIImage imageNamed:@"backNew_1.png"] forState:UIControlStateNormal];
-        button.frame = CGRectMake(8.0, 5.0, 70.0, 29.0);
-        //button.contentMode=UIViewContentModeScaleAspectFit;
-    }
-    else
-    {
-        [button setImage:[UIImage imageNamed:@"back_btn.png"] forState:UIControlStateNormal];
-        button.frame = CGRectMake(5.0, 5.0, 50.0, 30.0);
-        button.contentMode=UIViewContentModeScaleAspectFit;
-    }
-   // button.frame = CGRectMake(8.0, 5.0, 91.0, 38.0);
-   // button.contentMode=UIViewContentModeScaleAspectFit;
-    button.hidden = NO;
-    [_myNavBar addSubview:button];
-    
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.tintColor = [UIColor blackColor];
+//    [button addTarget:self
+//               action:@selector(aMethod:)
+//     forControlEvents:UIControlEventTouchUpInside];
+//    //[button setTitle:@"" forState:UIControlStateNormal];
+//    // [button setBackgroundImage:[UIImage imageNamed:@"backSeven.png"] forState:UIControlStateNormal];
+//    if ( SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+//    {
+//    [button setImage:[UIImage imageNamed:@"backNew_1.png"] forState:UIControlStateNormal];
+//        button.frame = CGRectMake(8.0, 5.0, 70.0, 29.0);
+//        //button.contentMode=UIViewContentModeScaleAspectFit;
+//    }
+//    else
+//    {
+//        [button setImage:[UIImage imageNamed:@"back_btn.png"] forState:UIControlStateNormal];
+//        button.frame = CGRectMake(5.0, 5.0, 50.0, 30.0);
+//        button.contentMode=UIViewContentModeScaleAspectFit;
+//    }
+//   // button.frame = CGRectMake(8.0, 5.0, 91.0, 38.0);
+//   // button.contentMode=UIViewContentModeScaleAspectFit;
+//    button.hidden = NO;
+//    [self.navigationController.navigationBar addSubview:button];
+
     
 }
 -(void)aMethod:(id)sender
 
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
+{   [self.navigationController popViewControllerAnimated:NO];
+   // [self dismissViewControllerAnimated:YES completion:NULL];
     [_parentCtrl updateInfo];
 }
 
@@ -127,7 +138,8 @@
 	{
             
 		case kContentTypeSetting:
-			_navItem.title = @"Settings";
+                self.title = @"Settings";
+			//_navItem.title = @"Settings";
             //[self.myBackButton setImage:[UIImage imageNamed:@"back_btn_iPhone.png"]];
             
 			_tableView.hidden = NO;
@@ -139,7 +151,8 @@
 			break;
             
         case kcontentTypeIntro:
-            _navItem.title = @"Introduction";
+            self.title = @"Introduction";
+           // _navItem.title = @"Introduction";
             fileName = [[NSBundle mainBundle] pathForResource:@"intro.html" ofType:nil inDirectory:nil];
             request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:fileName]];
             [_webView loadRequest:request];
@@ -150,7 +163,8 @@
 			break;
             
         case kcontentTypeBeforeCard:
-            _navItem.title = @"Before Omer";
+           // _navItem.title = @"Before Omer";
+            self.title = @"Before Omer";
             fileName = [[NSBundle mainBundle] pathForResource:@"beforecard.html" ofType:nil inDirectory:nil];
             request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:fileName]];
             [_webView loadRequest:request];
@@ -161,7 +175,8 @@
             break;
             
         case kcontentTypeAfterCard:
-            _navItem.title = @"After Omer";
+            //_navItem.title = @"After Omer";
+            self.title = @"After Omer";
             fileName = [[NSBundle mainBundle] pathForResource:@"aftercard.html" ofType:nil inDirectory:nil];
             request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:fileName]];
             [_webView loadRequest:request];
@@ -173,7 +188,8 @@
             
 
 		case kContentTypeHelp:
-			_navItem.title = @"Help";
+			//_navItem.title = @"Help";
+            self.title = @"Help";
             fileName = [[NSBundle mainBundle] pathForResource:@"help.html" ofType:nil inDirectory:nil];
             request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:fileName]];
             [_webView loadRequest:request];
@@ -184,7 +200,8 @@
 			break;
 			
 		case kContentTypeInfo:
-			_navItem.title = @"Info";
+			//_navItem.title = @"Info";
+            self.title = @"Info";
             fileName = [[NSBundle mainBundle] pathForResource:@"info.html" ofType:nil inDirectory:nil];
             request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:fileName]];
             
@@ -308,10 +325,14 @@
 	
 	if (indexPath.row < [_settingButtons count]) {
 		
-	
-		NSString* button=[_settingButtons objectAtIndex:indexPath.row];
-		
-		if ([button isEqualToString:@"Clear All Proficiency"]) {
+		NSString* button = [_settingButtons objectAtIndex:indexPath.row];
+        if ([button isEqualToString:@"Set Alerts"]) {
+            NSString * storyboardName = @"SetAlerts";
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SetAlertViewController"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+		else if ([button isEqualToString:@"Clear All Proficiency"]) {
 			
 			UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all proficiencies?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
 			alert.tag = 0;

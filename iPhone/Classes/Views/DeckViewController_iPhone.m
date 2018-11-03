@@ -28,7 +28,6 @@
 #import "Omer_Flash_Card-Swift.h"
 
 
-
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -47,11 +46,26 @@
 bool navBar=YES;
 NSString * startDate;
 NSString * endDate ;
+int startDateDay;
+int startDateMonth;
+int startDateYear;
+int endDateDay;
+int endDateMonth;
+int endDateYear;
+NSArray *allDates;
 
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+        if (screenSize.height >= 812.0f) {
+            NSLog(@"iPhone X");
+            _BlessingToolBarHEight.constant = 60.0;
+        }else {
+            _BlessingToolBarHEight.constant = 44.0;
+        }
+    }
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
         // iOS 7
         [self prefersStatusBarHidden];
@@ -62,9 +76,9 @@ NSString * endDate ;
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     }
     //[_tableView setBackgroundColor:[UIColor clearColor]];
-    _tableView.contentInset = UIEdgeInsetsMake(-1.0, 0.0, 55.0, 0.0);
+    _tableView.contentInset = UIEdgeInsetsMake(5.0, 0.0, 5.0, 0.0);
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        // code here
+        //code here
         self.navigationController.navigationBarHidden = NO;
         UIImage *image = [UIImage imageNamed:@"background.png"];
         [self.dailyBlessingImgView setImage:image];
@@ -99,7 +113,6 @@ NSString * endDate ;
         CGRect myFrameTableHeight = self.blessingTable.frame;
         myFrameTableHeight.size.height = 395;
         //  self.blessingTable.frame = myFrameTableHeight;
-        
     }
     
     self.navigationController.navigationBarHidden = NO;
@@ -112,13 +125,45 @@ NSString * endDate ;
     tlabel.backgroundColor =[UIColor clearColor];
     tlabel.adjustsFontSizeToFitWidth=YES;
     tlabel.font = [UIFont boldSystemFontOfSize:18];
-    [tlabel setTextAlignment:UITextAlignmentCenter];
-    // self.navigationItem.titleView=tlabel;
+    [tlabel setTextAlignment: UITextAlignmentCenter];
+    [self getStartAndEndDates];
 }
 
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+- (void)getStartAndEndDates
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    NSString *yearString = [formatter stringFromDate:[NSDate date]];
+    
+    [Server.shared getOmerDatesByYearWithId:yearString completion:^(NSArray * res, NSError * error) {
+        if (res != NULL) {
+            if (res.firstObject[@"date"] != NULL) {
+                startDate = res.firstObject[@"date"];
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:@"yyyy-MM-dd"];
+                NSDate *now = [formatter dateFromString:startDate];
+                NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:now];
+                startDateDay = [components day];
+                startDateMonth = [components month];
+                startDateYear = [components year];
+            }
+            if (res.lastObject[@"date"] != NULL) {
+                endDate = res.lastObject[@"date"];
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:@"yyyy-MM-dd"];
+                NSDate *now = [formatter dateFromString:endDate];
+                NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:now];
+                endDateDay = [components day];
+                endDateMonth = [components month];
+                endDateYear = [components year];
+            }
+        }
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -128,7 +173,6 @@ NSString * endDate ;
     if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
     {
         [super viewWillAppear:animated];
-        
         self.navigationItem.hidesBackButton=YES;
     }
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
@@ -168,6 +212,8 @@ NSString * endDate ;
     [_blessingTable release];
     [_dailyBlessingImg release];
     [_myLabelSeven release];
+    [_dailyBlessingToolBar release];
+    [_BlessingToolBarHEight release];
     [super dealloc];
 }
 /*-(void)viewWillAppear:(BOOL)animated{
@@ -194,6 +240,10 @@ NSString * endDate ;
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return CGFLOAT_MIN;
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -213,10 +263,9 @@ NSString * endDate ;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DeckCell_iPhone* cell = nil;
-    
     UIView *bgColorView = [[[UIView alloc] init] autorelease];
     [bgColorView setBackgroundColor:[[Utils colorFromString:[Utils getValueForVar:kSelectedDeckColor]]colorWithAlphaComponent:0.2]];
-    //[bgColorView setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5]];
+//  [bgColorView setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5]];
     bgColorView.alpha=.2f;
     UITableViewCell* introCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
     if(indexPath.section==0)
@@ -224,9 +273,9 @@ NSString * endDate ;
         switch (indexPath.row)
         {
             case 0:
-                
                 tableView.separatorColor = [UIColor whiteColor];
-                introCell.textLabel.text=@"Introduction";
+                //introCell.textLabel.text=@"Introduction";
+                introCell = [DeckCell_iPhone creatCellViewWithFlashCardDeck:_cardDecks.introDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kIntroDeckColor]]];
                 introCell.textLabel.textColor=[UIColor whiteColor];
                 introCell.backgroundColor=[UIColor clearColor];
                 introCell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_intro.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
@@ -256,8 +305,8 @@ NSString * endDate ;
         }
     }
     else
-    {
-        //tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    {     
+        //tableView.separatorStyle=UITableViewCellSeparatorStyleNone;= 0;
         //tableView.separatorColor = [Utils colorFromString:@"180,180,180"];
         cell = [DeckCell_iPhone creatCellViewWithFlashCardDeck:[_cardDecks.flashCardDeckList objectAtIndex:indexPath.row] withTextColor:[Utils colorFromString:[Utils getValueForVar:kDeckCardsTextColor]]];
         
@@ -290,7 +339,8 @@ NSString * endDate ;
                 navBar = NO;
                 deckArray = nil;
                 [model setParentCtrl:self];
-                [self presentModalViewController:model animated:YES];
+                [self.navigationController pushViewController:model animated:YES];
+                //[self presentModalViewController:model animated:YES];
                 [model release];
                 return;
                 break;
@@ -337,8 +387,7 @@ NSString * endDate ;
                     return;
                 }
                 break;
-                
-                
+  
         }
     }
     else
@@ -359,7 +408,6 @@ NSString * endDate ;
         }
         else
         {
-            
             if(indexPath.row == 2)
             {
                 [self.navigationController pushViewController:cardListView animated:YES];
@@ -370,8 +418,6 @@ NSString * endDate ;
                 [self.navigationController pushViewController:cardListView animated:YES];
                 [cardListView showBookmarkCards];
             }
-            
-            
         }
         [cardListView release];
     }
@@ -394,34 +440,34 @@ NSString * endDate ;
     
 }
 
-
 -(void)findMyCurrentLocation
 {
     locationmanager=[[CLLocationManager alloc]init];
     locationmanager.delegate=self;
-    // check before requesting, otherwise it might crash in older version
+//  check before requesting, otherwise it might crash in older version
     if ([locationmanager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [locationmanager requestWhenInUseAuthorization];
     }
+    [locationmanager stopUpdatingLocation];
     [locationmanager startUpdatingLocation];
 }
 #pragma mark - CLLocationManagerDelegate
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy"];
-    NSString *yearString = [formatter stringFromDate:[NSDate date]];
-    
-    [Server.shared getOmerDatesByYearWithId:yearString completion:^(NSArray * res, NSError * error) {
-        if (res != NULL) {
-            if (res.firstObject[@"date"] != NULL) {
-                startDate = res.firstObject[@"date"];
-            }
-            if (res.lastObject[@"date"] != NULL) {
-                endDate = res.lastObject[@"date"];
-            }
-        }
-    }];
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy"];
+//    NSString *yearString = [formatter stringFromDate:[NSDate date]];
+//
+//    [Server.shared getOmerDatesByYearWithId:yearString completion:^(NSArray * res, NSError * error) {
+//        if (res != NULL) {
+//            if (res.firstObject[@"date"] != NULL) {
+//                startDate = res.firstObject[@"date"];
+//            }
+//            if (res.lastObject[@"date"] != NULL) {
+//                endDate = res.lastObject[@"date"];
+//            }
+//        }
+//    }];
 
     if(!isTappedTodaysReading)
     {
@@ -430,9 +476,9 @@ NSString * endDate ;
         //CLLocation* location = [locations lastObject];
         [locationmanager stopUpdatingLocation];
         NSDateComponents *startDatecomps = [[NSDateComponents alloc] init];
-        [startDatecomps setDay: 1];
-        [startDatecomps setMonth:4];
-        [startDatecomps setYear:2018];
+        [startDatecomps setDay: startDateDay];
+        [startDatecomps setMonth:startDateMonth];
+        [startDatecomps setYear:startDateYear];
         
         NSDate *currentDateTime=[NSDate date];
         NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
@@ -444,10 +490,11 @@ NSString * endDate ;
                                                                  latitude:location.coordinate.latitude
                                                                 longitude:location.coordinate.longitude];
         NSDate *startSunsetTime= startDateSunInfo.sunset;
+        
         NSDateComponents *endDatecomps = [[NSDateComponents alloc] init];
-        [endDatecomps setDay:19];
-        [endDatecomps setMonth:5];
-        [endDatecomps setYear:2018];
+        [endDatecomps setDay:endDateDay];
+        [endDatecomps setMonth:endDateMonth];
+        [endDatecomps setYear:endDateYear];
         NSDate *endDate = [gregorian dateFromComponents:endDatecomps];
         EDSunriseSet *endDateSunInfo = [EDSunriseSet sunrisesetWithDate:endDate timezone:[NSTimeZone localTimeZone]
                                                                latitude:location.coordinate.latitude
@@ -458,7 +505,7 @@ NSString * endDate ;
             ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kcontentTypeBeforeCard];
             navBar=NO;
             [model setParentCtrl:self];
-            [self presentModalViewController:model animated:YES];
+            [self.navigationController pushViewController:model animated:YES];
             [model release];
         }
         
@@ -467,7 +514,7 @@ NSString * endDate ;
             ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kcontentTypeAfterCard];
             navBar = NO;
             [model setParentCtrl:self];
-            [self presentModalViewController:model animated:YES];
+            [self.navigationController pushViewController:model animated:YES];
             [model release];
         }
         else
@@ -557,7 +604,8 @@ NSString * endDate ;
     navBar=NO;
     ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kContentTypeSetting];
     [model setParentCtrl:self];
-    [self presentModalViewController:model animated:YES];
+    [self.navigationController pushViewController:model animated:NO];
+    //[self presentModalViewController:model animated:YES];
     [model release];
 }
 
@@ -566,7 +614,8 @@ NSString * endDate ;
     navBar=NO;
     ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kContentTypeHelp];
     [model setParentCtrl:self];
-    [self presentModalViewController:model animated:YES];
+    [self.navigationController pushViewController:model animated:NO];
+    //[self presentModalViewController:model animated:YES];
     [model release];
 }
 
@@ -575,7 +624,8 @@ NSString * endDate ;
     navBar=NO;
     ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kContentTypeInfo];
     [model setParentCtrl:self];
-    [self presentModalViewController:model animated:YES];
+    [self.navigationController pushViewController:model animated:NO];
+    //[self presentModalViewController:model animated:YES];
     [model release];
 }
 
@@ -593,7 +643,6 @@ NSString * endDate ;
     [self.navigationController pushViewController:indexView animated:YES];
     [indexView release];
 }
-
 
 - (void) myComments{
     
@@ -693,8 +742,6 @@ NSString * endDate ;
         [tweetSheet setInitialText:[Utils getValueForVar:kTwitterMessage]];
         [self presentModalViewController:tweetSheet animated:YES];
     }
-    
-    
 }
 
 /* End of Updated Code By Ravindra */

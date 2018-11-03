@@ -10,5 +10,4 @@ target 'Omer_Flash_Card' do
   pod 'Crashlytics', '~> 3.10'
   pod 'Alamofire'
 
-
 end

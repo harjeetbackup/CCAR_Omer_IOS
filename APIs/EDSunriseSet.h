@@ -18,8 +18,6 @@
 
 #import <Foundation/Foundation.h>
 
-
-
 @interface EDSunriseSet : NSObject
 
 @property (readonly, strong) NSDate *date;

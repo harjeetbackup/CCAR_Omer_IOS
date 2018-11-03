@@ -161,12 +161,13 @@ NSString* RowImages[] = {@"deck1.png", @"deck2.png", @"deck3.png", @"deck4.png"}
 	_introDeck.deckId = -99;
 	_introDeck.deckTitle = @"Introduction";
 	_introDeck.deckType = kIntroDeck;
-	//_introDeck.deckImage = @"all-cards.png";
 	//_allCardDeck.deckColor = kDeckRowAllBackgroundColor;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        _introDeck.deckImage = @"intoduction.png";
         _introDeck.deckColor = [UIColor colorWithRed:211.0/255 green:243.0/255 blue:255.0/255 alpha:1];
     }
     else{
+    _introDeck.deckImage = @"intoduction.png";
 	_introDeck.deckColor = [Utils colorFromString:[Utils getValueForVar:kIntroDeckColor]];
     }
 }
@@ -178,11 +179,12 @@ NSString* RowImages[] = {@"deck1.png", @"deck2.png", @"deck3.png", @"deck4.png"}
 	_allCardDeck.deckTitle = @"All Cards";
 	_allCardDeck.deckType = kCardDeckTypeAll;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        
         _allCardDeck.deckImage = @"all-cards.png";
         _allCardDeck.deckColor =  [UIColor colorWithRed:211.0/255 green:243.0/255 blue:255.0/255 alpha:1];
     }
     else{
-	_allCardDeck.deckImage = @"all-cards.png";
+        _allCardDeck.deckImage = @"all-cards.png";
         _allCardDeck.deckColor = [Utils colorFromString:[Utils getValueForVar:kAllCardsDeckColor]];
     }
 	//_allCardDeck.deckColor = kDeckRowAllBackgroundColor;
@@ -198,7 +200,6 @@ NSString* RowImages[] = {@"deck1.png", @"deck2.png", @"deck3.png", @"deck4.png"}
 	_bookMarkedCardDeck.deckType = kCardDeckTypeBookMark;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         _bookMarkedCardDeck.deckImage = @"bookmark-cards.png";
-        
          _bookMarkedCardDeck.deckColor = [UIColor   colorWithRed:211.0/255 green:243.0/255 blue:255.0/255 alpha:1];
     }
     else{
@@ -219,7 +220,7 @@ NSString* RowImages[] = {@"deck1.png", @"deck2.png", @"deck3.png", @"deck4.png"}
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         _todayReadingDeck.deckImage = @"today-reading.png";
         
-        _todayReadingDeck.deckColor = [UIColor   colorWithRed:211.0/255 green:243.0/255 blue:255.0/255 alpha:1];
+        _todayReadingDeck.deckColor = [UIColor colorWithRed:211.0/255 green:243.0/255 blue:255.0/255 alpha:1];
     }
     else{
         _todayReadingDeck.deckImage = @"today-reading.png";

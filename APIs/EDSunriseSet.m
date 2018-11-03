@@ -17,6 +17,8 @@
 //
 
 #import "EDSunriseSet.h"
+#import "Omer_Flash_Card-Swift.h"
+
 
 //
 // Defines from sunriset.c

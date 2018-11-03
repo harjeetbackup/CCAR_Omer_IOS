@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,15 +23,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpK-m1-SyH">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="15" id="oDY-me-Jku"/>
+                        <constraint firstAttribute="height" id="oDY-me-Jku"/>
                     </constraints>
                 </view>
                 <searchBar contentMode="redraw" text="" placeholder="Search Cards" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="25">
-                    <rect key="frame" x="0.0" y="15" width="320" height="56"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                     <textInputTraits key="textInputTraits"/>
                     <scopeButtonTitles>
                         <string>Scope</string>
@@ -42,7 +42,7 @@
                     </connections>
                 </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5">
-                    <rect key="frame" x="0.0" y="71" width="320" height="389"/>
+                    <rect key="frame" x="0.0" y="56" width="320" height="404"/>
                     <color key="backgroundColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
@@ -58,7 +58,7 @@
                 <constraint firstItem="5" firstAttribute="top" secondItem="25" secondAttribute="bottom" id="5TV-xa-cWf"/>
                 <constraint firstItem="QpK-m1-SyH" firstAttribute="leading" secondItem="qMo-cQ-OnD" secondAttribute="leading" id="9FF-7B-fY9"/>
                 <constraint firstItem="5" firstAttribute="leading" secondItem="qMo-cQ-OnD" secondAttribute="leading" id="D5u-dA-afU"/>
-                <constraint firstItem="5" firstAttribute="bottom" secondItem="qMo-cQ-OnD" secondAttribute="bottom" id="Ezw-GK-lfF"/>
+                <constraint firstItem="5" firstAttribute="bottom" secondItem="1" secondAttribute="bottom" id="Ezw-GK-lfF"/>
                 <constraint firstItem="5" firstAttribute="trailing" secondItem="qMo-cQ-OnD" secondAttribute="trailing" id="KPx-UT-e4R"/>
                 <constraint firstItem="QpK-m1-SyH" firstAttribute="top" secondItem="qMo-cQ-OnD" secondAttribute="top" id="Pud-gu-UJR"/>
                 <constraint firstItem="25" firstAttribute="top" secondItem="QpK-m1-SyH" secondAttribute="bottom" id="Sb3-wa-F2J"/>

@@ -8,7 +8,7 @@
 import Foundation
 import AVKit
 
-extension Server{
+extension Server {
     
     func getOmerDatesByYear(id:String , completion: @escaping (NSArray?, Error?) -> Void) {
         let url = "https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=off&min=off&mod=off&nx=off&year=\(id)&month=x&ss=off&mf=off&c=off&geo=none&m=0&s=off&o=on"
@@ -16,6 +16,7 @@ extension Server{
             if let res = response  {
                 if let data = res["items"] as? NSArray {
                     print(res)
+                    Server.shared.array = AllItems.modelsFromDictionaryArray(array: data)
                     completion(data as NSArray,nil)
                 }
             }
