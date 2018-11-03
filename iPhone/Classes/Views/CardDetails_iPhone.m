@@ -38,6 +38,8 @@ NSInteger todayOmerIndex_iPhone=0;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad 
 {
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    _scrollViewScreenWidth.constant = width;
     buttonPrevious = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonPrevious.tintColor = [UIColor blackColor];
     [buttonPrevious addTarget:self
@@ -361,6 +363,7 @@ NSInteger todayOmerIndex_iPhone=0;
 	
 	[_arrayOfCards release];
     [_customToolBarBottom release];
+    [_scrollViewScreenWidth release];
     [super dealloc];
 }
 
