@@ -14,6 +14,8 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "Utils.h"
 #import "LaunchView_iPhone.h"
+#import "AppDelegate_iPhone.h"
+
 #define IS_IPHONE5 ([[UIScreen mainScreen] bounds].size.height == 568)
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
@@ -24,7 +26,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	[self.view setFrame:CGRectMake(self.view.frame.origin.x, 20, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view setFrame:CGRectMake(self.view.frame.origin.x, 20, self.view.frame.size.width, self.view.frame.size.height)];
+    if ([[AppDelegate_iPhone delegate] launchedFromLoacalNotification]) {
+        [self loadHomeScreen];
+    }
     
 }
 
@@ -37,7 +42,7 @@
 -(void) viewDidLoad
 {
     [super viewDidLoad];
-   if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
         // iOS 7
         [self prefersStatusBarHidden];
         [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
@@ -52,6 +57,11 @@
     {
         [_imgButton setImage:[UIImage imageNamed:@"Launching_iphone568.png"] forState:UIControlStateNormal];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadHomeViewFromNotification)
+                                            name:UIApplicationDidBecomeActiveNotification object:nil];
+
 }
 - (BOOL)prefersStatusBarHidden
 {
@@ -61,7 +71,7 @@
 - (void)viewDidUnload 
 {
     [super viewDidUnload];
-   
+    
 }
 
 - (void)dealloc 
@@ -69,17 +79,24 @@
     [super dealloc];
 }
 
+- (void)loadHomeViewFromNotification {
+    if ([[AppDelegate_iPhone delegate] launchedFromLoacalNotification]) {
+        [self loadHomeScreen];
+    }
+}
+
 - (void)loadHomeScreen
 {
-	_imgButton.hidden = YES;
-	FlashCardDeckList* deckList = [[FlashCardDeckList alloc] init];
-	DeckViewController_iPhone* controller = [[DeckViewController_iPhone alloc] initWithNibName:@"DeckViewController_iPhone" bundle:nil];	
-	
-	controller.cardDecks = deckList;
-	[self.navigationController pushViewController:controller animated:YES];
-     self.navigationItem.hidesBackButton=YES;
-	[deckList release];
-	[controller release];
+    _imgButton.hidden = YES;
+    FlashCardDeckList* deckList = [[FlashCardDeckList alloc] init];
+    DeckViewController_iPhone* controller = [[DeckViewController_iPhone alloc] initWithNibName:@"DeckViewController_iPhone" bundle:nil];
+    
+    controller.cardDecks = deckList;
+    [self.navigationController pushViewController:controller animated:YES];
+    self.navigationItem.hidesBackButton=YES;
+    [deckList release];
+    [controller release];
+    
 }
 
 - (IBAction)openHomeView
@@ -95,16 +112,16 @@
             return;
         
         //audioFileName = [[NSBundle mainBundle] pathForResource:audioFileName ofType:nil inDirectory:nil];
-		
+        
         AVAudioPlayer* player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:audioFileName] error:&err];
         //player.delegate=self;
         [player play];
     }
-	UIActivityIndicatorView* indicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
-	[indicator setFrame:CGRectMake(140, 265, 40, 40)];
-	[indicator startAnimating];
-	[_imgButton addSubview:indicator];
-	[self loadHomeScreen];
+    UIActivityIndicatorView* indicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
+    [indicator setFrame:CGRectMake(140, 265, 40, 40)];
+    [indicator startAnimating];
+    [_imgButton addSubview:indicator];
+    [self loadHomeScreen];
 }
 
 @end

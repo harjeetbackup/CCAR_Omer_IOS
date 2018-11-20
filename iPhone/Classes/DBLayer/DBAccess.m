@@ -41,9 +41,9 @@
 	}
 	else {
         
-        UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Daily Reminders" message:@"To install daily reminders to count the Omer, allow the app to access your calendar in the next alert." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        alert.tag = 1;
-        [alert show];
+//        UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Daily Reminders" message:@"To install daily reminders to count the Omer, allow the app to access your calendar in the next alert." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        alert.tag = 1;
+//        [alert show];
        // [self createCalendarEvent];
 		[Utils addSkipBackupAttributeToItemAtURL:[NSURL URLWithString:[_databasePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 	}

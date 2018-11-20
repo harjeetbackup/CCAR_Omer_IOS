@@ -38,8 +38,9 @@ NSInteger todayOmerIndex_iPhone=0;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad 
 {
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    _scrollViewScreenWidth.constant = width;
+//    CGFloat width = self.view.frame.size.width;
+//    _scrollViewScreenWidth.constant = width;
+   // _scrlView.frame = self.view.bounds;
     buttonPrevious = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonPrevious.tintColor = [UIColor blackColor];
     [buttonPrevious addTarget:self
@@ -61,7 +62,6 @@ NSInteger todayOmerIndex_iPhone=0;
     buttonPrevious.hidden = NO;
    // [self.view addSubview: button];
     [self.customToolBarBottom addSubview: buttonPrevious];
-    
     buttonNext = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonNext.tintColor = [UIColor blackColor];
     [buttonNext addTarget:self
@@ -235,7 +235,7 @@ NSInteger todayOmerIndex_iPhone=0;
 		_cardType = kCardTypeFront;
         
 		[self updateFlashCard];
-		[_scrlView setContentOffset:CGPointMake(_scrlView.frame.size.width * _selectedCardIndex, _scrlView.frame.origin.y - 84 ) animated:YES];
+		[_scrlView setContentOffset:CGPointMake(self.view.frame.size.width  * _selectedCardIndex, 0) animated:YES];
 		[self updateFlashDetails];
 	}
 }
@@ -251,7 +251,7 @@ NSInteger todayOmerIndex_iPhone=0;
 		_cardType = kCardTypeFront;
         
 		[self updateFlashCard];
-		[_scrlView setContentOffset:CGPointMake(_scrlView.frame.size.width * _selectedCardIndex, _scrlView.frame.origin.y - 84) animated:YES];
+		[_scrlView setContentOffset:CGPointMake(self.view.frame.size.width * _selectedCardIndex, 0) animated:YES];
 		[self updateFlashDetails];
 	}
 }
@@ -441,7 +441,7 @@ NSInteger todayOmerIndex_iPhone=0;
 	 
 	_totalCard = [_arrayOfCards count];
 	int count = (_arrayOfCards.count > 3) ? 3 : _arrayOfCards.count;
-    _scrlView.contentSize = CGSizeMake(_scrlView.frame.size.width * ([_arrayOfCards count] + 1), _scrlView.frame.origin.y - 84 );
+    _scrlView.contentSize = CGSizeMake(self.view.frame.size.width * ([_arrayOfCards count] + 1), self.view.frame.size.height);
 	 _scrlView.scrollEnabled = YES;
 	NSInteger index;
 	NSInteger tempIndex=_selectedCardIndex;
@@ -460,8 +460,8 @@ NSInteger todayOmerIndex_iPhone=0;
 		index = tempIndex	+ i;
 		
 		//Card* card = [[_arrayOfCards objectAtIndex:index] getCardOfType: kCardTypeFront];
-		CustomWebView_iPhone* page = [[CustomWebView_iPhone alloc] initWithFrame:CGRectMake(_scrlView.frame.size.width * i, 0, _scrlView.frame.size.width, _scrlView.frame.size.height-44)];
-        page.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+		CustomWebView_iPhone* page = [[CustomWebView_iPhone alloc] initWithFrame:self.view.bounds];
+//        page.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         Card* card = [[_arrayOfCards objectAtIndex:index] getCardOfType: kCardTypeFront];
 
 		page.tag = 1000 + i;
@@ -499,7 +499,7 @@ NSInteger todayOmerIndex_iPhone=0;
 
 	if (_totalCard >= 2 && _selectedCardIndex >= 1) {
 		[self updateFlashCard];
-        [_scrlView setContentOffset:CGPointMake(_scrlView.frame.size.width * _selectedCardIndex, _scrlView.frame.size.height) animated:YES];
+        [_scrlView setContentOffset:CGPointMake(self.view.frame.size.width * _selectedCardIndex, 0) animated:YES];
 		[self updateFlashDetails];
 		
 	} else if (_totalCard==1) {
@@ -547,7 +547,7 @@ NSInteger todayOmerIndex_iPhone=0;
 {
 	NSInteger tempIndex=(index % 3);
 	CustomWebView_iPhone* webView = (CustomWebView_iPhone*)[_arrayOfpages objectAtIndex:tempIndex];
-    webView.frame = CGRectMake(_scrlView.frame.size.width * index, -44, _scrlView.frame.size.width , _scrlView.frame.size.height-44);
+    webView.frame = CGRectMake(self.view.frame.size.width * index, 0, self.view.frame.size.width, self.view.frame.size.height);
 	webView.tag = 1000 + index;
     webView.backgroundColor=[UIColor redColor];
 	//if (index != _selectedCardIndex){
@@ -583,7 +583,7 @@ NSInteger todayOmerIndex_iPhone=0;
 	[UIView setAnimationTransition:(UIViewAnimationTransitionFlipFromLeft)
 						   forView:_scrlView cache:NO];
 	
-	int tagVal = 1000 + _scrlView.contentOffset.x / 320;
+	int tagVal = 1000 + _scrlView.contentOffset.x / self.view.frame.size.width;
 	CustomWebView_iPhone* webView = (CustomWebView_iPhone*)[_scrlView viewWithTag:tagVal];
 	[webView loadClearBgHTMLString:[[_arrayOfCards objectAtIndex:_selectedCardIndex] getCardOfType: _cardType].cardTitle];
 
@@ -785,9 +785,8 @@ NSInteger todayOmerIndex_iPhone=0;
 - (void) slidingAction:(NSTimer*)timer
 {
 	UIScrollView* scrollView = [timer userInfo];
-    CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
-	_selectedCardIndex = scrollView.contentOffset.x / width;
-    [_scrlView setContentOffset:CGPointMake(_scrlView.frame.size.width * _selectedCardIndex, _scrlView.frame.origin.y - 84 ) animated:YES];
+	_selectedCardIndex = scrollView.contentOffset.x / self.view.bounds.size.width;
+    [_scrlView setContentOffset:CGPointMake(self.view.frame.size.width * _selectedCardIndex, 0) animated:NO];
     _cardType = kCardTypeFront;
 	[self updateFlashCard];
 	[self updateFlashDetails];
@@ -801,8 +800,7 @@ NSInteger todayOmerIndex_iPhone=0;
 													cancelButtonTitle:nil
 											   destructiveButtonTitle:nil
 													otherButtonTitles:nil];
-	
-	
+		
 	if ([AppDelegate_iPhone delegate].isVoiceNotesEnabled) {
 		[actionSheet addButtonWithTitle:@"Voice Notes"];
 	}

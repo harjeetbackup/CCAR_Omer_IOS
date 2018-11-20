@@ -2,35 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
-	<key>CFBundleDisplayName</key>
-	<string>Omer</string>
-	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIcons</key>
-	<dict/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-	<key>CFBundleIcons~ipad</key>
-	<dict/>
-	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
+	<key></key>
+	<string></string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.12</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
+	<key>UILaunchStoryboardName</key>
+	<string>MainWindow_iPhone</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
 	<key>CFBundleVersion</key>
 	<string>1.12</string>
+	<key>NSMainNibFile</key>
+	<string>MainWindow_iPhone</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -38,53 +23,66 @@
 		<key>Kits</key>
 		<array>
 			<dict>
-				<key>KitInfo</key>
-				<dict/>
 				<key>KitName</key>
 				<string>Crashlytics</string>
+				<key>KitInfo</key>
+				<dict/>
 			</dict>
 		</array>
 	</dict>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>NSCalendarsUsageDescription</key>
-	<string>To enable &quot;Today&apos;s Reading&quot; feature, please tap &quot;OK.&quot;</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
-	<key>NSMainNibFile</key>
-	<string>MainWindow_iPhone</string>
-	<key>NSMainNibFile~ipad</key>
-	<string>MainWindow_iPad</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Roboto-Bold.ttf</string>
-		<string>Roboto-Regular.ttf</string>
-	</array>
-	<key>UILaunchStoryboardName</key>
-	<string>MainWindow_iPhone</string>
-	<key>UIPrerenderedIcon</key>
-	<true/>
-	<key>UIRequiresFullScreen</key>
-	<true/>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.12</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Roboto-Bold.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+	</array>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
+	<key>CFBundleDisplayName</key>
+	<string>Omer</string>
+	<key>NSMainNibFile~ipad</key>
+	<string>MainWindow_iPad</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>privacy - location usage description</key>
 	<string></string>
-	<key></key>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 </dict>
 </plist>

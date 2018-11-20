@@ -181,8 +181,10 @@ NSArray *allDates;
         [self.navigationController setNavigationBarHidden:YES animated:animated];
         [super viewWillAppear:animated];
     }
-    // [self.navigationController setNavigationBarHidden:YES animated:animated];
-    // [super viewWillAppear:animated];
+    if ([[AppDelegate_iPhone delegate] launchedFromLoacalNotification]) {
+        AppDelegate_iPhone.delegate.launchedFromLoacalNotification = false;
+        [self findMyCurrentLocation];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -197,6 +199,7 @@ NSArray *allDates;
             [self.navigationController setNavigationBarHidden:NO animated:animated];
         [super viewWillDisappear:animated];
     }
+
 }
 
 - (void)dealloc
@@ -294,8 +297,7 @@ NSArray *allDates;
                 cell = [DeckCell_iPhone creatCellViewWithFlashCardDeck:_cardDecks.bookMarkedCardDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kBookmarkedCardsTextColor]]];
                 cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_bookmark.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
                 
-                break;
-                
+                break;                
         }
     }
     else
@@ -378,7 +380,6 @@ NSArray *allDates;
     {
         [AppDelegate_iPhone delegate].isBookMarked = NO;
         deckArray = [[_cardDecks.flashCardDeckList objectAtIndex:indexPath.row]  getCardsList];
-        
     }
     
     if([[[Utils getValueForVar:kCardList] lowercaseString] isEqualToString:@"yes"])

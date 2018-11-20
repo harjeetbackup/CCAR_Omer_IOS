@@ -1,20 +1,17 @@
-	//
-	//  AppDelegate_iPhone.m
-	//  FlashCardDB
-	//
-	//  Created by Friends on 1/27/11.
-	//  Copyright __MyCompanyName__ 2011. All rights reserved.
-	//
+//
+//  AppDelegate_iPhone.m
+//  FlashCardDB
+//
+//  Created by Friends on 1/27/11.
+//  Copyright __MyCompanyName__ 2011. All rights reserved.
+//
 
 #import "DBAccess.h"
 
 #import "AppDelegate_iPhone.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-
-
-
-
+#import <UserNotifications/UserNotifications.h>
 
 @implementation AppDelegate_iPhone
 
@@ -33,12 +30,18 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
-{   
+{
 		// Override point for customization after application launch.
-    
+    locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (locationNotification) {
+        // Set icon badge number to zero
+        application.applicationIconBadgeNumber = 0;
+        self.launchedFromLoacalNotification = true;
+    } else {
+        self.launchedFromLoacalNotification = false;
+    }
 		// Add the navigation controller's view to the window and display.
     [Fabric with:@[[Crashlytics class]]];
-
 	navigationController.navigationBarHidden = YES;
    // window.tintColor = [UIColor purpleColor];
 	[window setRootViewController:navigationController];
@@ -50,18 +53,14 @@
 		// Initialize Features
 	
 	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"features" ofType:@"plist"];
-	
 	NSMutableDictionary *featuresDict;
 	//NSMutableDictionary *featuresDict = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
 	
 	BOOL success;
 	NSError* error;
-	
 	NSFileManager* FileManager = [NSFileManager defaultManager];
-	
 	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString* documentDir = [paths objectAtIndex:0];
-	
 	NSString *_databasePath = [[documentDir stringByAppendingPathComponent:@"features.plist"] retain];
 	success = [FileManager fileExistsAtPath:_databasePath];
 	
@@ -84,11 +83,27 @@
 	isSearchingEnabled=[[featuresDict objectForKey:@"Searching"] boolValue];
 	isIndexingEnabled=[[featuresDict objectForKey:@"Indexing"] boolValue];
 	isRandomCard=[[featuresDict objectForKey:@"Random"] intValue];
-  
-   
+     
     //[[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
     return YES;
 }
+
+//- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void(^)())completionHandler
+//{
+//    UIApplicationState state = [application applicationState];
+//    if (state == UIApplicationStateBackground) {
+//       //call todays reading tapped
+//        printf("hi notification");
+//
+//    }
+//
+//    // Request to reload table view data
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
+//    // Set icon badge number to zero
+//    application.applicationIconBadgeNumber = 0;
+//    completionHandler(UNNotificationPresentationOptionSound);
+//
+//}
 
 - (BOOL)prefersStatusBarHidden
 {
@@ -125,15 +140,31 @@
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
+    printf("foreground\n");
+
 }
 
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateInactive) {
+        application.applicationIconBadgeNumber = 0;
+        self.launchedFromLoacalNotification = true;
+    } else {
+        self.launchedFromLoacalNotification = false;
+    }
+}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
+    printf("active");
+//    if (locationNotification) {
+//        // Set icon badge number to zero
+//        application.applicationIconBadgeNumber = 0;
+//        self.launchedFromLoacalNotification = true;
+//    } else {
+//        self.launchedFromLoacalNotification = false;
+//    }
 }
-
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     /*
@@ -141,7 +172,6 @@
      See also applicationDidEnterBackground:.
      */
 }
-
 
 #pragma mark -
 #pragma mark Memory management
@@ -158,7 +188,6 @@
 	[window release];
 	[super dealloc];
 }
-
 
 @end
 

@@ -42,6 +42,10 @@
         // iOS 6
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadHomeViewFromNotification)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 - (BOOL)prefersStatusBarHidden
 {
@@ -72,6 +76,12 @@
 - (void)dealloc 
 {
     [super dealloc];
+}
+
+- (void)loadHomeViewFromNotification {
+    if ([[AppDelegate_iPad delegate] launchedFromLoacalNotification]) {
+        [self loadHomeScreen];
+    }
 }
 
 - (void)loadHomeScreen

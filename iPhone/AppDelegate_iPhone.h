@@ -7,9 +7,9 @@
 	//
 
 #import <UIKit/UIKit.h>
-
 @class DBAccess;
 @class LaunchView_iPhone;
+@class DeckViewController_iPhone;
 
 @interface AppDelegate_iPhone : NSObject <UIApplicationDelegate>
 {
@@ -25,6 +25,7 @@
 	BOOL				isSearchingEnabled;
 	BOOL				isIndexingEnabled;
 	int     			isRandomCard;
+    UILocalNotification *locationNotification;
 }
 
 @property (nonatomic, readonly) DBAccess*	dbAccess;
@@ -38,6 +39,7 @@
 @property (nonatomic) BOOL	isIndexingEnabled;
 @property (nonatomic) int	isRandomCard;
 @property (nonatomic) BOOL  isSetAlert;
+@property (nonatomic) BOOL launchedFromLoacalNotification;
 @property (nonatomic,strong)LaunchView_iPhone *rootViewVontroller;
 
 + (DBAccess*) getDBAccess;

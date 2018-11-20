@@ -28,6 +28,8 @@
 	BOOL				isSearchingEnabled;
 	BOOL				isIndexingEnabled;
 	int     			isRandomCard;
+    UILocalNotification *locationNotification;
+
 }
 
 @property (nonatomic, readonly) DBAccess*	dbAccess;
@@ -42,6 +44,7 @@
 @property (nonatomic) BOOL	isIndexingEnabled;
 @property (nonatomic) int	isRandomCard;
 @property (nonatomic) BOOL  isSetAlert;
+@property (nonatomic) BOOL launchedFromLoacalNotification;
 
 + (DBAccess*) getDBAccess;
 + (AppDelegate_iPad*) delegate;

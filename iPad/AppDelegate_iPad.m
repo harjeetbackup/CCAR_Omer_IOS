@@ -7,13 +7,12 @@
 	//
 
 #import "DBAccess.h"
-
 #import "LaunchView.h"
 #import "AppDelegate_iPad.h"
+#import <UserNotifications/UserNotifications.h>
 
 
 @implementation AppDelegate_iPad
-
 @synthesize dbAccess = _dbAccess;
 @synthesize window = _window;
 @synthesize isBookMarked = _isBookMarked;
@@ -33,6 +32,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {   
     //[_window addSubview:_launchView.view];
+    locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (locationNotification) {
+        // Set icon badge number to zero
+        application.applicationIconBadgeNumber = 0;
+        self.launchedFromLoacalNotification = true;
+    } else {
+        self.launchedFromLoacalNotification = false;
+    }
      self.window.frame= [[UIScreen mainScreen] bounds];
     [self.window.rootViewController = _launchView view]; 
     [_window makeKeyAndVisible];
@@ -83,6 +90,18 @@
 - (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskLandscape;
 }
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateInactive) {
+        application.applicationIconBadgeNumber = 0;
+        self.launchedFromLoacalNotification = true;
+    } else {
+        self.launchedFromLoacalNotification = false;
+    }
+}
+
 
 - (BOOL)shouldAutorotate {
     return YES;

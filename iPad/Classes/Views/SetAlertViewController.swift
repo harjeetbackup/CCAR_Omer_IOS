@@ -28,15 +28,6 @@ import CoreLocation
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (didAllow, error) in}
-            
-        } else {
-            self.navigationController?.popViewController(animated: true)
-            return
-            // Fallback on earlier versions
-        }
         timePicker.layer.borderColor = UIColor.black.cgColor
         timePicker.layer.borderWidth = 1.0
         timePicker.layer.cornerRadius = 4.0
@@ -45,13 +36,17 @@ import CoreLocation
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setUpUserDefualtsValues()
         if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().delegate = self
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (didAllow, error) in}
+            
         } else {
+            self.navigationController?.popViewController(animated: true)
+            return
             // Fallback on earlier versions
         }
+        setUpUserDefualtsValues()
     }
+    
     
     func setUpUserDefualtsValues() {
         if let setTime = UserDefaults.standard.object(forKey: "TIME_SET_IN_PICKER") as? Date {
@@ -118,20 +113,7 @@ import CoreLocation
             self.removeAllActiveNotification()
             getDatePicketSetTime()
         } else {
-            let alert = UIAlertController(title: "Hello!", message: "Please toggle the switch to on state to set the time", preferredStyle: UIAlertControllerStyle.alert)
-            let alertAction = UIAlertAction(title: "OK!", style: UIAlertActionStyle.default)
-            {
-                (UIAlertAction) -> Void in
-                self.sendAlertSwitch.setImage(#imageLiteral(resourceName: "check-box-filled.png"), for: .normal)
-                UserDefaults.standard.removeObject(forKey: "SWITCH_STATE")
-                UserDefaults.standard.set(true, forKey: "SWITCH_STATE")
-                UserDefaults.standard.synchronize()
-                self.removeAllActiveNotification()
-                self.getDatePicketSetTime()
-                self.setAlertAtSunsetButton.setImage(#imageLiteral(resourceName: "check-box-empty.png"), for: .normal)
-            }
-            alert.addAction(alertAction)
-            self.present(alert, animated: true, completion: nil)
+            //return
         }
     }
     
@@ -161,7 +143,34 @@ import CoreLocation
     }
     
     @IBAction func setAlertAtSunsetTapped(_ sender: Any) {
-       SunsetAlert()
+        if CLLocationManager.locationServicesEnabled()  {
+            SunsetAlert()
+
+        } else {
+            showAcessDeniedAlert()
+        }
+    }
+    
+    func showAcessDeniedAlert() {
+        let alertController = UIAlertController(title: "Location Accees Requested",
+                                                message: "The location permission was not authorized. Please enable it in Settings to continue.",
+                                                preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (alertAction) in
+            
+            // THIS IS WHERE THE MAGIC HAPPENS!!!!
+            if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(appSettings as URL)
+                } else {
+                    // Fallback on earlier versions
+                }
+            }
+        }
+        alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     func SunsetAlert() {
@@ -203,7 +212,7 @@ import CoreLocation
             dateFormatter.dateFormat = "yyyy-MM-dd,hh:mm:ss z"
             let currentLocalDateTime = dateFormatter.date(from: item.date! + ",00:00:00 +0000")
             let smapledate = dateFormatter.date(from: "2018-11-16,11:40:00 +0000")
-            print(smapledate)
+         //   print(smapledate)
           //  let location = CLLocation()
             locationmanager.stopUpdatingLocation()
             let startDateSunInfo = EDSunriseSet.sunriseset(with: currentLocalDateTime ,timezone:  TimeZone.current,latitude: (locations.first?.coordinate.latitude)!, longitude: (locations.first?.coordinate.longitude)!)
@@ -227,6 +236,8 @@ import CoreLocation
         notification.alertBody = "click here to see card of the day"
         notification.applicationIconBadgeNumber = 1
         UIApplication.shared.scheduleLocalNotification(notification)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadData"), object: self)
+
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -241,7 +252,7 @@ import CoreLocation
         }
     }
     
-    
+
     @available(iOS 10.0, *)
     public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void) {
         print("@@@@@")

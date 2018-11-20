@@ -11,6 +11,7 @@
 		181E7EE92182FB71004FDA0E /* info_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181E7EE72182FB71004FDA0E /* info_btn@2x.png */; };
 		18215E82219BF57A00C2F006 /* dismissIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18215E80219BF57800C2F006 /* dismissIcon.png */; };
 		18215E83219BF57A00C2F006 /* dismissIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18215E81219BF57900C2F006 /* dismissIcon@2x.png */; };
+		1851054B219EE36200D2C5E5 /* quit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851054A219EE36000D2C5E5 /* quit.png */; };
 		1857ED21218828BA0041F28E /* SetAlerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1857ED20218828BA0041F28E /* SetAlerts.storyboard */; };
 		1857ED232188294A0041F28E /* SetAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1857ED222188294A0041F28E /* SetAlertViewController.swift */; };
 		1857ED28218836300041F28E /* check-box-filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 1857ED242188362D0041F28E /* check-box-filled.png */; };
@@ -446,6 +447,7 @@
 		181E7EE72182FB71004FDA0E /* info_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info_btn@2x.png"; sourceTree = "<group>"; };
 		18215E80219BF57800C2F006 /* dismissIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dismissIcon.png; sourceTree = "<group>"; };
 		18215E81219BF57900C2F006 /* dismissIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dismissIcon@2x.png"; sourceTree = "<group>"; };
+		1851054A219EE36000D2C5E5 /* quit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quit.png; sourceTree = "<group>"; };
 		1857ED20218828BA0041F28E /* SetAlerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetAlerts.storyboard; sourceTree = "<group>"; };
 		1857ED222188294A0041F28E /* SetAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlertViewController.swift; sourceTree = "<group>"; };
 		1857ED242188362D0041F28E /* check-box-filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-filled.png"; sourceTree = "<group>"; };
@@ -1619,6 +1621,7 @@
 				1857ED272188362F0041F28E /* check-box-empty@2x.png */,
 				1857ED242188362D0041F28E /* check-box-filled.png */,
 				1857ED262188362E0041F28E /* check-box-filled@2x.png */,
+				1851054A219EE36000D2C5E5 /* quit.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -2076,6 +2079,7 @@
 				C37431B71C7314C700AE714F /* aftercard.html in Resources */,
 				528FF9AE1740B40400B49345 /* right_arw@2x.png in Resources */,
 				C3F11A7F1C21980B002092EE /* Roboto-Bold.ttf in Resources */,
+				1851054B219EE36200D2C5E5 /* quit.png in Resources */,
 				C3492F521C3A78950082D53B /* birthday-104.png in Resources */,
 				C3F11A2A1C21980B002092EE /* 34A.html in Resources */,
 				C3F11A5A1C21980B002092EE /* 67A.html in Resources */,

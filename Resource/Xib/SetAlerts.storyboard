@@ -65,7 +65,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Set Alerts" id="0Qd-Eg-b3B">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" image="dismissIcon.png" id="6B2-nj-TuZ">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="quit.png" id="6B2-nj-TuZ">
                                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="cancelButtonTapped:" destination="uIh-Mh-rIs" id="vvi-EU-OMz"/>
@@ -121,6 +121,6 @@
     </scenes>
     <resources>
         <image name="check-box-empty.png" width="30" height="30"/>
-        <image name="dismissIcon.png" width="14" height="14"/>
+        <image name="quit.png" width="30" height="30"/>
     </resources>
 </document>

@@ -81,17 +81,14 @@
 	if (searchText!=nil && [searchText length] > 0) {
 		[self highlightAllOccurencesOfString:searchText];
 	}
-	
 }
 
 - (NSInteger)highlightAllOccurencesOfString:(NSString*)str
 {
 	NSString* jsCode=[Utils getJSCode];
     [self stringByEvaluatingJavaScriptFromString:jsCode];
-	
     NSString *startSearch = [NSString stringWithFormat:@"FC_HighlightAllOccurencesOfString('%@')",str];
     [self stringByEvaluatingJavaScriptFromString:startSearch];
-	
     //NSString *result = [self stringByEvaluatingJavaScriptFromString:@"FC_SearchResultCount"];
     return 0;
 
