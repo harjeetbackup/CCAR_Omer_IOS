@@ -29,7 +29,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFill" semanticContentAttribute="playback" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" bounces="NO" scrollEnabled="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="630"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
@@ -37,12 +37,16 @@
                     </connections>
                 </scrollView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J32-kf-35F" customClass="CustomToolBar">
-                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="612" width="375" height="55"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="3DG-Bs-b5v"/>
+                    </constraints>
                     <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="gOR-j8-eiP"/>
                         <barButtonItem style="plain" id="g0p-VC-dVc">
                             <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="z4Q-dF-Lhj">
-                                <rect key="frame" x="16" y="0.0" width="44" height="44"/>
+                                <rect key="frame" x="43.5" y="5.5" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" image="button:z4Q-dF-Lhj:image">
@@ -61,12 +65,10 @@
                                 <action selector="loadPrevCardDetails" destination="-1" id="jSH-cN-pUO"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="DfT-5v-L8P">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="r0l-ss-hmt"/>
                         <barButtonItem image="bookmark.png" width="30" style="plain" id="Wgm-TT-sRO">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Khe-FJ-IOI">
-                                <rect key="frame" x="101.5" y="7" width="30" height="30"/>
+                                <rect key="frame" x="115" y="12.5" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" image="bookmark.png">
@@ -82,12 +84,10 @@
                             </button>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="szr-AX-b69">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="tBP-hh-gMj"/>
                         <barButtonItem image="bottom_note_btn.png" width="30" style="plain" id="TEI-LC-U7P">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Mhr-vi-e1a">
-                                <rect key="frame" x="172.5" y="7" width="30" height="30"/>
+                                <rect key="frame" x="172.5" y="12.5" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" image="bottom_note_btn.png">
@@ -103,12 +103,10 @@
                             </button>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Zzk-RD-pEN">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="fVg-s2-hGd"/>
                         <barButtonItem image="bottom_read_btn.png" width="30" style="plain" id="FDB-Qr-bYf">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6cf-6i-Qjh">
-                                <rect key="frame" x="244" y="7" width="30" height="30"/>
+                                <rect key="frame" x="230" y="12.5" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" image="bottom_read_btn.png">
@@ -124,12 +122,10 @@
                             </button>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="r7h-7J-N1r">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                        <barButtonItem width="30" style="plain" id="1OJ-yH-JZc">
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Bhc-N0-az4"/>
+                        <barButtonItem style="plain" id="1OJ-yH-JZc">
                             <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mEl-Yi-TsR">
-                                <rect key="frame" x="315" y="0.0" width="44" height="44"/>
+                                <rect key="frame" x="287.5" y="5.5" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" image="button:mEl-Yi-TsR:image">
@@ -148,6 +144,7 @@
                                 <action selector="loadNextCardDetails" destination="-1" id="2Kc-1B-ofG"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Znu-3W-Sq2"/>
                     </items>
                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

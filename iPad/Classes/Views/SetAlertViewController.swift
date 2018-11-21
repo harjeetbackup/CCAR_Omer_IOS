@@ -20,7 +20,7 @@ import CoreLocation
     @IBOutlet var timePicker: UIDatePicker!
     @IBOutlet var setAlertAtSunsetButton: UIButton!
     @IBOutlet var sendAlertSwitch: UIButton!
-   
+    var isFromIphone = false
     var delegate : GetTodaysReadingDelegate?
     var locationmanager = CLLocationManager()
     let notification = UILocalNotification()
@@ -45,6 +45,12 @@ import CoreLocation
             // Fallback on earlier versions
         }
         setUpUserDefualtsValues()
+        if isFromIphone == true {
+            self.navigationItem.leftBarButtonItem?.isEnabled = false
+        }else {
+            self.navigationItem.leftBarButtonItem?.isEnabled = true
+
+        }
     }
     
     
@@ -252,11 +258,10 @@ import CoreLocation
         }
     }
     
-
-    @available(iOS 10.0, *)
-    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void) {
-        print("@@@@@")
-        delegate?.getTodaysReading()
-        completionHandler()
-    }
+//    @available(iOS 10.0, *)
+//    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void) {
+//        print("@@@@@")
+//        delegate?.getTodaysReading()
+//        completionHandler()
+//    }
 }

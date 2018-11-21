@@ -329,7 +329,8 @@
         if ([button isEqualToString:@"Set Alerts"]) {
             NSString * storyboardName = @"SetAlerts";
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SetAlertViewController"];
+            SetAlertViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SetAlertViewController"];
+            vc.isFromIphone = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
 		else if ([button isEqualToString:@"Clear All Proficiency"]) {

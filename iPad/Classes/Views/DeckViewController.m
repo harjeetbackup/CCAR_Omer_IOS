@@ -76,16 +76,9 @@ int endDateYear;
 -(void)viewWillAppear:(BOOL)animated{
     isTappedTodaysReading=NO;
     [super viewWillAppear:animated];
-    
     self.navigationItem.hidesBackButton=YES;
-    //[self setProperRotation:YES];
-//    if ([[AppDelegate_iPad delegate] launchedFromLoacalNotification]) {
-//        AppDelegate_iPhone.delegate.launchedFromLoacalNotification = false;
-//        [self findMyCurrentLocation];
-//    }
-    
-    
 }
+
 // This method will display the card details page for a particular index
 - (void) showDetailViewWithArray:(NSMutableArray*) array cardIndex:(NSInteger) index caller:(NSString *)strCaller
 {	
