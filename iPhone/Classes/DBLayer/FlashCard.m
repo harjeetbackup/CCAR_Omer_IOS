@@ -7,9 +7,7 @@
 //
 
 #import "DBAccess.h"
-
 #import "AppDelegate_iPhone.h"
-
 #import "FlashCard.h"
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
@@ -163,11 +161,11 @@ NSString* RowImages[] = {@"deck1.png", @"deck2.png", @"deck3.png", @"deck4.png"}
 	_introDeck.deckType = kIntroDeck;
 	//_allCardDeck.deckColor = kDeckRowAllBackgroundColor;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        _introDeck.deckImage = @"introduction.png";
+        _introDeck.deckImage = @"introductionn.png";
         _introDeck.deckColor = [UIColor colorWithRed:211.0/255 green:243.0/255 blue:255.0/255 alpha:1];
     }
-    else{
-    _introDeck.deckImage = @"introduction.png";
+    else {
+    _introDeck.deckImage = @"introductionn.png";
 	_introDeck.deckColor = [Utils colorFromString:[Utils getValueForVar:kIntroDeckColor]];
     }
 }

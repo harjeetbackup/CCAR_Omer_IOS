@@ -44,14 +44,7 @@
 @implementation DeckViewController_iPhone
 @synthesize cardDecks = _cardDecks,isTappedTodaysReading;
 bool navBar=YES;
-NSString * startDate;
-NSString * endDate ;
-int startDateDay;
-int startDateMonth;
-int startDateYear;
-int endDateDay;
-int endDateMonth;
-int endDateYear;
+
 NSArray *allDates;
 
 - (void)viewDidLoad 
@@ -145,24 +138,24 @@ NSArray *allDates;
     [Server.shared getOmerDatesByYearWithId:yearString completion:^(NSArray * res, NSError * error) {
         if (res != NULL) {
             if (res.firstObject[@"date"] != NULL) {
-                startDate = res.firstObject[@"date"];
+                self.startDate = res.firstObject[@"date"];
                 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                 [formatter setDateFormat:@"yyyy-MM-dd"];
-                NSDate *now = [formatter dateFromString:startDate];
+                NSDate *now = [formatter dateFromString:self.startDate];
                 NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:now];
-                startDateDay = [components day];
-                startDateMonth = [components month];
-                startDateYear = [components year];
+                self.startDateDay = [components day];
+                self.startDateMonth = [components month];
+                self.startDateYear = [components year];
             }
             if (res.lastObject[@"date"] != NULL) {
-                endDate = res.lastObject[@"date"];
+                self.endDate = res.lastObject[@"date"];
                 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                 [formatter setDateFormat:@"yyyy-MM-dd"];
-                NSDate *now = [formatter dateFromString:endDate];
+                NSDate *now = [formatter dateFromString:self.endDate];
                 NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:now];
-                endDateDay = [components day];
-                endDateMonth = [components month];
-                endDateYear = [components year];
+                self.endDateDay = [components day];
+                self.endDateMonth = [components month];
+                self.endDateYear = [components year];
             }
         }
     }];
@@ -218,6 +211,10 @@ NSArray *allDates;
     [_myLabelSeven release];
     [_dailyBlessingToolBar release];
     [_BlessingToolBarHEight release];
+    [self.startDate release];
+    [self.endDate release];
+   
+    
     [super dealloc];
 }
 
@@ -442,21 +439,6 @@ NSArray *allDates;
 #pragma mark - CLLocationManagerDelegate
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    [formatter setDateFormat:@"yyyy"];
-//    NSString *yearString = [formatter stringFromDate:[NSDate date]];
-//
-//    [Server.shared getOmerDatesByYearWithId:yearString completion:^(NSArray * res, NSError * error) {
-//        if (res != NULL) {
-//            if (res.firstObject[@"date"] != NULL) {
-//                startDate = res.firstObject[@"date"];
-//            }
-//            if (res.lastObject[@"date"] != NULL) {
-//                endDate = res.lastObject[@"date"];
-//            }
-//        }
-//    }];
-
     if(!isTappedTodaysReading)
     {
         isTappedTodaysReading=YES;
@@ -464,9 +446,9 @@ NSArray *allDates;
         //CLLocation* location = [locations lastObject];
         [locationmanager stopUpdatingLocation];
         NSDateComponents *startDatecomps = [[NSDateComponents alloc] init];
-        [startDatecomps setDay: startDateDay];
-        [startDatecomps setMonth:startDateMonth];
-        [startDatecomps setYear:startDateYear];
+        [startDatecomps setDay: self.startDateDay];
+        [startDatecomps setMonth:self.startDateMonth];
+        [startDatecomps setYear:self.startDateYear];
         
         NSDate *currentDateTime=[NSDate date];
         NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
@@ -480,9 +462,9 @@ NSArray *allDates;
         NSDate *startSunsetTime= startDateSunInfo.sunset;
         
         NSDateComponents *endDatecomps = [[NSDateComponents alloc] init];
-        [endDatecomps setDay:endDateDay];
-        [endDatecomps setMonth:endDateMonth];
-        [endDatecomps setYear:endDateYear];
+        [endDatecomps setDay:self.endDateDay];
+        [endDatecomps setMonth:self.endDateMonth];
+        [endDatecomps setYear:self.endDateYear];
         NSDate *endDate = [gregorian dateFromComponents:endDatecomps];
         EDSunriseSet *endDateSunInfo = [EDSunriseSet sunrisesetWithDate:endDate timezone:[NSTimeZone localTimeZone]
                                                                latitude:location.coordinate.latitude

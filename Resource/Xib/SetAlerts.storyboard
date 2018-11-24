@@ -65,7 +65,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Set Alerts" id="0Qd-Eg-b3B">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" image="quit.png" id="6B2-nj-TuZ">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="6B2-nj-TuZ">
                                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="cancelButtonTapped:" destination="uIh-Mh-rIs" id="vvi-EU-OMz"/>
@@ -108,6 +108,7 @@
                     <navigationItem key="navigationItem" title="Set Alerts" id="PtP-3t-L6f"/>
                     <connections>
                         <outlet property="datePickerHeight" destination="MRz-5K-LtZ" id="YFT-82-LxI"/>
+                        <outlet property="leftBarButtonItem" destination="6B2-nj-TuZ" id="uCL-Wf-PfF"/>
                         <outlet property="sendAlertSwitch" destination="099-mT-eB5" id="6kt-aa-Neu"/>
                         <outlet property="setAlertAtSunsetButton" destination="khr-dL-54K" id="zb3-wy-fec"/>
                         <outlet property="timePicker" destination="TOZ-NV-kuw" id="gdw-nK-g36"/>
@@ -121,6 +122,5 @@
     </scenes>
     <resources>
         <image name="check-box-empty.png" width="30" height="30"/>
-        <image name="quit.png" width="30" height="30"/>
     </resources>
 </document>

@@ -23,10 +23,8 @@
 		186490C22175A6FF00317E83 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186490C12175A6FF00317E83 /* Server.swift */; };
 		1877CC942182F52C0028DAA9 /* intoduction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877CC922182F52B0028DAA9 /* intoduction@2x.png */; };
 		1877CC952182F52C0028DAA9 /* intoduction.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877CC932182F52C0028DAA9 /* intoduction.png */; };
-		187F81BA213EBC0E00E1386B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187F81B8213EBC0D00E1386B /* Fabric.framework */; };
-		187F81BB213EBC0E00E1386B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187F81B9213EBC0E00E1386B /* Crashlytics.framework */; };
 		18C76AB321898BA20086BA99 /* allItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C76AB221898BA10086BA99 /* allItems.swift */; };
-		18E5EE8F21A514DA00B7FA63 /* introduction.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E5EE8E21A514D900B7FA63 /* introduction.png */; };
+		18E5EE8F21A514DA00B7FA63 /* introductionn.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E5EE8E21A514D900B7FA63 /* introductionn.png */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -429,9 +427,6 @@
 		E6F5BC51180845FF00381C15 /* Launching_iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E6F5BC50180845FF00381C15 /* Launching_iphone@2x.png */; };
 		E6F5BC531808468800381C15 /* launching@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E6F5BC521808468800381C15 /* launching@2x.png */; };
 		E6F5BC5518084CD600381C15 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E6F5BC5418084CD600381C15 /* Default-568h@2x.png */; };
-		FE0B6D271670A12C002C80D3 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5A4FA516707CE2009D118E /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		FE1E0AA8166CD50C00AD8C65 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1E0AA7166CD50C00AD8C65 /* libz.1.2.5.dylib */; };
-		FE2F109D1670B3B500AE6B88 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2F109C1670B3B500AE6B88 /* libOAuth.a */; };
 		FEFBE547167F251400157C95 /* add_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FEFBE526167F24C900157C95 /* add_btn.png */; };
 		FEFBE548167F251400157C95 /* add_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FEFBE527167F24CC00157C95 /* add_btn@2x.png */; };
 		FEFBE549167F251400157C95 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FEFBE528167F24CF00157C95 /* arrow@2x.png */; };
@@ -461,10 +456,8 @@
 		186D4CD82170C21A0074640B /* Omer_Flash_Card-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Omer_Flash_Card-Bridging-Header.h"; sourceTree = "<group>"; };
 		1877CC922182F52B0028DAA9 /* intoduction@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intoduction@2x.png"; sourceTree = "<group>"; };
 		1877CC932182F52C0028DAA9 /* intoduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intoduction.png; sourceTree = "<group>"; };
-		187F81B8213EBC0D00E1386B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		187F81B9213EBC0E00E1386B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		18C76AB221898BA10086BA99 /* allItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = allItems.swift; sourceTree = "<group>"; };
-		18E5EE8E21A514D900B7FA63 /* introduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = introduction.png; sourceTree = "<group>"; };
+		18E5EE8E21A514D900B7FA63 /* introductionn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = introductionn.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Omer_Flash_Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Omer_Flash_Card.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -926,10 +919,6 @@
 		E6F5BC521808468800381C15 /* launching@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launching@2x.png"; sourceTree = "<group>"; };
 		E6F5BC5418084CD600381C15 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F9B587E5568313433AC0CA9C /* libPods-Omer_Flash_Card.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Omer_Flash_Card.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE0B6D2516709B09002C80D3 /* dylib1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = dylib1.o; path = usr/lib/dylib1.o; sourceTree = SDKROOT; };
-		FE1E0AA7166CD50C00AD8C65 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
-		FE2F109C1670B3B500AE6B88 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth.a; path = APIs/libOAuth.a; sourceTree = "<group>"; };
-		FE5A4FA516707CE2009D118E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FED0D52C1676077C009426D3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		FEFBE526167F24C900157C95 /* add_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_btn.png; sourceTree = "<group>"; };
 		FEFBE527167F24CC00157C95 /* add_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_btn@2x.png"; sourceTree = "<group>"; };
@@ -951,10 +940,6 @@
 				C3DDF06E1C6B292B00D90140 /* EventKit.framework in Frameworks */,
 				C3DDF06C1C6B27F700D90140 /* EventKitUI.framework in Frameworks */,
 				C3E5FCDA1B55408700B2127B /* CoreText.framework in Frameworks */,
-				187F81BB213EBC0E00E1386B /* Crashlytics.framework in Frameworks */,
-				FE2F109D1670B3B500AE6B88 /* libOAuth.a in Frameworks */,
-				FE0B6D271670A12C002C80D3 /* Social.framework in Frameworks */,
-				FE1E0AA8166CD50C00AD8C65 /* libz.1.2.5.dylib in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -969,7 +954,6 @@
 				4EC80FB81423BCCA00BFCC4D /* libsqlite3.dylib in Frameworks */,
 				4EC80FC21423BDBE00BFCC4D /* MediaPlayer.framework in Frameworks */,
 				55C10BEDA88BBE1DE5405AA4 /* libPods-Omer_Flash_Card.a in Frameworks */,
-				187F81BA213EBC0E00E1386B /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,8 +998,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				187F81B9213EBC0E00E1386B /* Crashlytics.framework */,
-				187F81B8213EBC0D00E1386B /* Fabric.framework */,
 				C328D0781C201AA9005A3B24 /* Font */,
 				C38418F01B57CCB700AF97C4 /* Images.xcassets */,
 				C3A0FCD819EE4E7500844B67 /* icon_152.png */,
@@ -1030,10 +1012,6 @@
 				E6F5BC4C180842F100381C15 /* Default-Landscape@2x.png */,
 				528996B716AFF5B8001E4730 /* Default-Landscape.png */,
 				FED0D52C1676077C009426D3 /* Default.png */,
-				FE2F109C1670B3B500AE6B88 /* libOAuth.a */,
-				FE0B6D2516709B09002C80D3 /* dylib1.o */,
-				FE5A4FA516707CE2009D118E /* Social.framework */,
-				FE1E0AA7166CD50C00AD8C65 /* libz.1.2.5.dylib */,
 				4EC80F501423B88B00BFCC4D /* DBLayer */,
 				4EC80F4C1423B88B00BFCC4D /* Base */,
 				4EC80B1B1423B85B00BFCC4D /* APIs */,
@@ -1624,7 +1602,7 @@
 				1857ED242188362D0041F28E /* check-box-filled.png */,
 				1857ED262188362E0041F28E /* check-box-filled@2x.png */,
 				1851054A219EE36000D2C5E5 /* quit.png */,
-				18E5EE8E21A514D900B7FA63 /* introduction.png */,
+				18E5EE8E21A514D900B7FA63 /* introductionn.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1703,11 +1681,11 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0930;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = MTLWNYBR52;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -2056,7 +2034,7 @@
 				C3F11A441C21980B002092EE /* 53A.html in Resources */,
 				C3F11A351C21980B002092EE /* 42B.html in Resources */,
 				C328D09E1C201AF1005A3B24 /* RobotoCondensed-Bold.ttf in Resources */,
-				18E5EE8F21A514DA00B7FA63 /* introduction.png in Resources */,
+				18E5EE8F21A514DA00B7FA63 /* introductionn.png in Resources */,
 				C3F11A0A1C21980B002092EE /* 12A.html in Resources */,
 				C3E5FCCC1B55089800B2127B /* mf_david-regular.woff in Resources */,
 				528996B816AFF5B8001E4730 /* Default-Landscape.png in Resources */,
@@ -2207,8 +2185,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Central Conference of American Rabbis (MTLWNYBR52)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = NO;
@@ -2227,7 +2207,7 @@
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "Omer_Flash_Card-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2256,8 +2236,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Central Conference of American Rabbis (MTLWNYBR52)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = NO;
@@ -2274,7 +2256,7 @@
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "Omer_Flash_Card-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2298,16 +2280,41 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Medwin (7UDZKJDFT9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Medwin (7UDZKJDFT9)";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include,
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "51305273-ebfc-49b7-9202-26937882da47";
@@ -2320,22 +2327,47 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Medwin (7UDZKJDFT9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Medwin (7UDZKJDFT9)";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include,
 					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "51305273-ebfc-49b7-9202-26937882da47";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "51305273-ebfc-49b7-9202-26937882da47";
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

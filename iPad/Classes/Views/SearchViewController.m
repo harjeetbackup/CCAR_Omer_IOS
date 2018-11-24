@@ -114,8 +114,6 @@
 #pragma mark -
 #pragma mark Table view data source
 
-FlashCard* card;
-NSString * strCardName;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;

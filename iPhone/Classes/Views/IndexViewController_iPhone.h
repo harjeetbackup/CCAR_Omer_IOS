@@ -19,7 +19,7 @@
 @property(nonatomic,retain) IBOutlet UITableView* _tableView;
 @property(nonatomic, retain) NSMutableArray *cards;
 @property(nonatomic, retain) NSMutableArray *indices;
-
+@property(nonatomic, retain) NSArray *flashCards;
 
 -(void) popView;
 

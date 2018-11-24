@@ -74,7 +74,7 @@
 
 #pragma mark -
 #pragma mark Table view data source
-NSArray *flashCards;
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return [indices count];
@@ -86,11 +86,11 @@ NSArray *flashCards;
 	NSString *alphabet = [indices objectAtIndex:section];
 
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", alphabet];
-    flashCards = [cards filteredArrayUsingPredicate:predicate];
+    self.flashCards = [cards filteredArrayUsingPredicate:predicate];
 	//DBAccess* db=[AppDelegate_iPhone getDBAccess];
 	//NSMutableArray *flashCards=[db getCardsByAlphabet:alphabet];
-	NSLog(@"Alphabet : %@, Section : %ld, Rows : %lu",alphabet, (long)section,(unsigned long)[flashCards count]);
-    return [flashCards count];
+	NSLog(@"Alphabet : %@, Section : %ld, Rows : %lu",alphabet, (long)section,(unsigned long)[self.flashCards count]);
+    return [self.flashCards count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -323,6 +323,7 @@ NSArray *flashCards;
 
 
 - (void)dealloc {
+   
 	[super dealloc];
 }
 

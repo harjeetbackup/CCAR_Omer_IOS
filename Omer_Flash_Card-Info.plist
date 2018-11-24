@@ -4,18 +4,30 @@
 <dict>
 	<key></key>
 	<string></string>
-	<key>CFBundleName</key>
-	<string>${PRODUCT_NAME}</string>
-	<key>CFBundleIcons~ipad</key>
-	<dict/>
-	<key>UILaunchStoryboardName</key>
-	<string>MainWindow_iPhone</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>Omer</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.14</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.12</string>
-	<key>NSMainNibFile</key>
-	<string>MainWindow_iPhone</string>
+	<string>1.14</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -23,66 +35,56 @@
 		<key>Kits</key>
 		<array>
 			<dict>
-				<key>KitName</key>
-				<string>Crashlytics</string>
 				<key>KitInfo</key>
 				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
 			</dict>
 		</array>
 	</dict>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.12</string>
-	<key>UIStatusBarHidden</key>
+	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIRequiresFullScreen</key>
-	<true/>
-	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Allow us to access your calendar to get omer days</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSMainNibFile</key>
+	<string>MainWindow_iPhone</string>
+	<key>NSMainNibFile~ipad</key>
+	<string>MainWindow_iPad</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Bold.ttf</string>
 		<string>Roboto-Regular.ttf</string>
 	</array>
-	<key>CFBundleSignature</key>
-	<string>????</string>
+	<key>UILaunchStoryboardName</key>
+	<string>MainWindow_iPhone</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
-	<key>CFBundleIcons</key>
-	<dict/>
-	<key>LSRequiresIPhoneOS</key>
+	<key>UIRequiresFullScreen</key>
 	<true/>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
-	<key>CFBundleDisplayName</key>
-	<string>Omer</string>
-	<key>NSMainNibFile~ipad</key>
-	<string>MainWindow_iPad</string>
+	<key>UIStatusBarHidden</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>privacy - location usage description</key>
-	<string></string>
-	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 </dict>
 </plist>

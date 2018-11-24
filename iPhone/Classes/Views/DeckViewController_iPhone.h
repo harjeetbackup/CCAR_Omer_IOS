@@ -46,6 +46,14 @@
 @property (retain, nonatomic) IBOutlet UILabel *myLabelSeven;
 @property (retain, nonatomic) IBOutlet NSLayoutConstraint *BlessingToolBarHEight;
 
+@property (retain, nonatomic) NSString * startDate;
+@property (retain, nonatomic) NSString * endDate ;
+@property int startDateDay;
+@property int startDateMonth;
+@property int startDateYear;
+@property int endDateDay;
+@property int endDateMonth;
+@property int endDateYear;
 
 - (IBAction)displaySettings;
 - (IBAction)displayHelp;
