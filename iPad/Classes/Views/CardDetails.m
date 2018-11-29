@@ -670,7 +670,6 @@ NSInteger todayOmerIndex=0;
             [_toggle_note_btn setImage:[UIImage imageNamed:@"bottom_noted_btn.png"] forState:UIControlStateNormal];
             
             
-            
         }else {
             [_toggle_note_btn setImage:[UIImage imageNamed:@"bottom_note_btn.png"] forState:UIControlStateNormal];
         }

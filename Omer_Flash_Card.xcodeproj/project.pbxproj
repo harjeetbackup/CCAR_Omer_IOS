@@ -187,7 +187,6 @@
 		C37431BD1C7329B100AE714F /* EDSunriseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C37431BC1C7329B100AE714F /* EDSunriseSet.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C37A2E0A1C7AD71500F3E069 /* help_all-cards.png in Resources */ = {isa = PBXBuildFile; fileRef = C37A2E091C7AD71500F3E069 /* help_all-cards.png */; };
 		C38371851C33BE000001A548 /* intro.png in Resources */ = {isa = PBXBuildFile; fileRef = C38371831C33BDFF0001A548 /* intro.png */; };
-		C38371861C33BE000001A548 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C38371841C33BE000001A548 /* Roboto-Thin.ttf */; };
 		C38418F11B57CCB700AF97C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38418F01B57CCB700AF97C4 /* Images.xcassets */; };
 		C38B93EB1C4E5F8B00AAE08D /* read_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C38B93E91C4E5F8B00AAE08D /* read_icon.png */; };
 		C38B93EC1C4E5F8B00AAE08D /* read_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C38B93EA1C4E5F8B00AAE08D /* read_icon@2x.png */; };
@@ -396,8 +395,6 @@
 		C3F11A7C1C21980B002092EE /* PHOTO-week-6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3F11A001C21980B002092EE /* PHOTO-week-6.jpg */; };
 		C3F11A7D1C21980B002092EE /* PHOTO-week-7-back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3F11A011C21980B002092EE /* PHOTO-week-7-back.jpg */; };
 		C3F11A7E1C21980B002092EE /* PHOTO-week-7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3F11A021C21980B002092EE /* PHOTO-week-7.jpg */; };
-		C3F11A7F1C21980B002092EE /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3F11A031C21980B002092EE /* Roboto-Bold.ttf */; };
-		C3F11A801C21980B002092EE /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3F11A041C21980B002092EE /* Roboto-Regular.ttf */; };
 		C3F11A821C21980B002092EE /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = C3F11A061C21980B002092EE /* styles.css */; };
 		C3F78F601C1EDAC5007C3638 /* Launching_568h.png in Resources */ = {isa = PBXBuildFile; fileRef = C3F78F5F1C1EDAC5007C3638 /* Launching_568h.png */; };
 		C3F78F691C1EF238007C3638 /* bg_all-card.png in Resources */ = {isa = PBXBuildFile; fileRef = C3F78F611C1EF238007C3638 /* bg_all-card.png */; };
@@ -669,7 +666,6 @@
 		C37431BC1C7329B100AE714F /* EDSunriseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDSunriseSet.m; sourceTree = "<group>"; };
 		C37A2E091C7AD71500F3E069 /* help_all-cards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help_all-cards.png"; sourceTree = "<group>"; };
 		C38371831C33BDFF0001A548 /* intro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intro.png; sourceTree = "<group>"; };
-		C38371841C33BE000001A548 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		C38418F01B57CCB700AF97C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Birkon_Flash_Card/Images.xcassets; sourceTree = "<group>"; };
 		C38B93E91C4E5F8B00AAE08D /* read_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = read_icon.png; sourceTree = "<group>"; };
 		C38B93EA1C4E5F8B00AAE08D /* read_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "read_icon@2x.png"; sourceTree = "<group>"; };
@@ -886,8 +882,6 @@
 		C3F11A001C21980B002092EE /* PHOTO-week-6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "PHOTO-week-6.jpg"; sourceTree = "<group>"; };
 		C3F11A011C21980B002092EE /* PHOTO-week-7-back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "PHOTO-week-7-back.jpg"; sourceTree = "<group>"; };
 		C3F11A021C21980B002092EE /* PHOTO-week-7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "PHOTO-week-7.jpg"; sourceTree = "<group>"; };
-		C3F11A031C21980B002092EE /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		C3F11A041C21980B002092EE /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		C3F11A061C21980B002092EE /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
 		C3F78F5F1C1EDAC5007C3638 /* Launching_568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launching_568h.png; sourceTree = "<group>"; };
 		C3F78F611C1EF238007C3638 /* bg_all-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_all-card.png"; sourceTree = "<group>"; };
@@ -1121,7 +1115,6 @@
 				C3C54C521C50A34A0035D7C0 /* Help_Taps.png */,
 				C3C54C531C50A34A0035D7C0 /* Help_Todays_Reading.png */,
 				C38371831C33BDFF0001A548 /* intro.png */,
-				C38371841C33BE000001A548 /* Roboto-Thin.ttf */,
 				C3F1198B1C219809002092EE /* 00_Lang.jpg */,
 				C3F1198C1C21980A002092EE /* 11A.html */,
 				C3F1198D1C21980A002092EE /* 11B.html */,
@@ -1242,8 +1235,6 @@
 				C3F11A001C21980B002092EE /* PHOTO-week-6.jpg */,
 				C3F11A011C21980B002092EE /* PHOTO-week-7-back.jpg */,
 				C3F11A021C21980B002092EE /* PHOTO-week-7.jpg */,
-				C3F11A031C21980B002092EE /* Roboto-Bold.ttf */,
-				C3F11A041C21980B002092EE /* Roboto-Regular.ttf */,
 				C3F11A061C21980B002092EE /* styles.css */,
 				C3E5FBA51B55089700B2127B /* intro.html */,
 				C3E5FC2E1B55089800B2127B /* style-debug.css */,
@@ -1733,7 +1724,6 @@
 				E6F5BC4D180842F100381C15 /* Default-Landscape@2x.png in Resources */,
 				C328D0A01C201AF1005A3B24 /* RobotoCondensed-Italic.ttf in Resources */,
 				C3F11A721C21980B002092EE /* PHOTO-week-1.jpg in Resources */,
-				C3F11A801C21980B002092EE /* Roboto-Regular.ttf in Resources */,
 				C3E5FCC91B55089800B2127B /* mf_david-regular.eot in Resources */,
 				C3F78F6B1C1EF238007C3638 /* bg_bookmark.png in Resources */,
 				C3F11A4B1C21980B002092EE /* 56B.html in Resources */,
@@ -2048,7 +2038,6 @@
 				C328D0991C201AF1005A3B24 /* Roboto-Medium.ttf in Resources */,
 				C3F11A571C21980B002092EE /* 65B.html in Resources */,
 				C3AA406A1C3145B000686724 /* week5.png in Resources */,
-				C38371861C33BE000001A548 /* Roboto-Thin.ttf in Resources */,
 				C3F11A581C21980B002092EE /* 66A.html in Resources */,
 				C3B48F661C3D28A100D03B04 /* week6_bg_iPhone.png in Resources */,
 				C3C54C561C50A34A0035D7C0 /* Help_Check_Mark.png in Resources */,
@@ -2060,7 +2049,6 @@
 				C3F11A331C21980B002092EE /* 41B.html in Resources */,
 				C37431B71C7314C700AE714F /* aftercard.html in Resources */,
 				528FF9AE1740B40400B49345 /* right_arw@2x.png in Resources */,
-				C3F11A7F1C21980B002092EE /* Roboto-Bold.ttf in Resources */,
 				1851054B219EE36200D2C5E5 /* quit.png in Resources */,
 				C3492F521C3A78950082D53B /* birthday-104.png in Resources */,
 				C3F11A2A1C21980B002092EE /* 34A.html in Resources */,

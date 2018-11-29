@@ -242,10 +242,18 @@ NSArray *allDates;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section>0)
-        return 64;
-    else
-        return 56;
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    if (screenSize.height >= 812.0f) {
+        if(indexPath.section>0)
+            return (tableView.frame.size.height - 240.0 )/ 7.0;
+        else
+            return 60;
+    }else {
+        if(indexPath.section>0)
+            return 64;
+        else
+            return 56;
+        }
 }
 
 
