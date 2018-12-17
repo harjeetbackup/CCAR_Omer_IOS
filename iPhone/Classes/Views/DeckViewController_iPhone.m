@@ -579,6 +579,16 @@ NSArray *allDates;
     [model release];
 }
 
+- (IBAction)setAlarm
+{
+    NSString * storyboardName = @"SetAlerts";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    SetAlertViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SetAlertViewController"];
+    vc.isFromIphone = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 - (IBAction)displayHelp
 {
     navBar=NO;

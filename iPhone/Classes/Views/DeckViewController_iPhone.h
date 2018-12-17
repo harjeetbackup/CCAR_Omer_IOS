@@ -55,6 +55,7 @@
 @property int endDateMonth;
 @property int endDateYear;
 
+- (IBAction)setAlarm;
 - (IBAction)displaySettings;
 - (IBAction)displayHelp;
 - (IBAction)displayInfo;

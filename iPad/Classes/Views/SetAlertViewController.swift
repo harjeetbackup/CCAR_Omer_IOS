@@ -32,7 +32,6 @@ import CoreLocation
         timePicker.layer.borderColor = UIColor.black.cgColor
         timePicker.layer.borderWidth = 1.0
         timePicker.layer.cornerRadius = 4.0
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

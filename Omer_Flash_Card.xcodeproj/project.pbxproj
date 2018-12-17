@@ -21,6 +21,12 @@
 		185D8CD6217DC36F00D1D655 /* OmerDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D8CD5217DC36F00D1D655 /* OmerDateManager.swift */; };
 		185D8CD8217DE87700D1D655 /* Sever + OmerDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D8CD7217DE87700D1D655 /* Sever + OmerDays.swift */; };
 		186490C22175A6FF00317E83 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186490C12175A6FF00317E83 /* Server.swift */; };
+		18663B3121C402FA009CF54B /* notification@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18663B2E21C402F9009CF54B /* notification@3x.png */; };
+		18663B3221C402FA009CF54B /* notification.png in Resources */ = {isa = PBXBuildFile; fileRef = 18663B2F21C402FA009CF54B /* notification.png */; };
+		18663B3321C402FA009CF54B /* notification@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18663B3021C402FA009CF54B /* notification@2x.png */; };
+		18663B3721C4143F009CF54B /* alaramBell2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18663B3421C4143E009CF54B /* alaramBell2x.png */; };
+		18663B3821C4143F009CF54B /* alaramBell3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18663B3521C4143E009CF54B /* alaramBell3x.png */; };
+		18663B3921C4143F009CF54B /* alaramBell1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18663B3621C4143E009CF54B /* alaramBell1x.png */; };
 		1877CC942182F52C0028DAA9 /* intoduction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877CC922182F52B0028DAA9 /* intoduction@2x.png */; };
 		1877CC952182F52C0028DAA9 /* intoduction.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877CC932182F52C0028DAA9 /* intoduction.png */; };
 		18C76AB321898BA20086BA99 /* allItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C76AB221898BA10086BA99 /* allItems.swift */; };
@@ -450,6 +456,12 @@
 		185D8CD5217DC36F00D1D655 /* OmerDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmerDateManager.swift; sourceTree = "<group>"; };
 		185D8CD7217DE87700D1D655 /* Sever + OmerDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sever + OmerDays.swift"; sourceTree = "<group>"; };
 		186490C12175A6FF00317E83 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		18663B2E21C402F9009CF54B /* notification@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notification@3x.png"; sourceTree = "<group>"; };
+		18663B2F21C402FA009CF54B /* notification.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notification.png; sourceTree = "<group>"; };
+		18663B3021C402FA009CF54B /* notification@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notification@2x.png"; sourceTree = "<group>"; };
+		18663B3421C4143E009CF54B /* alaramBell2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alaramBell2x.png; sourceTree = "<group>"; };
+		18663B3521C4143E009CF54B /* alaramBell3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alaramBell3x.png; sourceTree = "<group>"; };
+		18663B3621C4143E009CF54B /* alaramBell1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alaramBell1x.png; sourceTree = "<group>"; };
 		186D4CD82170C21A0074640B /* Omer_Flash_Card-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Omer_Flash_Card-Bridging-Header.h"; sourceTree = "<group>"; };
 		1877CC922182F52B0028DAA9 /* intoduction@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intoduction@2x.png"; sourceTree = "<group>"; };
 		1877CC932182F52C0028DAA9 /* intoduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intoduction.png; sourceTree = "<group>"; };
@@ -1594,6 +1606,12 @@
 				1857ED262188362E0041F28E /* check-box-filled@2x.png */,
 				1851054A219EE36000D2C5E5 /* quit.png */,
 				18E5EE8E21A514D900B7FA63 /* introductionn.png */,
+				18663B2F21C402FA009CF54B /* notification.png */,
+				18663B3021C402FA009CF54B /* notification@2x.png */,
+				18663B2E21C402F9009CF54B /* notification@3x.png */,
+				18663B3621C4143E009CF54B /* alaramBell1x.png */,
+				18663B3421C4143E009CF54B /* alaramBell2x.png */,
+				18663B3521C4143E009CF54B /* alaramBell3x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1755,6 +1773,8 @@
 				C3F11A651C21980B002092EE /* 75B.html in Resources */,
 				C3492F5B1C3A7C520082D53B /* bottom_noted_btn@2x.png in Resources */,
 				C3F11A121C21980B002092EE /* 16A.html in Resources */,
+				18663B3321C402FA009CF54B /* notification@2x.png in Resources */,
+				18663B3221C402FA009CF54B /* notification.png in Resources */,
 				C33C492E1BC5009800D5542D /* blue-menu-background_iPhone.jpg in Resources */,
 				E64FADB217CC9DDB006BDF68 /* backNew_1@2x.png in Resources */,
 				C3F11A0F1C21980B002092EE /* 14B.html in Resources */,
@@ -1865,9 +1885,11 @@
 				C3B48F671C3D28A100D03B04 /* week7_bg_iPhone.png in Resources */,
 				C3F11A6A1C21980B002092EE /* dBack.css in Resources */,
 				4B7EFD6214D7739100CE5527 /* big_grey_btn.png in Resources */,
+				18663B3821C4143F009CF54B /* alaramBell3x.png in Resources */,
 				C3AA405B1C3145B000686724 /* week1@2x.png in Resources */,
 				C3B965E21C3266B8008170CD /* prev_btn@2x.png in Resources */,
 				C38B93EC1C4E5F8B00AAE08D /* read_icon@2x.png in Resources */,
+				18663B3921C4143F009CF54B /* alaramBell1x.png in Resources */,
 				C3AA40831C3153A200686724 /* flip_back_over.png in Resources */,
 				C33C49301BC5009800D5542D /* red-menu-background_iPhone.jpg in Resources */,
 				C3F11A3D1C21980B002092EE /* 46B.html in Resources */,
@@ -1914,6 +1936,7 @@
 				C3E5FCC51B55089800B2127B /* style-heb-on-the-left.css in Resources */,
 				C3F11A111C21980B002092EE /* 15B.html in Resources */,
 				C3F11A4A1C21980B002092EE /* 56A.html in Resources */,
+				18663B3121C402FA009CF54B /* notification@3x.png in Resources */,
 				C3F78F691C1EF238007C3638 /* bg_all-card.png in Resources */,
 				C3C54C571C50A34A0035D7C0 /* Help_Flip_Card.png in Resources */,
 				1857ED2A218836300041F28E /* check-box-filled@2x.png in Resources */,
@@ -2001,6 +2024,7 @@
 				C3F11A471C21980B002092EE /* 54B.html in Resources */,
 				C3F11A681C21980B002092EE /* 77A.html in Resources */,
 				C3F78F6D1C1EF238007C3638 /* bg_intro.png in Resources */,
+				18663B3721C4143F009CF54B /* alaramBell2x.png in Resources */,
 				C3F11A761C21980B002092EE /* PHOTO-week-3.jpg in Resources */,
 				C328D0931C201AF1005A3B24 /* Roboto-BlackItalic.ttf in Resources */,
 				C3F11A4F1C21980B002092EE /* 61B.html in Resources */,

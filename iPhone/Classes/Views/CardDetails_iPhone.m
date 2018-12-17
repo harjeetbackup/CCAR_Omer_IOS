@@ -256,7 +256,7 @@ NSInteger todayOmerIndex_iPhone=0;
 
 - (void)popView
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)dealloc 
@@ -737,9 +737,9 @@ NSInteger todayOmerIndex_iPhone=0;
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:nil];
     
-    if ([AppDelegate_iPhone delegate].isVoiceNotesEnabled) {
-        [actionSheet addButtonWithTitle:@"Voice Notes"];
-    }
+//    if ([AppDelegate_iPhone delegate].isVoiceNotesEnabled) {
+//        [actionSheet addButtonWithTitle:@"Voice Notes"];
+//    }
     
     if ([AppDelegate_iPhone delegate].isCommentsEnabled) {
         [actionSheet addButtonWithTitle:@"Text Notes"];
@@ -759,13 +759,13 @@ NSInteger todayOmerIndex_iPhone=0;
     NSString *title=[actionSheet buttonTitleAtIndex:buttonIndex];
     
     if ([title isEqualToString:@"Voice Notes"]) {
-        // Load Voice Notes View
-        VoiceNotesViewController_iPhone *detailViewController = [[VoiceNotesViewController_iPhone alloc] initWithNibName:@"VoiceNotesView_iPhone" bundle:nil];
-        FlashCard* card=[_arrayOfCards objectAtIndex:_selectedCardIndex];
-        [detailViewController setFlashCardId:[card cardID]];
-        [detailViewController setParent:self];
-        [self.navigationController presentModalViewController:detailViewController animated:YES];
-        [detailViewController release];
+//        // Load Voice Notes View
+//        VoiceNotesViewController_iPhone *detailViewController = [[VoiceNotesViewController_iPhone alloc] initWithNibName:@"VoiceNotesView_iPhone" bundle:nil];
+//        FlashCard* card=[_arrayOfCards objectAtIndex:_selectedCardIndex];
+//        [detailViewController setFlashCardId:[card cardID]];
+//        [detailViewController setParent:self];
+//        [self.navigationController presentModalViewController:detailViewController animated:YES];
+//        [detailViewController release];
         
     }
     

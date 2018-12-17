@@ -33,18 +33,18 @@
 	
 	_settingButtons=[[NSMutableArray alloc] init];
     AppDelegate_iPhone.delegate.isSetAlert = true;
-    if ([AppDelegate_iPhone delegate].isSetAlert) {
-        [_settingButtons addObject:@"Set Alerts"];
-    }
+//    if ([AppDelegate_iPhone delegate].isSetAlert) {
+//        [_settingButtons addObject:@"Set Alerts"];
+//    }
 	if([[[Utils getValueForVar:kProficiencyEnable] lowercaseString] isEqualToString:@"yes"])
     {
 	[_settingButtons addObject:@"Clear All Proficiency"];
     }
     [_settingButtons addObject:@"Clear All Bookmarks"];
 	
-	if ([AppDelegate_iPhone delegate].isVoiceNotesEnabled) {
-		[_settingButtons addObject:@"Clear All Voice Notes"];
-	}
+//    if ([AppDelegate_iPhone delegate].isVoiceNotesEnabled) {
+//        [_settingButtons addObject:@"Clear All Voice Notes"];
+//    }
 	
 	if ([AppDelegate_iPhone delegate].isCommentsEnabled) {
 		[_settingButtons addObject:@"Clear All Text Notes"];
@@ -327,11 +327,11 @@
 		
 		NSString* button = [_settingButtons objectAtIndex:indexPath.row];
         if ([button isEqualToString:@"Set Alerts"]) {
-            NSString * storyboardName = @"SetAlerts";
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-            SetAlertViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SetAlertViewController"];
-            vc.isFromIphone = YES;
-            [self.navigationController pushViewController:vc animated:YES];
+//            NSString * storyboardName = @"SetAlerts";
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+//            SetAlertViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SetAlertViewController"];
+//            vc.isFromIphone = YES;
+//            [self.navigationController pushViewController:vc animated:YES];
         }
 		else if ([button isEqualToString:@"Clear All Proficiency"]) {
 			UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all proficiencies?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
@@ -339,18 +339,18 @@
 			[alert show];
 			[alert release];
 			
-		}else if ([button isEqualToString:@"Clear All Bookmarks"]) {
+		} else if ([button isEqualToString:@"Clear All Bookmarks"]) {
 			UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all bookmarks?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
 			alert.tag = 1;
 			[alert show];
 			[alert release];
 			
-		}else if ([button isEqualToString:@"Clear All Voice Notes"]) {
+		} else if ([button isEqualToString:@"Clear All Voice Notes"]) {
 			
-			UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all voice notes?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
-			alert.tag = 3;
-			[alert show];
-			[alert release];
+//            UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all voice notes?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+//            alert.tag = 3;
+//            [alert show];
+//            [alert release];
 			
 		}else if ([button isEqualToString:@"Clear All Text Notes"]) {
 			UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all Text Notes?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
