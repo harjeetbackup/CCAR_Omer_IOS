@@ -37,18 +37,18 @@
 	
 	_settingButtons=[[NSMutableArray alloc] init];
     AppDelegate_iPad.delegate.isSetAlert = true;
-    if ([AppDelegate_iPad delegate].isSetAlert) {
-        [_settingButtons addObject:@"Set Alerts"];
-    }
+//    if ([AppDelegate_iPad delegate].isSetAlert) {
+//        [_settingButtons addObject:@"Set Alerts"];
+//    }
 	if([[[Utils getValueForVar:kProficiencyEnable] lowercaseString] isEqualToString: @"yes"])
     {
 	[_settingButtons addObject:@"Clear All Proficiency"];
     }
 	[_settingButtons addObject:@"Clear All Bookmarks"];
 	
-	if ([AppDelegate_iPad delegate].isVoiceNotesEnabled) {
-		[_settingButtons addObject:@"Clear All Voice Notes"];
-	}
+//    if ([AppDelegate_iPad delegate].isVoiceNotesEnabled) {
+//        [_settingButtons addObject:@"Clear All Voice Notes"];
+//    }
 
 	if ([AppDelegate_iPad delegate].isCommentsEnabled) {
 		[_settingButtons addObject:@"Clear All Text Notes"];
@@ -292,11 +292,11 @@
 	if (indexPath.row < [_settingButtons count]) {
 		NSString* button=[_settingButtons objectAtIndex:indexPath.row];
         if ([button isEqualToString:@"Set Alerts"]) {
-            NSString * storyboardName = @"SetAlerts";
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SetAlertViewController"];
-            vc.modalPresentationStyle = UIModalPresentationFormSheet;
-            [self presentViewController:vc animated:true completion:nil];
+//            NSString * storyboardName = @"SetAlerts";
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+//            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SetAlertViewController"];
+//            vc.modalPresentationStyle = UIModalPresentationFormSheet;
+//            [self presentViewController:vc animated:true completion:nil];
             
 //            [self.view addSubview:vc.view];
 //            [self.view layoutSubviews];
@@ -318,10 +318,10 @@
 			
 		}else if ([button isEqualToString:@"Clear All Voice Notes"]) {
 			
-			UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all voice notes?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
-			alert.tag = 3;
-			[alert show];
-			[alert release];
+//            UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all voice notes?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+//            alert.tag = 3;
+//            [alert show];
+//            [alert release];
 			
 		}else if ([button isEqualToString:@"Clear All Text Notes"]) {
 			

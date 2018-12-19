@@ -63,6 +63,8 @@
 @property (retain, nonatomic) IBOutlet UILabel *lblCopyright;
 @property (nonatomic,strong) EDSunriseSet *sunriset;
 
+
+- (IBAction)setAlarm;
 - (IBAction)displaySettings;
 - (IBAction)displayHelp;
 - (IBAction)displayInfo;

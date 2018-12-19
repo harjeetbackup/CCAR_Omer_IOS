@@ -758,9 +758,9 @@ NSInteger todayOmerIndex=0;
                                                     otherButtonTitles:nil];
     
     
-    if ([AppDelegate_iPad delegate].isVoiceNotesEnabled) {
-        [actionSheet addButtonWithTitle:@"Voice Notes"];
-    }
+//    if ([AppDelegate_iPad delegate].isVoiceNotesEnabled) {
+//        [actionSheet addButtonWithTitle:@"Voice Notes"];
+//    }
     
     if ([AppDelegate_iPad delegate].isCommentsEnabled) {
         [actionSheet addButtonWithTitle:@"Text Notes"];
@@ -784,18 +784,18 @@ NSInteger todayOmerIndex=0;
 	if ([title isEqualToString:@"Voice Notes"]) {
 		
 		// Load Voice Notes View
-		VoiceNotesViewController *detailViewController = [[VoiceNotesViewController alloc] initWithNibName:@"VoiceNotesViewiPad" bundle:nil];
-		FlashCard* card=[_arrayOfCards objectAtIndex:_selectedCardIndex];
-		[detailViewController setFlashCardId:[card cardID]];
-		[detailViewController setParent:self];
-		
-		detailViewController.view.frame = CGRectMake(382, 0, self.view.frame.size.width, self.view.frame.size.height);
-        detailViewController.view.tag=8;
-        if([self.view viewWithTag:8]!=nil)
-        {
-            [[self.view viewWithTag:8] removeFromSuperview];
-        }
-		[[_parentView view] addSubview:detailViewController.view];
+//        VoiceNotesViewController *detailViewController = [[VoiceNotesViewController alloc] initWithNibName:@"VoiceNotesViewiPad" bundle:nil];
+//        FlashCard* card=[_arrayOfCards objectAtIndex:_selectedCardIndex];
+//        [detailViewController setFlashCardId:[card cardID]];
+//        [detailViewController setParent:self];
+//
+//        detailViewController.view.frame = CGRectMake(382, 0, self.view.frame.size.width, self.view.frame.size.height);
+//        detailViewController.view.tag=8;
+//        if([self.view viewWithTag:8]!=nil)
+//        {
+//            [[self.view viewWithTag:8] removeFromSuperview];
+//        }
+//        [[_parentView view] addSubview:detailViewController.view];
 		
 	}
 	

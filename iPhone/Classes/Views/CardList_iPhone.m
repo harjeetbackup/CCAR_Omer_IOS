@@ -400,10 +400,6 @@
     detail._selectedCardIndex = indexPath.row;
     detail.basicCall=NO;
 	[self.navigationController pushViewController:detail animated:YES];
-	
-	//detail._selectedCardIndex=indexPath.row;
-   
-	//[detail loadArrayOfCards:arrCards];
 	[detail release];
 }
 

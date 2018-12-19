@@ -490,6 +490,8 @@ int endDateYear;
 }
 
 
+
+
 - (IBAction)displaySettings
 {
 	ModalViewCtrl* model = [[ModalViewCtrl alloc] initWithNibName:@"ModalViewiPad" bundle:nil contentType:kContentTypeSetting];
@@ -501,6 +503,21 @@ int endDateYear;
         [[self.view viewWithTag:4] removeFromSuperview];
     }
 	[self.view addSubview:model.view];
+}
+
+- (IBAction)setAlarm
+{
+    NSString * storyboardName = @"SetAlerts";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    SetAlertViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SetAlertViewController"];
+    vc.isFromIphone = YES;
+    vc.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+    vc.view.tag = 15;
+    {
+        [[self.view viewWithTag:15] removeFromSuperview];
+    }
+    [self.view addSubview:vc.view];
+  //  [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)displayHelp

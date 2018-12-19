@@ -44,7 +44,7 @@ NSInteger todayOmerIndex_iPhone=0;
     [buttonPrevious addTarget:self
                        action:@selector(loadPrevCardDetails:)
              forControlEvents:UIControlEventTouchUpInside];
-
+    
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         [buttonPrevious setImage:[UIImage imageNamed:@"prev_btn.png"] forState:UIControlStateNormal];
     } else {
@@ -54,20 +54,20 @@ NSInteger todayOmerIndex_iPhone=0;
     buttonPrevious.frame = CGRectMake(40.0, 7.0, 30.0, 30.0);
     buttonPrevious.contentMode=UIViewContentModeScaleAspectFit;
     buttonPrevious.hidden = NO;
-
+    
     [self.customToolBarBottom addSubview: buttonPrevious];
     buttonNext = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonNext.tintColor = [UIColor blackColor];
     [buttonNext addTarget:self
                    action:@selector(loadNextCardDetails:)
          forControlEvents:UIControlEventTouchUpInside];
-
+    
     [buttonNext setImage:[UIImage imageNamed:@"right_arw.png"] forState:UIControlStateNormal];
     
     buttonNext.frame = CGRectMake(self.view.bounds.size.width - 40, 7.0, 30.0, 30.0);
     buttonNext.contentMode=UIViewContentModeScaleAspectFit;
     buttonNext.hidden = NO;
-
+    
     [self.customToolBarBottom addSubview: buttonNext];
     UIButton *leftButtonImg = [[UIButton alloc] initWithFrame:CGRectMake(5, 7, 50, 20)];
     [leftButtonImg setImage:[UIImage imageNamed:@"backNew_1.png"] forState:UIControlStateNormal];
@@ -108,15 +108,15 @@ NSInteger todayOmerIndex_iPhone=0;
     [aduioImg addTarget:self action:@selector(playAudioFile) forControlEvents:UIControlEventTouchUpInside];
     aduioImg.hidden = YES;
     searchImg = [[UIButton alloc] initWithFrame:CGRectMake(80, 8, 25, 25)];
-
+    
     [searchImg setImage:[UIImage imageNamed:@"zoom_btn.png"] forState:UIControlStateNormal];
     
     [searchImg addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
     searchImg.hidden = YES;
-
+    
     [flipCard setImage:[UIImage imageNamed:@"flip_front.png"] forState:UIControlStateNormal];
     [flipCard addTarget:self action:@selector(showCardBack:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     [topRightBarView addSubview:flipCard];
     [topRightBarView addSubview:aduioImg];
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:topRightBarView] autorelease];
@@ -229,18 +229,11 @@ NSInteger todayOmerIndex_iPhone=0;
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animatedm{
     [self updateCardDetails];
 } 
 
-- (void)showBarButtonItem
-{
+- (void)showBarButtonItem {
     UIImage* img = [UIImage imageNamed:@"backNew_1.png"];
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(5, 7, 50, 30);
@@ -254,8 +247,7 @@ NSInteger todayOmerIndex_iPhone=0;
     }
 }
 
-- (void)popView
-{
+- (void)popView {
     [self.navigationController popViewControllerAnimated:NO];
 }
 
@@ -376,6 +368,7 @@ NSInteger todayOmerIndex_iPhone=0;
     
     _scrlView.frame = rect;
     _scrlView.contentSize = CGSizeMake(rect.size.width * ([_arrayOfCards count]), rect.size.height);
+    
     _scrlView.scrollEnabled = YES;
     NSInteger index;
     NSInteger tempIndex=_selectedCardIndex;
@@ -390,12 +383,11 @@ NSInteger todayOmerIndex_iPhone=0;
     
     for (int i = 0; i < count; i++)
     {
-        index = tempIndex	+ i;
-        
-        //Card* card = [[_arrayOfCards objectAtIndex:index] getCardOfType: kCardTypeFront];
+        index = tempIndex + i;
+        //     Card* card = [[_arrayOfCards objectAtIndex:index] getCardOfType: kCardTypeFront];
         CGRect rect = [[UIScreen mainScreen] bounds];
         CustomWebView_iPhone* page = [[CustomWebView_iPhone alloc] initWithFrame:rect];
-//        page.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        //        page.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         Card* card = [[_arrayOfCards objectAtIndex:index] getCardOfType: kCardTypeFront];
         
         page.tag = 1000 + i;
@@ -430,17 +422,13 @@ NSInteger todayOmerIndex_iPhone=0;
     //scrollview
     [self updateCardDetails];
     
-    
     if (_totalCard >= 2 && _selectedCardIndex >= 1) {
         [self updateFlashCard];
-        CGRect rect = [[UIScreen mainScreen] bounds];
-        [_scrlView setContentOffset:CGPointMake(rect.size.width * _selectedCardIndex, 0) animated:YES];
         [self updateFlashDetails];
         
     } else if (_totalCard==1) {
         _nextButton.enabled=NO;
         buttonNext.enabled = NO;
-        
     }
 }
 
@@ -452,14 +440,12 @@ NSInteger todayOmerIndex_iPhone=0;
 }
 
 - (void)updateCardDetails
-{	
+{
     Card* card = [[_arrayOfCards objectAtIndex:_selectedCardIndex] getCardOfType: _cardType];
-    
     aduioImg.hidden = YES;
     _playAudioFileButton.hidden = YES;
     searchImg.hidden = YES;
     _searchButton.hidden = YES;
-    
     
     if(card.audioFile != nil)
     {
@@ -474,6 +460,7 @@ NSInteger todayOmerIndex_iPhone=0;
     }
     
     [self updateNavBar];
+    
 }
 
 
@@ -483,7 +470,7 @@ NSInteger todayOmerIndex_iPhone=0;
     CustomWebView_iPhone* webView = (CustomWebView_iPhone*)[_arrayOfpages objectAtIndex:tempIndex];
     CGRect rect = [[UIScreen mainScreen] bounds];
     webView.frame = CGRectMake(rect.size.width * index, 0, rect.size.width, rect.size.height);
-    webView.tag = 1000 + index;
+    //   webView.tag = 1000 + index;
     webView.backgroundColor=[UIColor redColor];
     //if (index != _selectedCardIndex){
     [webView loadClearBgHTMLString:[[_arrayOfCards objectAtIndex:index] getCardOfType: _cardType].cardTitle];
@@ -503,6 +490,7 @@ NSInteger todayOmerIndex_iPhone=0;
     (_selectedCardIndex > 0) ? [self updateFlashCardAtIndex:(_selectedCardIndex - 1)] : -99;
     (_selectedCardIndex < (_totalCard - 1)) ? [self updateFlashCardAtIndex:(_selectedCardIndex + 1)] : -99;
     [self updateFlashCardAtIndex:_selectedCardIndex];
+    
 }
 
 - (IBAction)showCardBack:(id)sender
@@ -660,6 +648,7 @@ NSInteger todayOmerIndex_iPhone=0;
         //[flipCard setImage:[UIImage imageNamed:@"exter-green.png"] forState:UIControlStateNormal];
         
     }
+    
 }
 - (void) updateFlashDetails
 {
@@ -669,6 +658,7 @@ NSInteger todayOmerIndex_iPhone=0;
         buttonNext.enabled = YES;
         _nextButton.enabled = YES;
         _prevButton.enabled = NO;
+        
     }
     else if(_selectedCardIndex >= _arrayOfCards.count - 1)
     {
@@ -737,9 +727,9 @@ NSInteger todayOmerIndex_iPhone=0;
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:nil];
     
-//    if ([AppDelegate_iPhone delegate].isVoiceNotesEnabled) {
-//        [actionSheet addButtonWithTitle:@"Voice Notes"];
-//    }
+    //    if ([AppDelegate_iPhone delegate].isVoiceNotesEnabled) {
+    //        [actionSheet addButtonWithTitle:@"Voice Notes"];
+    //    }
     
     if ([AppDelegate_iPhone delegate].isCommentsEnabled) {
         [actionSheet addButtonWithTitle:@"Text Notes"];
@@ -759,13 +749,13 @@ NSInteger todayOmerIndex_iPhone=0;
     NSString *title=[actionSheet buttonTitleAtIndex:buttonIndex];
     
     if ([title isEqualToString:@"Voice Notes"]) {
-//        // Load Voice Notes View
-//        VoiceNotesViewController_iPhone *detailViewController = [[VoiceNotesViewController_iPhone alloc] initWithNibName:@"VoiceNotesView_iPhone" bundle:nil];
-//        FlashCard* card=[_arrayOfCards objectAtIndex:_selectedCardIndex];
-//        [detailViewController setFlashCardId:[card cardID]];
-//        [detailViewController setParent:self];
-//        [self.navigationController presentModalViewController:detailViewController animated:YES];
-//        [detailViewController release];
+        //        // Load Voice Notes View
+        //        VoiceNotesViewController_iPhone *detailViewController = [[VoiceNotesViewController_iPhone alloc] initWithNibName:@"VoiceNotesView_iPhone" bundle:nil];
+        //        FlashCard* card=[_arrayOfCards objectAtIndex:_selectedCardIndex];
+        //        [detailViewController setFlashCardId:[card cardID]];
+        //        [detailViewController setParent:self];
+        //        [self.navigationController presentModalViewController:detailViewController animated:YES];
+        //        [detailViewController release];
         
     }
     
@@ -784,8 +774,10 @@ NSInteger todayOmerIndex_iPhone=0;
 }
 
 - (void)viewDidUnload {
+    
     [self setCustomToolBarBottom:nil];
     [super viewDidUnload];
+    
 }
 
 @end

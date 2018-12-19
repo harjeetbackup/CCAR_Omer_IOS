@@ -26,7 +26,7 @@
                                 </constraints>
                                 <state key="normal" image="check-box-empty.png"/>
                                 <connections>
-                                    <action selector="setAlertAtSunsetTapped:" destination="uIh-Mh-rIs" eventType="touchUpInside" id="f6v-YD-Vqj"/>
+                                    <action selector="setAlertAtSunsetTapped:" destination="uIh-Mh-rIs" eventType="touchUpInside" id="zh3-gG-5Zk"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert at Time :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhu-xh-dCA">
@@ -82,7 +82,7 @@
                                 </constraints>
                                 <state key="normal" image="check-box-empty.png"/>
                                 <connections>
-                                    <action selector="sendAlertSwitchButtonTapped:" destination="uIh-Mh-rIs" eventType="touchUpInside" id="Z0Z-yC-k75"/>
+                                    <action selector="sendAlertSwitchButtonTapped:" destination="uIh-Mh-rIs" eventType="touchUpInside" id="E4R-QO-9pI"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Check one of the boxes below to be reminded to count the Omer at sunset or a time of your choosing.&quot; " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1He-5o-MNK">
