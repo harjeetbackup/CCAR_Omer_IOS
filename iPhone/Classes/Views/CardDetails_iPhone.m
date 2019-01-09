@@ -36,9 +36,7 @@ UIButton *buttonNext;
 @synthesize basicCall;
 NSInteger todayOmerIndex_iPhone=0;
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    
     buttonPrevious = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonPrevious.tintColor = [UIColor blackColor];
     [buttonPrevious addTarget:self
@@ -125,7 +123,7 @@ NSInteger todayOmerIndex_iPhone=0;
     [self updateCardDetails];
     _prevButton.enabled = NO;
     buttonPrevious.enabled = NO;
-    //_selectedCardIndex = 0;
+    _selectedCardIndex = 0;
     _cardType = kCardTypeFront;
     [topRightBarView release];
     mWindow = (TapDetectingWindow *)[[UIApplication sharedApplication].windows objectAtIndex:0];
@@ -381,13 +379,13 @@ NSInteger todayOmerIndex_iPhone=0;
         tempIndex=_selectedCardIndex-2;
     }
     
+    CGFloat deviceWidth = rect.size.width;
     for (int i = 0; i < count; i++)
     {
         index = tempIndex + i;
-        //     Card* card = [[_arrayOfCards objectAtIndex:index] getCardOfType: kCardTypeFront];
-        CGRect rect = [[UIScreen mainScreen] bounds];
+        
+        rect.origin.x += index * deviceWidth;
         CustomWebView_iPhone* page = [[CustomWebView_iPhone alloc] initWithFrame:rect];
-        //        page.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         Card* card = [[_arrayOfCards objectAtIndex:index] getCardOfType: kCardTypeFront];
         
         page.tag = 1000 + i;
