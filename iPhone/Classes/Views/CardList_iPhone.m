@@ -398,7 +398,7 @@
 	CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
     detail.arrCards=arrCards;
     detail._selectedCardIndex = indexPath.row;
-    detail.basicCall=NO;
+    detail.basicCall = NO;
 	[self.navigationController pushViewController:detail animated:YES];
 	[detail release];
 }

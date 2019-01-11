@@ -123,7 +123,6 @@ NSInteger todayOmerIndex_iPhone=0;
     [self updateCardDetails];
     _prevButton.enabled = NO;
     buttonPrevious.enabled = NO;
-    _selectedCardIndex = 0;
     _cardType = kCardTypeFront;
     [topRightBarView release];
     mWindow = (TapDetectingWindow *)[[UIApplication sharedApplication].windows objectAtIndex:0];
@@ -176,8 +175,7 @@ NSInteger todayOmerIndex_iPhone=0;
     }
 }
 
-- (void)loadNextCardDetails:(id)sender
-{
+- (void)loadNextCardDetails:(id)sender {
     _isDragging = NO;
     
     if(_selectedCardIndex + 1 < [_arrayOfCards count])
@@ -315,39 +313,10 @@ NSInteger todayOmerIndex_iPhone=0;
     [player play];
 }
 
-- (IBAction)search
-{
+- (IBAction)search {
     SearchViewController_iPhone* searchView = [[SearchViewController_iPhone alloc] initWithNibName:@"SearchView_iPhone" bundle:nil];
     [self.navigationController pushViewController:searchView animated:YES];
     [searchView release];
-    /*Card* card = [[_arrayOfCards objectAtIndex: _selectedCardIndex] getCardOfType:_cardType];
-     NSString* videoFileName = card.vedioFile;
-     
-     if (videoFileName == nil)
-     return;
-     
-     // Setup the player
-     _moviePlayer = [[VideoGallaryViewController_iPhone alloc] init];
-     
-     videoFileName = [[NSBundle mainBundle] pathForResource:videoFileName ofType:nil inDirectory:nil];
-     
-     //NSLog(@"%@", videoFileName);
-     
-     if(videoFileName == nil)
-     {
-     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Associated file not found" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-     [alert show];
-     [alert release];
-     return;
-     }
-     
-     NSURL* url = [NSURL fileURLWithPath:videoFileName];
-     
-     _moviePlayer.movieURL = url;
-     
-     [_moviePlayer readyPlayer];
-     
-     [self presentModalViewController:_moviePlayer animated:YES];*/
 }
 
 - (void)loadArrayOfCards:(NSArray*)cards
@@ -355,13 +324,12 @@ NSInteger todayOmerIndex_iPhone=0;
     NSLog(@"%@",cards);
     _arrayOfCards = (NSMutableArray*)[cards retain];
     
-    if (_arrayOfpages == nil)
-    {
-        _arrayOfpages = [[NSMutableArray alloc] initWithCapacity:3];
+    if (_arrayOfpages == nil) {
+        _arrayOfpages = [[NSMutableArray alloc] init];
     }
     
     _totalCard = [_arrayOfCards count];
-    int count = (_arrayOfCards.count > 3) ? 3 : _arrayOfCards.count;
+    int count = _arrayOfCards.count;
     CGRect rect = [[UIScreen mainScreen] bounds];
     
     _scrlView.frame = rect;
@@ -369,24 +337,15 @@ NSInteger todayOmerIndex_iPhone=0;
     
     _scrlView.scrollEnabled = YES;
     NSInteger index;
-    NSInteger tempIndex=_selectedCardIndex;
-    
-    if (_selectedCardIndex >= 1 && _selectedCardIndex >= [_arrayOfCards count]-2) {
-        tempIndex=_selectedCardIndex-1;
-    }
-    
-    if (_totalCard > 2 && _selectedCardIndex > 1) {
-        tempIndex=_selectedCardIndex-2;
-    }
+    NSInteger tempIndex = _selectedCardIndex;
     
     CGFloat deviceWidth = rect.size.width;
-    for (int i = 0; i < count; i++)
-    {
+    for (int i = 0; i < count; i++) {
         index = tempIndex + i;
         
         rect.origin.x += index * deviceWidth;
         CustomWebView_iPhone* page = [[CustomWebView_iPhone alloc] initWithFrame:rect];
-        Card* card = [[_arrayOfCards objectAtIndex:index] getCardOfType: kCardTypeFront];
+        Card* card = [[_arrayOfCards objectAtIndex:i] getCardOfType: kCardTypeFront];
         
         page.tag = 1000 + i;
         [page loadClearBgHTMLString:card.cardTitle];
@@ -396,14 +355,11 @@ NSInteger todayOmerIndex_iPhone=0;
         if (_searchText!=nil && [_searchText length] > 0) {
             page.searchText=_searchText;
         }
-        if (i == 0)
-        {
+        if (i == 0){
             mWindow.viewToObserve = page;
         }
-        
         [page release];
     }
-    
     
     _scrlView.showsHorizontalScrollIndicator = NO;
     
@@ -411,15 +367,14 @@ NSInteger todayOmerIndex_iPhone=0;
     _prevButton.enabled = NO;
     buttonPrevious.enabled = NO;
     buttonNext.enabled = YES;
-    if (basicCall == YES) {
-        todayOmerIndex_iPhone=_selectedCardIndex;
-    }
-    else
+    todayOmerIndex_iPhone=_selectedCardIndex;
+
+    if (basicCall == NO) {
         self.title = [NSString stringWithFormat:@"%d of %d", _selectedCardIndex + 1, [_arrayOfCards count]];
+    }
     
     //scrollview
     [self updateCardDetails];
-    
     if (_totalCard >= 2 && _selectedCardIndex >= 1) {
         [self updateFlashCard];
         [self updateFlashDetails];
@@ -428,10 +383,13 @@ NSInteger todayOmerIndex_iPhone=0;
         _nextButton.enabled=NO;
         buttonNext.enabled = NO;
     }
+    
+    [self updateFlashCard];
+    [_scrlView setContentOffset:CGPointMake(rect.size.width * _selectedCardIndex, 0) animated:YES];
+    [self updateFlashDetails];
 }
 
-- (void)userDidTapWebView:(id)tapPoint
-{
+- (void)userDidTapWebView:(id)tapPoint {
     if ([[[Utils getValueForVar:kFlipOnTap] lowercaseString] isEqualToString:@"yes"]) {
         //[self showCardBack];
     }
@@ -458,26 +416,19 @@ NSInteger todayOmerIndex_iPhone=0;
     }
     
     [self updateNavBar];
-    
 }
 
 
--(void) updateFlashCardAtIndex:(int)index
-{
-    NSInteger tempIndex=(index % 3);
-    CustomWebView_iPhone* webView = (CustomWebView_iPhone*)[_arrayOfpages objectAtIndex:tempIndex];
+-(void) updateFlashCardAtIndex:(int)index {
+    CustomWebView_iPhone* webView = (CustomWebView_iPhone*)[_arrayOfpages objectAtIndex:index];
     CGRect rect = [[UIScreen mainScreen] bounds];
     webView.frame = CGRectMake(rect.size.width * index, 0, rect.size.width, rect.size.height);
-    //   webView.tag = 1000 + index;
     webView.backgroundColor=[UIColor redColor];
-    //if (index != _selectedCardIndex){
     [webView loadClearBgHTMLString:[[_arrayOfCards objectAtIndex:index] getCardOfType: _cardType].cardTitle];
     mWindow.viewToObserve = webView;
     if (_searchText!=nil && [_searchText length] > 0) {
         webView.searchText=_searchText;
     }
-    
-    //}
 }
 
 
@@ -681,8 +632,7 @@ NSInteger todayOmerIndex_iPhone=0;
         
     }
     else
-        self.title = [NSString stringWithFormat:@"%d of %lu", _selectedCardIndex + 1, (unsigned long)[_arrayOfCards count]];
-    
+        self.title = [NSString stringWithFormat:@"%ld of %lu", _selectedCardIndex + 1, (unsigned long)[_arrayOfCards count]];
 }
 
 
@@ -767,15 +717,11 @@ NSInteger todayOmerIndex_iPhone=0;
         [detailViewController release];
         
     }
-    
-    //[title release];
 }
 
 - (void)viewDidUnload {
-    
     [self setCustomToolBarBottom:nil];
     [super viewDidUnload];
-    
 }
 
 @end
