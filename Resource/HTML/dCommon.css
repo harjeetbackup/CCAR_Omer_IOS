@@ -72,7 +72,7 @@ table.dContents{
 }
 table.dContents td{
 	padding:0 5%;
-	text-align:justify;
+	text-align: justify;
 }
 
 img.dLangText{
@@ -91,6 +91,29 @@ div.dLangText{
 
 @media only screen and (min-device-width:320px) and (max-device-width:480px){
 body{
-    margin:18% 5%;padding:0; 
+    margin:18% 5%;padding:0;
 }
 }
+#startdate {
+    font-family:"RobotoRegular";
+    src:url("Roboto-Regular.ttf");
+    border: 0 !important;
+    background: none !important;
+    font-size: 50px;
+    text-align: center;
+    margin:0% 0%;padding:0;
+    width: 425px;
+}
+#enddate {
+    font-family:"RobotoRegular";
+    src:url("Roboto-Regular.ttf");
+    border: 0 !important;
+    background: none !important; font-size: 50px;
+    margin:0% 0%;padding:0;
+    text-align: center;
+     width: 425px;
+}
+#omer-text {
+    text-align: justify;
+}
+

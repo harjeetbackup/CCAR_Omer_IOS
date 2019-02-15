@@ -146,20 +146,38 @@ NSArray *allDates;
                 self.startDateDay = [components day];
                 self.startDateMonth = [components month];
                 self.startDateYear = [components year];
+                
             }
             if (res.lastObject[@"date"] != NULL) {
                 self.endDate = res.lastObject[@"date"];
                 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                 [formatter setDateFormat:@"yyyy-MM-dd"];
                 NSDate *now = [formatter dateFromString:self.endDate];
+                
                 NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:now];
                 self.endDateDay = [components day];
                 self.endDateMonth = [components month];
                 self.endDateYear = [components year];
             }
+            
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+            NSDate *date  = [dateFormatter dateFromString:self.startDate];
+            NSDate *date1  = [dateFormatter dateFromString:self.endDate];
+            [dateFormatter setDateFormat:@"MMMM dd, yyyy"];
+            NSString *omerStartDate = [dateFormatter stringFromDate:date];
+            NSString *omerEndDate = [dateFormatter stringFromDate:date1];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:omerStartDate forKey:@"startDate"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:omerEndDate forKey:@"endDate"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
         }
     }];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -287,7 +305,6 @@ NSArray *allDates;
                 break;
             case 1:
             {
-                
                 cell = [DeckCell_iPhone creatCellViewWithFlashCardDeck:_cardDecks.todayReadingDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kBookmarkedCardsTextColor]]];
                 cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_today-reading.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
                 break;
@@ -481,6 +498,8 @@ NSArray *allDates;
         if ([dateInLocalTimezone compare:startSunsetTime] ==  NSOrderedAscending)
         {
             ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kcontentTypeBeforeCard];
+            
+
             navBar=NO;
             [model setParentCtrl:self];
             [self.navigationController pushViewController:model animated:YES];

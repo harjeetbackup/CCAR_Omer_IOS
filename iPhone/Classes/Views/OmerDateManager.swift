@@ -22,6 +22,7 @@ import Alamofire
     public var month : Int?
     public var year : Int?
     
+    
     public func setWith(dictionary: NSDictionary) {
         day = dictionary["day"] as? Int
         month = dictionary["month"] as? Int

@@ -44,6 +44,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tblCardNames.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
 
@@ -54,10 +55,6 @@
     }
     else
     self.tblCardNames.backgroundColor=[UIColor grayColor];
-    
-   /* self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
-    self.navigationController.navigationBar.alpha = 0.7f;
-    self.navigationController.navigationBar.translucent = YES;*/
     CGSize imageSize = CGSizeMake(320, 44);
     UIColor *fillColor = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.3];
     UIGraphicsBeginImageContextWithOptions(imageSize, YES, 0);
@@ -69,17 +66,11 @@
     UIGraphicsEndImageContext();
     [self.navigationController.navigationBar setBackgroundImage:navImage
                                                   forBarMetrics:UIBarMetricsDefault];
-  // [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                             //     forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
     self.navigationController.navigationBar.shadowImage = [UIImage new];////UIImageNamed:@"transparent.png"
     self.navigationController.navigationBar.translucent = YES;
-   
-    //self.navigationController.view.backgroundColor = [UIColor clearColor];
-    
-   // UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)] autorelease];
-   // view.backgroundColor = [UIColor whiteColor];
     
 }
+
 -(void)viewDidAppear:(BOOL)animated
 
 {
@@ -172,7 +163,7 @@
 	[lblDeckName setTextAlignment:UITextAlignmentCenter];
 	[lblDeckName setBackgroundColor:[UIColor clearColor]];
 	[lblDeckName setTextColor:[UIColor whiteColor]];
-	[lblDeckName setFont:[UIFont RobotoBoldFont:18]];
+	[lblDeckName setFont:[UIFont systemFontOfSize:20]];
     
 	lblDeckName.text = @"All Cards";
 	self.navigationItem.titleView = lblDeckName;
@@ -207,7 +198,7 @@
     [lblDeckName setTextAlignment:UITextAlignmentCenter];
     [lblDeckName setBackgroundColor:[UIColor clearColor]];
     [lblDeckName setTextColor:[UIColor whiteColor]];
-    lblDeckName.font = [UIFont systemFontOfSize:18];
+    lblDeckName.font = [UIFont systemFontOfSize:20];
     
     lblDeckName.text = @"Today's Reading";
     self.navigationItem.titleView = lblDeckName;
@@ -242,7 +233,7 @@
 	[lblDeckName setTextAlignment:UITextAlignmentCenter];
 	[lblDeckName setBackgroundColor:[UIColor clearColor]];
 	[lblDeckName setTextColor:[UIColor whiteColor]];
-	[lblDeckName setFont:[UIFont RobotoBoldFont:18]];
+	[lblDeckName setFont:[UIFont systemFontOfSize:20]];
    
     
 	lblDeckName.text = @"Bookmarks & Notes";

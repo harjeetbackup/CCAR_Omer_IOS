@@ -73,10 +73,12 @@
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.hidden = NO;
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor whiteColor],
+       NSFontAttributeName:[UIFont systemFontOfSize:20]}];
     self.navigationController.navigationBar.barTintColor = [UIColor clearColor];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = YES;
-   
     if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
     {
        UIImage *image = [UIImage imageNamed:@"background.png"];
@@ -163,30 +165,26 @@
 			break;
             
         case kcontentTypeBeforeCard:
-           // _navItem.title = @"Before Omer";
-            self.title = @"Before Omer";
-            fileName = [[NSBundle mainBundle] pathForResource:@"beforecard.html" ofType:nil inDirectory:nil];
-            request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:fileName]];
-            [_webView loadRequest:request];
-            _webView. scalesPageToFit=YES;
-            //[_webView loadHTMLString:[[AppDelegate_iPhone getDBAccess] GetHelpString] baseURL:nil];
-            _tableView.hidden = YES;
-            _webView.hidden = NO;
-            break;
-            
         case kcontentTypeAfterCard:
-            //_navItem.title = @"After Omer";
-            self.title = @"After Omer";
+            self.title = @"Not Omer";
+            [_webView loadHTMLString:[AfterAndBeforOmerHtmlString htmlString] baseURL:nil];
+            _webView. scalesPageToFit=YES;
             fileName = [[NSBundle mainBundle] pathForResource:@"aftercard.html" ofType:nil inDirectory:nil];
             request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:fileName]];
             [_webView loadRequest:request];
-            _webView. scalesPageToFit=YES;
-            //[_webView loadHTMLString:[[AppDelegate_iPhone getDBAccess] GetHelpString] baseURL:nil];
+
+          //  [_webView stringByEvaluatingJavaScriptFromString:@"setOmerStartAndEndDate()"];
+            
+//            NSString *stringOne = @"first_parameter";
+//            NSString *javascriptString = [NSString stringWithFormat:@"setOmerStartAndEndDate('%@')", stringOne];
+//            [_webView stringByEvaluatingJavaScriptFromString:javascriptString];
+//            NSString *myParameter = @"myParameter";
+//            [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"setOmerStartAndEndDate('%@')", myParameter]];
+            
             _tableView.hidden = YES;
             _webView.hidden = NO;
             break;
             
-
 		case kContentTypeHelp:
 			//_navItem.title = @"Help";
             self.title = @"Help";
@@ -213,6 +211,18 @@
 			break;
 	}	
 	
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSString *savedStartDateValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"startDate"];
+    _omerStartDate = savedStartDateValue;
+    NSString *savedEndDateValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"endDate"];
+    _omerEndDate = savedEndDateValue;
+    
+    [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"setOmerStartAndEndDate('%@','%@')", _omerStartDate,_omerEndDate]];
 }
 
 - (IBAction) done:(id) sender

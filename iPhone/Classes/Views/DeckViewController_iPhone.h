@@ -48,12 +48,16 @@
 
 @property (retain, nonatomic) NSString * startDate;
 @property (retain, nonatomic) NSString * endDate ;
+@property (retain, nonatomic) NSString * omerStartDate;
+@property (retain, nonatomic) NSString * omerEndDate ;
 @property int startDateDay;
 @property int startDateMonth;
 @property int startDateYear;
 @property int endDateDay;
 @property int endDateMonth;
 @property int endDateYear;
+
+
 
 - (IBAction)setAlarm;
 - (IBAction)displaySettings;

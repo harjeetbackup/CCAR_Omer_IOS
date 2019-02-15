@@ -146,4 +146,3 @@ typedef enum tagResourceType
 	kResourceTypeImage
 	
 }ResourceType;
-

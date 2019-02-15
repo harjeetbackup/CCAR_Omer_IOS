@@ -27,6 +27,7 @@
 		18663B3721C4143F009CF54B /* alaramBell2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18663B3421C4143E009CF54B /* alaramBell2x.png */; };
 		18663B3821C4143F009CF54B /* alaramBell3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18663B3521C4143E009CF54B /* alaramBell3x.png */; };
 		18663B3921C4143F009CF54B /* alaramBell1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18663B3621C4143E009CF54B /* alaramBell1x.png */; };
+		1866E8362216837D00FDEC22 /* AfterAndBeforOmerHtmlString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866E8352216837D00FDEC22 /* AfterAndBeforOmerHtmlString.swift */; };
 		1877CC942182F52C0028DAA9 /* intoduction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877CC922182F52B0028DAA9 /* intoduction@2x.png */; };
 		1877CC952182F52C0028DAA9 /* intoduction.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877CC932182F52C0028DAA9 /* intoduction.png */; };
 		18C76AB321898BA20086BA99 /* allItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C76AB221898BA10086BA99 /* allItems.swift */; };
@@ -462,6 +463,7 @@
 		18663B3421C4143E009CF54B /* alaramBell2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alaramBell2x.png; sourceTree = "<group>"; };
 		18663B3521C4143E009CF54B /* alaramBell3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alaramBell3x.png; sourceTree = "<group>"; };
 		18663B3621C4143E009CF54B /* alaramBell1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alaramBell1x.png; sourceTree = "<group>"; };
+		1866E8352216837D00FDEC22 /* AfterAndBeforOmerHtmlString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterAndBeforOmerHtmlString.swift; sourceTree = "<group>"; };
 		186D4CD82170C21A0074640B /* Omer_Flash_Card-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Omer_Flash_Card-Bridging-Header.h"; sourceTree = "<group>"; };
 		1877CC922182F52B0028DAA9 /* intoduction@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intoduction@2x.png"; sourceTree = "<group>"; };
 		1877CC932182F52C0028DAA9 /* intoduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intoduction.png; sourceTree = "<group>"; };
@@ -1374,6 +1376,7 @@
 				4EC80F781423B88B00BFCC4D /* VoiceRecordingViewController_iPhone.h */,
 				4EC80F791423B88B00BFCC4D /* VoiceRecordingViewController_iPhone.m */,
 				186D4CD82170C21A0074640B /* Omer_Flash_Card-Bridging-Header.h */,
+				1866E8352216837D00FDEC22 /* AfterAndBeforOmerHtmlString.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2143,6 +2146,7 @@
 				4EC80F7D1423B88B00BFCC4D /* DBAccess.m in Sources */,
 				4EC80F7E1423B88B00BFCC4D /* FlashCard.m in Sources */,
 				4EC80F7F1423B88B00BFCC4D /* VoiceNote.m in Sources */,
+				1866E8362216837D00FDEC22 /* AfterAndBeforOmerHtmlString.swift in Sources */,
 				4EC80F801423B88B00BFCC4D /* CardDetails_iPhone.m in Sources */,
 				4EC80F811423B88B00BFCC4D /* CommentsViewController_iPhone.m in Sources */,
 				4EC80F821423B88B00BFCC4D /* CustomWebView_iPhone.m in Sources */,

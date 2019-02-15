@@ -128,7 +128,7 @@
         
         newStr = [newStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
-        label = [newStr Answer_newSizedCellLabelWithSystemFontOfSize:18];
+        label = [newStr Answer_newSizedCellLabelWithSystemFontOfSize:20];
         int deckProf = (int) deck.proficiency;
         
         label.textColor=[UIColor whiteColor];
@@ -137,10 +137,10 @@
         if([deck.deckTitle isEqualToString:@"All Cards"])
         {
             UIImageView* readImgView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"read_icon"]] autorelease];
-            readImgView.frame = CGRectMake(200, 10, 30, 30);
-            UILabel* readLabel = [[UILabel alloc] initWithFrame:CGRectMake(230, 8, 130, 30)];
+            readImgView.frame = CGRectMake(200, 12, 30, 30);
+            UILabel* readLabel = [[UILabel alloc] initWithFrame:CGRectMake(230, 12, 130, 30)];
             readLabel.text = [NSString stringWithFormat:@"Read: %d%@", deckProf, @"%"];
-            readLabel.font =[UIFont RobotoRegularFont:18.0f];
+            readLabel.font =[UIFont RobotoRegularFont:20.0f];
             readLabel.textColor=[UIColor whiteColor];
             [cell.contentView addSubview:readImgView];
             [cell.contentView addSubview:readLabel];

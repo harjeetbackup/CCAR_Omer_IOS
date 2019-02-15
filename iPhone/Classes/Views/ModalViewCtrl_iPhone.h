@@ -10,7 +10,7 @@
 
 @class DeckViewController_iPhone;
 
-@interface ModalViewCtrl_iPhone : UIViewController 
+@interface ModalViewCtrl_iPhone : UIViewController <UIWebViewDelegate>
 {
 	IBOutlet UIWebView*			_webView;
 	IBOutlet UITableView*		_tableView;
@@ -19,11 +19,15 @@
 	DeckViewController_iPhone*	_parentCtrl;
 	NSMutableArray*				_settingButtons;
 	Boolean						_isRandomOption;
+    
 }
 @property (retain, nonatomic) IBOutlet UINavigationBar *myNavBar;
 @property (retain, nonatomic) IBOutlet UIButton *backButton;
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *myBackButton;
 @property (retain, nonatomic) IBOutlet UIImageView *imageView;
+
+@property (nonatomic,retain) NSString* omerStartDate;
+@property (nonatomic,retain) NSString* omerEndDate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil contentType:(ContentType) type;
 
