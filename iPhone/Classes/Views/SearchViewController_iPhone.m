@@ -97,7 +97,6 @@
 	[leftView release];
 	DBAccess* db=[AppDelegate_iPhone getDBAccess];
 	cards=[db searchCardsByName:@""];
-	
 }
 
 

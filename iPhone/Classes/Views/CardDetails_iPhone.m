@@ -227,7 +227,7 @@ NSInteger todayOmerIndex_iPhone=0;
 
 - (void)viewWillDisappear:(BOOL)animatedm{
     [self updateCardDetails];
-} 
+}
 
 - (void)showBarButtonItem {
     UIImage* img = [UIImage imageNamed:@"backNew_1.png"];
@@ -645,7 +645,7 @@ NSInteger todayOmerIndex_iPhone=0;
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate 
 {
     _isDragging = YES;
-    
+
     if([scrollView isKindOfClass:[UITableView class]] == NO)
     {
         if (_isDragging)
@@ -653,7 +653,6 @@ NSInteger todayOmerIndex_iPhone=0;
             [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(slidingAction:) userInfo:scrollView repeats:NO];
         }
     }
-    
 }
 
 - (void) slidingAction:(NSTimer*)timer
@@ -661,6 +660,7 @@ NSInteger todayOmerIndex_iPhone=0;
     UIScrollView* scrollView = [timer userInfo];
     CGRect rect = [[UIScreen mainScreen] bounds];
     _selectedCardIndex = scrollView.contentOffset.x / rect.size.width;
+    scrollView.contentSize = CGSizeMake(scrollView.contentSize.width,scrollView.frame.size.height);
     _cardType = kCardTypeFront;
     [self updateFlashCard];
     [self updateFlashDetails];
