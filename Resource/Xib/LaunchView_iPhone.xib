@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,7 +26,7 @@
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" backgroundImage="Launching_568h.png">
+                    <state key="normal">
                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -36,23 +37,42 @@
                         <action selector="openHomeView" destination="-1" eventType="touchUpInside" id="5"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="Omer-background" translatesAutoresizingMaskIntoConstraints="NO" id="RUr-Tz-1NU">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Omer-cover-text" translatesAutoresizingMaskIntoConstraints="NO" id="SjU-FL-90P">
+                    <rect key="frame" x="25" y="171" width="325" height="325"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="325" id="as8-SO-ppl"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="SjU-FL-90P" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="0FZ-BL-aaB"/>
                 <constraint firstAttribute="bottom" secondItem="4" secondAttribute="bottom" id="0Qg-Bg-Mcc"/>
                 <constraint firstAttribute="bottom" secondItem="4" secondAttribute="bottom" id="6dt-an-Oqd"/>
                 <constraint firstAttribute="trailing" secondItem="4" secondAttribute="trailing" id="HcM-na-OoM"/>
+                <constraint firstItem="RUr-Tz-1NU" firstAttribute="bottom" secondItem="1" secondAttribute="bottom" id="KZe-bH-WO0"/>
+                <constraint firstAttribute="trailing" secondItem="SjU-FL-90P" secondAttribute="trailing" constant="25" id="MmS-nN-Wwt"/>
+                <constraint firstItem="RUr-Tz-1NU" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="NmG-jc-Iwc"/>
                 <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="QPk-1y-pLY"/>
                 <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" id="Sq9-Uj-aos"/>
+                <constraint firstItem="RUr-Tz-1NU" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="VDA-SX-IPE"/>
+                <constraint firstItem="SjU-FL-90P" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="gIX-xr-Wzm"/>
                 <constraint firstAttribute="trailing" secondItem="4" secondAttribute="trailing" id="l5b-Rb-Vwd"/>
+                <constraint firstItem="RUr-Tz-1NU" firstAttribute="top" secondItem="1" secondAttribute="top" id="ovc-Aa-eMO"/>
+                <constraint firstItem="SjU-FL-90P" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="25" id="pB1-H1-2wA"/>
                 <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="q2G-Zl-Z2M"/>
                 <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" id="x8g-kY-qnJ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <viewLayoutGuide key="safeArea" id="bHR-Jm-HTT"/>
             <point key="canvasLocation" x="603.20000000000005" y="349.92503748125938"/>
         </view>
     </objects>
     <resources>
-        <image name="Launching_568h.png" width="640" height="1136"/>
+        <image name="Omer-background" width="1321" height="1628"/>
+        <image name="Omer-cover-text" width="660" height="814"/>
     </resources>
 </document>

@@ -87,6 +87,7 @@
 
 - (void)loadHomeScreen
 {
+    
     _imgButton.hidden = YES;
     FlashCardDeckList* deckList = [[FlashCardDeckList alloc] init];
     DeckViewController_iPhone* controller = [[DeckViewController_iPhone alloc] initWithNibName:@"DeckViewController_iPhone" bundle:nil];
@@ -98,9 +99,7 @@
     [controller release];
 }
 
-- (IBAction)openHomeView
-{
-    
+- (void)viewDidAppear:(BOOL)animated {
     if([[[Utils getValueForVar:kAudioOnTapToStart] lowercaseString] isEqualToString:@"yes"])
     {
         NSError* err = nil;
@@ -117,6 +116,12 @@
     [indicator startAnimating];
     [_imgButton addSubview:indicator];
     [self loadHomeScreen];
+}
+
+
+- (IBAction)openHomeView
+{
+   
 }
 
 @end

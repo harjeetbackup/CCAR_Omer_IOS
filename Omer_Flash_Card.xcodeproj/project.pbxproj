@@ -18,6 +18,7 @@
 		1857ED29218836300041F28E /* check-box-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 1857ED252188362D0041F28E /* check-box-empty.png */; };
 		1857ED2A218836300041F28E /* check-box-filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1857ED262188362E0041F28E /* check-box-filled@2x.png */; };
 		1857ED2B218836300041F28E /* check-box-empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1857ED272188362F0041F28E /* check-box-empty@2x.png */; };
+		185D461F222522910033E0EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185D461E222522910033E0EB /* LaunchScreen.storyboard */; };
 		185D8CD6217DC36F00D1D655 /* OmerDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D8CD5217DC36F00D1D655 /* OmerDateManager.swift */; };
 		185D8CD8217DE87700D1D655 /* Sever + OmerDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D8CD7217DE87700D1D655 /* Sever + OmerDays.swift */; };
 		186490C22175A6FF00317E83 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186490C12175A6FF00317E83 /* Server.swift */; };
@@ -454,6 +455,7 @@
 		1857ED252188362D0041F28E /* check-box-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-empty.png"; sourceTree = "<group>"; };
 		1857ED262188362E0041F28E /* check-box-filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-filled@2x.png"; sourceTree = "<group>"; };
 		1857ED272188362F0041F28E /* check-box-empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-empty@2x.png"; sourceTree = "<group>"; };
+		185D461E222522910033E0EB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185D8CD5217DC36F00D1D655 /* OmerDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmerDateManager.swift; sourceTree = "<group>"; };
 		185D8CD7217DE87700D1D655 /* Sever + OmerDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sever + OmerDays.swift"; sourceTree = "<group>"; };
 		186490C12175A6FF00317E83 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
@@ -1288,6 +1290,7 @@
 				4EC80D751423B86600BFCC4D /* VoiceNotesView_iPhone.xib */,
 				4EC80D761423B86600BFCC4D /* VoiceRecordingView_iPhone.xib */,
 				E2E5C3F72137B4F600ECC1AC /* Main.storyboard */,
+				185D461E222522910033E0EB /* LaunchScreen.storyboard */,
 			);
 			name = Xib;
 			path = ../Resource/Xib;
@@ -1866,6 +1869,7 @@
 				4B7EFD5B14D7739100CE5527 /* all-cards.png in Resources */,
 				C328D09A1C201AF1005A3B24 /* Roboto-MediumItalic.ttf in Resources */,
 				C3C54C591C50A34A0035D7C0 /* Help_Information.png in Resources */,
+				185D461F222522910033E0EB /* LaunchScreen.storyboard in Resources */,
 				C3F11A081C21980B002092EE /* 11A.html in Resources */,
 				4B7EFD5C14D7739100CE5527 /* arrow.png in Resources */,
 				C3F11A791C21980B002092EE /* PHOTO-week-5-back.jpg in Resources */,
