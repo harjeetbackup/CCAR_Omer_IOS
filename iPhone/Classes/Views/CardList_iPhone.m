@@ -159,7 +159,7 @@
     backgroundImageName=@"";
 	DBAccess* db=[AppDelegate_iPhone getDBAccess];
 	
-	lblDeckName = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, 200, 30)];
+	lblDeckName = [[UILabel alloc] initWithFrame:CGRectMake(20, 100, 200, 30)];
 	[lblDeckName setTextAlignment:UITextAlignmentCenter];
 	[lblDeckName setBackgroundColor:[UIColor clearColor]];
 	[lblDeckName setTextColor:[UIColor whiteColor]];
@@ -328,10 +328,10 @@
     }
     NSString* newStr=[self stringByDecodingHTMLEntitiesInString:cellValue];
     
-    UILabel* label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 80, 30)];
-    UILabel* label2 = [[UILabel alloc] initWithFrame:CGRectMake(150, 10, 150, 30)];
-    label1.font=[UIFont RobotoBoldFont:18.0f];
-    label2.font=[UIFont RobotoRegularFont:15.0f];
+    UILabel* label1 = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 80, 30)];
+    UILabel* label2 = [[UILabel alloc] initWithFrame:CGRectMake(220, 10, 150, 30)];
+    label1.font=[UIFont RobotoBoldFont:20.0f];
+    label2.font=[UIFont RobotoRegularFont:18.0f];
     newStr = [newStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSArray* cellData = [newStr componentsSeparatedByString: @" - "];
     // NSString* newStr=[self stringByDecodingHTMLEntitiesInString:str];

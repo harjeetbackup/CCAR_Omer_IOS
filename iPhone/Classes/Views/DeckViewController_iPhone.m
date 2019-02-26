@@ -68,7 +68,7 @@ NSArray *allDates;
         // iOS 6
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     }
-    //[_tableView setBackgroundColor:[UIColor clearColor]];
+    [_tableView setBackgroundColor:[UIColor blackColor]];
     _tableView.contentInset = UIEdgeInsetsMake(5.0, 0.0, 5.0, 0.0);
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         //code here

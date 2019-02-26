@@ -172,15 +172,6 @@
             fileName = [[NSBundle mainBundle] pathForResource:@"aftercard.html" ofType:nil inDirectory:nil];
             request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:fileName]];
             [_webView loadRequest:request];
-
-          //  [_webView stringByEvaluatingJavaScriptFromString:@"setOmerStartAndEndDate()"];
-            
-//            NSString *stringOne = @"first_parameter";
-//            NSString *javascriptString = [NSString stringWithFormat:@"setOmerStartAndEndDate('%@')", stringOne];
-//            [_webView stringByEvaluatingJavaScriptFromString:javascriptString];
-//            NSString *myParameter = @"myParameter";
-//            [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"setOmerStartAndEndDate('%@')", myParameter]];
-            
             _tableView.hidden = YES;
             _webView.hidden = NO;
             break;

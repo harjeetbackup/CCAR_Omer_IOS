@@ -49,6 +49,8 @@ NSInteger todayOmerIndex_iPhone=0;
         [buttonPrevious setImage:[UIImage imageNamed:@"left_arw.png"] forState:UIControlStateNormal];
     }
     
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    
     buttonPrevious.frame = CGRectMake(40.0, 7.0, 30.0, 30.0);
     buttonPrevious.contentMode=UIViewContentModeScaleAspectFit;
     buttonPrevious.hidden = NO;
@@ -127,7 +129,6 @@ NSInteger todayOmerIndex_iPhone=0;
     [topRightBarView release];
     mWindow = (TapDetectingWindow *)[[UIApplication sharedApplication].windows objectAtIndex:0];
     mWindow.controllerThatObserves = self;
-    [self loadArrayOfCards:arrCards];
     
     if(basicCall)
     {
@@ -169,7 +170,7 @@ NSInteger todayOmerIndex_iPhone=0;
         _cardType = kCardTypeFront;
         
         [self updateFlashCard];
-        CGRect rect = [[UIScreen mainScreen] bounds];
+        CGRect rect = self.view.frame;
         [_scrlView setContentOffset:CGPointMake(rect.size.width  * _selectedCardIndex, 0) animated:YES];
         [self updateFlashDetails];
     }
@@ -185,7 +186,7 @@ NSInteger todayOmerIndex_iPhone=0;
         _cardType = kCardTypeFront;
         
         [self updateFlashCard];
-        CGRect rect = [[UIScreen mainScreen] bounds];
+        CGRect rect = self.view.frame;
         [_scrlView setContentOffset:CGPointMake(rect.size.width * _selectedCardIndex, 0) animated:YES];
         [self updateFlashDetails];
     }
@@ -223,6 +224,11 @@ NSInteger todayOmerIndex_iPhone=0;
             [controller release];
         }
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self loadArrayOfCards:arrCards];
 }
 
 - (void)viewWillDisappear:(BOOL)animatedm{
@@ -330,27 +336,30 @@ NSInteger todayOmerIndex_iPhone=0;
     
     _totalCard = [_arrayOfCards count];
     int count = _arrayOfCards.count;
-    CGRect rect = [[UIScreen mainScreen] bounds];
+    CGRect rect = self.view.frame;
     
     _scrlView.frame = rect;
     _scrlView.contentSize = CGSizeMake(rect.size.width * ([_arrayOfCards count]), rect.size.height);
-    
+    _scrlView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
     _scrlView.scrollEnabled = YES;
     NSInteger index;
     NSInteger tempIndex = _selectedCardIndex;
-    
     CGFloat deviceWidth = rect.size.width;
+
     for (int i = 0; i < count; i++) {
         index = tempIndex + i;
         
         rect.origin.x += index * deviceWidth;
         CustomWebView_iPhone* page = [[CustomWebView_iPhone alloc] initWithFrame:rect];
         Card* card = [[_arrayOfCards objectAtIndex:i] getCardOfType: kCardTypeFront];
-        
+
         page.tag = 1000 + i;
         [page loadClearBgHTMLString:card.cardTitle];
         [_scrlView addSubview:page];
         [_arrayOfpages addObject:page];
+        page.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
         
         if (_searchText!=nil && [_searchText length] > 0) {
             page.searchText=_searchText;
@@ -421,16 +430,15 @@ NSInteger todayOmerIndex_iPhone=0;
 
 -(void) updateFlashCardAtIndex:(int)index {
     CustomWebView_iPhone* webView = (CustomWebView_iPhone*)[_arrayOfpages objectAtIndex:index];
-    CGRect rect = [[UIScreen mainScreen] bounds];
-    webView.frame = CGRectMake(rect.size.width * index, 0, rect.size.width, rect.size.height);
-    webView.backgroundColor=[UIColor redColor];
+    CGRect rect = webView.frame;
+    rect.origin.x = rect.size.width * index;
+    webView.frame = rect;
     [webView loadClearBgHTMLString:[[_arrayOfCards objectAtIndex:index] getCardOfType: _cardType].cardTitle];
     mWindow.viewToObserve = webView;
     if (_searchText!=nil && [_searchText length] > 0) {
         webView.searchText=_searchText;
     }
 }
-
 
 - (void) updateFlashCard
 {
@@ -454,7 +462,7 @@ NSInteger todayOmerIndex_iPhone=0;
     
     [UIView setAnimationTransition:(UIViewAnimationTransitionFlipFromLeft)
                            forView:_scrlView cache:NO];
-    CGRect rect = [[UIScreen mainScreen] bounds];
+    CGRect rect = self.view.frame;
     int tagVal = 1000 + _scrlView.contentOffset.x / rect.size.width;
     CustomWebView_iPhone* webView = (CustomWebView_iPhone*)[_scrlView viewWithTag:tagVal];
     [webView loadClearBgHTMLString:[[_arrayOfCards objectAtIndex:_selectedCardIndex] getCardOfType: _cardType].cardTitle];
@@ -644,23 +652,8 @@ NSInteger todayOmerIndex_iPhone=0;
 /// Comment to remove swipe feature from the application
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate 
 {
-    _isDragging = YES;
-
-    if([scrollView isKindOfClass:[UITableView class]] == NO)
-    {
-        if (_isDragging)
-        {
-            [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(slidingAction:) userInfo:scrollView repeats:NO];
-        }
-    }
-}
-
-- (void) slidingAction:(NSTimer*)timer
-{
-    UIScrollView* scrollView = [timer userInfo];
-    CGRect rect = [[UIScreen mainScreen] bounds];
+    CGRect rect = self.view.frame;
     _selectedCardIndex = scrollView.contentOffset.x / rect.size.width;
-    scrollView.contentSize = CGSizeMake(scrollView.contentSize.width,scrollView.frame.size.height);
     _cardType = kCardTypeFront;
     [self updateFlashCard];
     [self updateFlashDetails];
