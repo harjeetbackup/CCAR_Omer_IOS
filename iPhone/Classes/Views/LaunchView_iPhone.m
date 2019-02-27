@@ -24,15 +24,6 @@
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 @implementation LaunchView_iPhone
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self.view setFrame:CGRectMake(self.view.frame.origin.x, 20, self.view.frame.size.width, self.view.frame.size.height)];
-//    if ([[AppDelegate_iPhone delegate] launchedFromLoacalNotification]) {
-//        [self loadHomeScreen];
-//    }
-    
-}
-
 - (void)didReceiveMemoryWarning 
 {
     // Releases the view if it doesn't have a superview.
@@ -52,31 +43,22 @@
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     }
     
-    if(IS_IPHONE5)
-        
-    {
-        [_imgButton setImage:[UIImage imageNamed:@"Launching_iphone568.png"] forState:UIControlStateNormal];
-    }
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadHomeViewFromNotification)
                                             name:UIApplicationDidBecomeActiveNotification object:nil];
 
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self loadHomeScreen];
+}
+
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
 }
 
-- (void)viewDidUnload 
-{
-    [super viewDidUnload];
-}
-
-- (void)dealloc 
-{
-    [super dealloc];
-}
 
 - (void)loadHomeViewFromNotification {
     if ([[AppDelegate_iPhone delegate] launchedFromLoacalNotification]) {
@@ -85,16 +67,14 @@
     }
 }
 
-- (void)loadHomeScreen
-{
-    
+- (void)loadHomeScreen {
     _imgButton.hidden = YES;
     FlashCardDeckList* deckList = [[FlashCardDeckList alloc] init];
     DeckViewController_iPhone* controller = [[DeckViewController_iPhone alloc] initWithNibName:@"DeckViewController_iPhone" bundle:nil];
     
     controller.cardDecks = deckList;
-    [self.navigationController pushViewController:controller animated:YES];
-    self.navigationItem.hidesBackButton=YES;
+    [self.navigationController pushViewController:controller animated:NO];
+    self.navigationItem.hidesBackButton = YES;
     [deckList release];
     [controller release];
 }
@@ -115,7 +95,6 @@
     [indicator setFrame:CGRectMake(140, 265, 40, 40)];
     [indicator startAnimating];
     [_imgButton addSubview:indicator];
-    [self loadHomeScreen];
 }
 
 

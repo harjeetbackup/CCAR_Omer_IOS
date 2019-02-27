@@ -231,6 +231,11 @@ NSInteger todayOmerIndex_iPhone=0;
     [self loadArrayOfCards:arrCards];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [_scrlView setContentSize:CGSizeMake(_scrlView.contentSize.width, _scrlView.frame.size.height)];
+}
+
 - (void)viewWillDisappear:(BOOL)animatedm{
     [self updateCardDetails];
 }

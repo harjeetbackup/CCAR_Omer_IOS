@@ -25,7 +25,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.19</string>
+	<string>1.21</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -65,7 +65,7 @@
 		<string>Roboto-Regular.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>MainWindow_iPhone</string>
+	<string>LaunchScreen</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiresFullScreen</key>

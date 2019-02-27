@@ -203,18 +203,6 @@
 	}
 	
 	[_parentView showSearchViewForDeck:cards cardIndex:indexPath.row search:[_searchBar text]];
-	//[_parentView showSearchViewForDeck:cards cardIndex:indexPath.row search:@""];
-	/*[_parentView clearView];
-	
-	CardDetails* detail = [[CardDetails alloc] initWithNibName:@"CardDetailsiPad" bundle:nil];
-	[self.view addSubview:detail.view];
-	
-	detail._selectedCardIndex=indexPath.row;
-	detail._searchText=[_searchBar text];
-	[detail loadArrayOfCards:cards withParentViewC:_parentView];
-	[detail release];	 
-	 */
-
 }
 
 - (NSString *)stringByDecodingHTMLEntitiesInString:(NSString *)input {

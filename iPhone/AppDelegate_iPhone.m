@@ -83,8 +83,6 @@
 	isSearchingEnabled=[[featuresDict objectForKey:@"Searching"] boolValue];
 	isIndexingEnabled=[[featuresDict objectForKey:@"Indexing"] boolValue];
 	isRandomCard=[[featuresDict objectForKey:@"Random"] intValue];
-     
-    //[[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
     return YES;
 }
 

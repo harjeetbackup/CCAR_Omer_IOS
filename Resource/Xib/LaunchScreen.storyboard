@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mET-AF-jI9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,7 +21,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="Omer-background" translatesAutoresizingMaskIntoConstraints="NO" id="bsI-rA-IH9">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Omer-cover-text" translatesAutoresizingMaskIntoConstraints="NO" id="Edw-Bu-yUS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Omer-new-cover-text" translatesAutoresizingMaskIntoConstraints="NO" id="Edw-Bu-yUS">
                                 <rect key="frame" x="25" y="133.5" width="325" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="vK0-hE-M4S"/>
@@ -49,6 +49,6 @@
     </scenes>
     <resources>
         <image name="Omer-background" width="1321" height="1628"/>
-        <image name="Omer-cover-text" width="1321" height="1628"/>
+        <image name="Omer-new-cover-text" width="300" height="300"/>
     </resources>
 </document>
