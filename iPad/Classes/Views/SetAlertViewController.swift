@@ -36,6 +36,7 @@ import CoreLocation
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (didAllow, error) in}
             
@@ -46,7 +47,7 @@ import CoreLocation
         }
         setUpUserDefualtsValues()
         if isFromIphone == false {
-            self.leftBarButtonItem.image = #imageLiteral(resourceName: "quit.png")
+            self.leftBarButtonItem.image = #imageLiteral(resourceName: "Omer-new-cover-text")
         }
     }
     

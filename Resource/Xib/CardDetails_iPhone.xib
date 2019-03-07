@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -34,9 +35,9 @@
                         <outlet property="delegate" destination="-1" id="92"/>
                     </connections>
                 </scrollView>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J32-kf-35F" customClass="CustomToolBar">
+                <toolbar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J32-kf-35F" customClass="CustomToolBar">
                     <rect key="frame" x="0.0" y="612" width="375" height="55"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="55" id="3DG-Bs-b5v"/>
                     </constraints>
@@ -152,13 +153,14 @@
             <constraints>
                 <constraint firstItem="91" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="AbH-A5-TTJ"/>
                 <constraint firstAttribute="trailing" secondItem="91" secondAttribute="trailing" id="Avu-GZ-tDC"/>
-                <constraint firstAttribute="bottom" secondItem="J32-kf-35F" secondAttribute="bottom" id="KSA-S5-pVu"/>
+                <constraint firstItem="J32-kf-35F" firstAttribute="bottom" secondItem="S6g-pA-0Ot" secondAttribute="bottom" id="BWg-Cs-C2G"/>
                 <constraint firstItem="91" firstAttribute="top" secondItem="1" secondAttribute="top" id="aUV-bZ-Zhk"/>
                 <constraint firstItem="J32-kf-35F" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="dXB-fj-ZPg"/>
                 <constraint firstItem="J32-kf-35F" firstAttribute="top" secondItem="91" secondAttribute="bottomMargin" constant="1" id="gND-c1-DUl"/>
                 <constraint firstAttribute="trailing" secondItem="J32-kf-35F" secondAttribute="trailing" id="yiy-8m-IfK"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <viewLayoutGuide key="safeArea" id="S6g-pA-0Ot"/>
             <point key="canvasLocation" x="53.600000000000001" y="72.413793103448285"/>
         </view>
     </objects>

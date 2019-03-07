@@ -56,6 +56,7 @@ UIScrollViewDelegate, TapDetectingWindowDelegate>
     NSArray* arrCards;
 }
 @property (nonatomic)	BOOL	 basicCall;
+@property (nonatomic, assign) BOOL cardsLoaded;
 @property (nonatomic) NSInteger _selectedCardIndex;
 @property (nonatomic,retain) NSString* _searchText;
 @property (nonatomic,retain)	TapDetectingWindow*	 mWindow;

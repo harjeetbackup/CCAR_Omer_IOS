@@ -98,7 +98,9 @@
                         <viewLayoutGuide key="safeArea" id="ICD-2T-urA"/>
                     </view>
                     <navigationItem key="navigationItem" title="Set Alerts" id="PtP-3t-L6f">
-                        <barButtonItem key="backBarButtonItem" title="Back" image="backNew_1.png" id="wq0-CL-TGr"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" image="backNew_1.png" id="wq0-CL-TGr">
+                            <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="datePickerHeight" destination="MRz-5K-LtZ" id="YFT-82-LxI"/>

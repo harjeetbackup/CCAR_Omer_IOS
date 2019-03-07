@@ -44,14 +44,14 @@ NSInteger todayOmerIndex_iPhone=0;
              forControlEvents:UIControlEventTouchUpInside];
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        [buttonPrevious setImage:[UIImage imageNamed:@"prev_btn.png"] forState:UIControlStateNormal];
+        [buttonPrevious setImage:[UIImage imageNamed:@"left_arw@2x.png"] forState:UIControlStateNormal];
     } else {
         [buttonPrevious setImage:[UIImage imageNamed:@"left_arw.png"] forState:UIControlStateNormal];
     }
     
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
-    buttonPrevious.frame = CGRectMake(40.0, 7.0, 30.0, 30.0);
+    buttonPrevious.frame = CGRectMake(40.0, 10.0, 30.0, 30.0);
     buttonPrevious.contentMode=UIViewContentModeScaleAspectFit;
     buttonPrevious.hidden = NO;
     
@@ -64,7 +64,7 @@ NSInteger todayOmerIndex_iPhone=0;
     
     [buttonNext setImage:[UIImage imageNamed:@"right_arw.png"] forState:UIControlStateNormal];
     
-    buttonNext.frame = CGRectMake(self.view.bounds.size.width - 40, 7.0, 30.0, 30.0);
+    buttonNext.frame = CGRectMake(self.view.bounds.size.width - 40, 10.0, 30.0, 30.0);
     buttonNext.contentMode=UIViewContentModeScaleAspectFit;
     buttonNext.hidden = NO;
     
@@ -100,10 +100,8 @@ NSInteger todayOmerIndex_iPhone=0;
     else {
         aduioImg = [[UIButton alloc] initWithFrame:CGRectMake(80, 8, 25, 25)];
         flipCard = [[UIButton alloc] initWithFrame:CGRectMake(15, 8, 44, 26)];
-        //flipCard.hidden = YES;
     }
     
-    //aduioImg = [[UIButton alloc] initWithFrame:CGRectMake(52, 8, 25, 25)];
     [aduioImg setImage:[UIImage imageNamed:@"sound.png"] forState:UIControlStateNormal];
     [aduioImg addTarget:self action:@selector(playAudioFile) forControlEvents:UIControlEventTouchUpInside];
     aduioImg.hidden = YES;
@@ -137,13 +135,12 @@ NSInteger todayOmerIndex_iPhone=0;
         UIGraphicsBeginImageContextWithOptions(imageSize, YES, 0);
         CGContextRef context = UIGraphicsGetCurrentContext();
         [fillColor setFill];
-        //CGContextSetAlpha(context, 0.5f);
         CGContextFillRect(context, CGRectMake(0, 0, imageSize.width, imageSize.height));
         UIImage *navImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         [self.navigationController.navigationBar setBackgroundImage:navImage
                                                       forBarMetrics:UIBarMetricsDefault];
-        self.navigationController.navigationBar.shadowImage = [UIImage new];////UIImageNamed:@"transparent.png"
+        self.navigationController.navigationBar.shadowImage = [UIImage new];
         self.navigationController.navigationBar.translucent = YES;
         UILabel *titleLable = [[UILabel alloc] init];
         titleLable.frame = CGRectMake(0, 0, 200, 30);
@@ -228,7 +225,10 @@ NSInteger todayOmerIndex_iPhone=0;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self loadArrayOfCards:arrCards];
+    if (self.cardsLoaded == NO) {
+        [self loadArrayOfCards:arrCards];
+        self.cardsLoaded = YES;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -356,6 +356,7 @@ NSInteger todayOmerIndex_iPhone=0;
         index = tempIndex + i;
         
         rect.origin.x += index * deviceWidth;
+        rect.origin.y = 0.0;
         CustomWebView_iPhone* page = [[CustomWebView_iPhone alloc] initWithFrame:rect];
         Card* card = [[_arrayOfCards objectAtIndex:i] getCardOfType: kCardTypeFront];
 
@@ -364,7 +365,6 @@ NSInteger todayOmerIndex_iPhone=0;
         [_scrlView addSubview:page];
         [_arrayOfpages addObject:page];
         page.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
         
         if (_searchText!=nil && [_searchText length] > 0) {
             page.searchText=_searchText;
