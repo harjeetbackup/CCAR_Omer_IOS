@@ -724,8 +724,7 @@ NSInteger todayOmerIndex=0;
 	[_act stopAnimating];
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	_isDragging = YES;
 	if([scrollView isKindOfClass:[UITableView class]] == NO)
 	{

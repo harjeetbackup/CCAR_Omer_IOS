@@ -67,7 +67,7 @@ NSInteger todayOmerIndex_iPhone=0;
     buttonNext.frame = CGRectMake(self.view.bounds.size.width - 40, 10.0, 30.0, 30.0);
     buttonNext.contentMode=UIViewContentModeScaleAspectFit;
     buttonNext.hidden = NO;
-    
+
     [self.customToolBarBottom addSubview: buttonNext];
     UIButton *leftButtonImg = [[UIButton alloc] initWithFrame:CGRectMake(5, 7, 50, 20)];
     [leftButtonImg setImage:[UIImage imageNamed:@"backNew_1.png"] forState:UIControlStateNormal];
@@ -179,9 +179,7 @@ NSInteger todayOmerIndex_iPhone=0;
     if(_selectedCardIndex + 1 < [_arrayOfCards count])
     {
         ++_selectedCardIndex;
-        
         _cardType = kCardTypeFront;
-        
         [self updateFlashCard];
         CGRect rect = self.view.frame;
         [_scrlView setContentOffset:CGPointMake(rect.size.width * _selectedCardIndex, 0) animated:YES];
@@ -654,9 +652,7 @@ NSInteger todayOmerIndex_iPhone=0;
     [_act stopAnimating];
 }
 
-/// Comment to remove swipe feature from the application
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate 
-{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     CGRect rect = self.view.frame;
     _selectedCardIndex = scrollView.contentOffset.x / rect.size.width;
     _cardType = kCardTypeFront;
