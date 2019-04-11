@@ -21,7 +21,7 @@ import CoreLocation
     @IBOutlet var timePicker: UIDatePicker!
     @IBOutlet var setAlertAtSunsetButton: UIButton!
     @IBOutlet var sendAlertSwitch: UIButton!
-    var isFromIphone = false
+    @objc var isFromIphone = false
     var delegate : GetTodaysReadingDelegate?
     var locationmanager = CLLocationManager()
     let notification = UILocalNotification()

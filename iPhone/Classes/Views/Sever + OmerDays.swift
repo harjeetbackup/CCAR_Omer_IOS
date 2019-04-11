@@ -10,7 +10,7 @@ import AVKit
 
 extension Server {
     
-    func getOmerDatesByYear(id:String , completion: @escaping (NSArray?, Error?) -> Void) {
+    @objc func getOmerDatesByYear(id:String , completion: @escaping (NSArray?, Error?) -> Void) {
         let url = "https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=off&min=off&mod=off&nx=off&year=\(id)&month=x&ss=off&mf=off&c=off&geo=none&m=0&s=off&o=on"
         self.get(url) { (response, error) in
             if let res = response  {

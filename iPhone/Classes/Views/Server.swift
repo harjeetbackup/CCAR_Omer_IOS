@@ -9,7 +9,7 @@ import Alamofire
 
 class Server: NSObject{
     
-    static let shared = Server()
+    @objc static let shared = Server()
     var array = [AllItems]()
 
     private func request(_ url: String, method: HTTPMethod, parameters: [String: Any]?, completion: @escaping ([String: Any]?, Error?)-> Void) {
