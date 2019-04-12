@@ -39,11 +39,9 @@ import CoreLocation
         self.navigationController?.navigationBar.tintColor = UIColor.white
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (didAllow, error) in}
-            
         } else {
             self.navigationController?.popViewController(animated: true)
             return
-            // Fallback on earlier versions
         }
         setUpUserDefualtsValues()
         if isFromIphone == false {
@@ -60,9 +58,7 @@ import CoreLocation
             formatter.dateFormat = "yyyy-MM-dd,hh:mm:ss aa"
             formatter.timeZone = NSTimeZone.local
             formatter.dateStyle = .short
-            //if let dte = formatter.date(from: setTime)  {
-                self.timePicker.setDate(setTime, animated: true)
-           // }
+            self.timePicker.setDate(setTime, animated: true)
         }
         let state = UserDefaults.standard.object(forKey: "SWITCH_STATE")
         UserDefaults.standard.synchronize()
@@ -75,7 +71,6 @@ import CoreLocation
             datePickerHeight.constant = 0.0
             verticalSpacing.constant = 0.0
         }
-//      sendAlertSwitch.setOn((state as? Bool ?? false), animated: true)
         let val:Bool = (UserDefaults.standard.object(forKey: "SUNSETBUTTON_STATE") as? Bool ?? false)
         if val == true {
             SunsetAlert()
@@ -116,8 +111,6 @@ import CoreLocation
         if datePickerHeight.constant == 250.0 {
             self.removeAllActiveNotification()
             getDatePicketSetTime()
-        } else {
-            //return
         }
     }
     
@@ -128,30 +121,18 @@ import CoreLocation
             dateFormatter.dateFormat = "yyyy-MM-dd"
             if let dte = item.date {
             let dateFromString = dte
-            print(dateFromString)
             dateFormatter.dateFormat = "hh:mm:ss aa"
             dateFormatter.timeZone = TimeZone.current
             let TimeFromPicker = dateFormatter.string(from: timePicker.date)
             let dateWithTimeInStr = dateFromString + "," + TimeFromPicker
             dateFormatter.dateFormat = "yyyy-MM-dd,hh:mm:ss aa"
-//          dateFormatter.timeZone = TimeZone.current
             UserDefaults.standard.removeObject(forKey: "TIME_SET_IN_PICKER")
-//          UserDefaults.standard.set(dateWithTimeInStr, forKey: "TIME_SET_IN_PICKER")
             UserDefaults.standard.set(timePicker.date, forKey: "TIME_SET_IN_PICKER")
             UserDefaults.standard.synchronize()
             let time = dateFormatter.date(from: dateWithTimeInStr)!
             print(time)
                 triggerNotification(date: time, title: item.title!)
             }
-        }
-    }
-    
-    @IBAction func setAlertAtSunsetTapped(_ sender: Any) {
-        if CLLocationManager.locationServicesEnabled()  {
-            SunsetAlert()
-
-        } else {
-            showAcessDeniedAlert()
         }
     }
     
@@ -176,7 +157,15 @@ import CoreLocation
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
     }
-    
+
+    @IBAction func setAlertAtSunsetTapped(_ sender: Any) {
+        if CLLocationManager.locationServicesEnabled()  {
+            SunsetAlert()
+        } else {
+            showAcessDeniedAlert()
+        }
+    }
+
     func SunsetAlert() {
         if setAlertAtSunsetButton.imageView?.image == #imageLiteral(resourceName: "check-box-empty.png") {
             setAlertAtSunsetButton.setImage(#imageLiteral(resourceName: "check-box-filled.png"), for: .normal)
@@ -211,23 +200,26 @@ import CoreLocation
     }
 
     @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var index = 0
         for item in Server.shared.array {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd,hh:mm:ss z"
             let currentLocalDateTime = dateFormatter.date(from: item.date! + ",00:00:00 +0000")
-           // let smapledate = dateFormatter.date(from: "2018-11-16,11:40:00 +0000")
-         //   print(smapledate)
-          //  let location = CLLocation()
             locationmanager.stopUpdatingLocation()
             let startDateSunInfo = EDSunriseSet.sunriseset(with: currentLocalDateTime ,timezone:  TimeZone.current,latitude: (locations.first?.coordinate.latitude)!, longitude: (locations.first?.coordinate.longitude)!)
             let startSunsetTime: Date? = startDateSunInfo?.sunset
             print("SunsetTime time \(String(describing: startSunsetTime))")
             let dateWithTimeString = dateFormatter.string(from: startSunsetTime ?? Date())
             print("local sunset time \(dateWithTimeString)")
-            //sunset time varying
-           // let time = dateFormatter.date(from: dateWithTimeString)!
             if startSunsetTime != nil {
-                triggerNotification(date: (startSunsetTime)!, title: item.title!)
+                var title: String = item.title ?? ""
+                index += 1
+                if (Server.shared.array.count > index) {
+                    let nextItem = Server.shared.array[index]
+                    title = nextItem.title ?? item.title ?? ""
+                }
+
+                triggerNotification(date: (startSunsetTime)!, title: title)
                 print("Local time \(String(describing: startDateSunInfo?.sunset))")
             }
         }
@@ -235,11 +227,7 @@ import CoreLocation
     
     func triggerNotification(date: Date, title:String) {
         notification.fireDate = date
-        if #available(iOS 8.2, *) {
-            notification.alertTitle = title
-        } else {
-            // Fallback on earlier versions
-        }
+        notification.alertTitle = title
         notification.alertBody = "click here to see card of the day"
         notification.applicationIconBadgeNumber = 1
         UIApplication.shared.scheduleLocalNotification(notification)
@@ -253,14 +241,7 @@ import CoreLocation
     func removeAllActiveNotification() {
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        } else {
-            // Fallback on earlier versions
         }
     }
-//    @available(iOS 10.0, *)
-//    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void) {
-//        print("@@@@@")
-//        delegate?.getTodaysReading()
-//        completionHandler()
-//    }
+
 }
