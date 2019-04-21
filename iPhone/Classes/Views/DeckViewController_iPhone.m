@@ -681,7 +681,6 @@ NSArray *allDates;
         [actionSheet addButtonWithTitle:@"My Text Notes"];
     }
     
-    
     if ([AppDelegate_iPhone delegate].isFacebookEnabled) {
         [actionSheet addButtonWithTitle:@"Publish to Facebook"];
     }

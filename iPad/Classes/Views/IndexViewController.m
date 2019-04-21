@@ -44,6 +44,7 @@
     [lblHeader setFont:[UIFont RobotoBoldFont:18]];
     lblHeader.textColor=[UIColor whiteColor];
 	// Check whether the call has been made from the index button on deck view controller or the click of the card deck
+   // _backgroundImage.frame = CGRectMake(380, 0, UIScreen.mainScreen.bounds.size.width - 380, UIScreen.mainScreen.bounds.size.height);
 	if (objDeck != nil) {
 		// Set the label text to the title of the deck and also get the list of cards for that deck
 		//lblHeader.text= objDeck.deckTitle;

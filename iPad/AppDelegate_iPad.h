@@ -41,6 +41,7 @@
 @property (nonatomic) BOOL	isSearchingEnabled;
 @property (nonatomic) BOOL	isIndexingEnabled;
 @property (nonatomic) int	isRandomCard;
+@property (nonatomic) BOOL  isSetAlert;
 
 + (DBAccess*) getDBAccess;
 + (AppDelegate_iPad*) delegate;

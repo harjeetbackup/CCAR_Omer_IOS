@@ -25,7 +25,6 @@
 
 
 @implementation CardDetails
-
 @synthesize _selectedCardIndex;
 @synthesize _searchText;
 @synthesize _parentView;
@@ -358,8 +357,7 @@ NSInteger todayOmerIndex=0;
 	_totalCard = [_arrayOfCards count];
 	
 	int count = (_arrayOfCards.count > 3) ? 3 : _arrayOfCards.count;
-	[_scrlView setContentSize:CGSizeMake(kDetailViewWidth * [_arrayOfCards count], _scrlView.frame.size.height)];
-	///	_scrlView.scrollEnabled = NO;
+	[_scrlView setContentSize:CGSizeMake(self.view.frame.size.width * [_arrayOfCards count], _scrlView.frame.size.height)];
 	
 	NSInteger index=0;
 	NSInteger tempIndex=_selectedCardIndex;
@@ -376,9 +374,8 @@ NSInteger todayOmerIndex=0;
 	for (int i = 0; i < count; i++)
 	{
 		index = tempIndex	+ i;
-        CustomWebView* page = [[CustomWebView alloc] initWithFrame:CGRectMake(kDetailViewWidth * i, 0, kDetailViewWidth, _scrlView.frame.size.height)];
+        CustomWebView* page = [[CustomWebView alloc] initWithFrame:self.view.bounds];
         card = [[_arrayOfCards objectAtIndex:index] getCardOfType: kCardTypeFront];
-        //page.frame = CGRectMake(kDetailViewWidth * i, 0, kDetailViewWidth, _scrlView.frame.size.height);
         
 		//page.tag = 1100 + i;
 		[page loadClearBgHTMLString:card.cardTitle];
@@ -422,13 +419,12 @@ NSInteger todayOmerIndex=0;
 	
 	if (_totalCard >= 2 && _selectedCardIndex >= 1) {
 		[self updateFlashCard];
-		[_scrlView setContentOffset:CGPointMake(kDetailViewWidth * _selectedCardIndex, 0)];
+		[_scrlView setContentOffset:CGPointMake(self.view.frame.size.width * _selectedCardIndex, 0)];
 		[self updateFlashDetails];
 		
 	}else if (_totalCard==1) {
 		_nextButton.enabled=NO;
 	}
-    
 }
 
 - (void)userDidTapWebView:(id)tapPoint
@@ -436,7 +432,6 @@ NSInteger todayOmerIndex=0;
     if ([[[Utils getValueForVar:kFlipOnTap] lowercaseString] isEqualToString:@"yes"]) {
 		[self showCardBack];
 	}
-	
 }
 
 - (void)updateCardDetails
@@ -471,7 +466,9 @@ NSInteger todayOmerIndex=0;
 {
 	NSInteger tempIndex=(index % 3);
 	CustomWebView* webView = (CustomWebView*)[_arrayOfpages objectAtIndex:tempIndex];
-	webView.frame = CGRectMake(kDetailViewWidth * index, 0, kDetailViewWidth, _scrlView.frame.size.height);
+    webView.frame = CGRectMake(self.view.frame.size.width * index, 0, self.view.frame.size.width, _scrlView.frame.size.height);
+
+    //CGRectMake(380.0, 0, _scrlView.frame.size.width, _scrlView.frame.size.height);
 	webView.tag = 1100 + index;
 	mWindow.viewToObserve = webView;
 	[webView loadClearBgHTMLString:[[_arrayOfCards objectAtIndex:index] getCardOfType: _cardType].cardTitle];
@@ -481,8 +478,7 @@ NSInteger todayOmerIndex=0;
 	}
 }
 
-- (void) updateFlashCard
-{
+- (void) updateFlashCard {
     [flipCard setImage:[UIImage imageNamed:@"flip_front.png"] forState:UIControlStateNormal];
 	_isDragging = NO;
 	(_selectedCardIndex > 0) ? [self updateFlashCardAtIndex:(_selectedCardIndex - 1)] : -99;
@@ -499,7 +495,7 @@ NSInteger todayOmerIndex=0;
 		++_selectedCardIndex;
 		_cardType = kCardTypeFront;
 		
-		[_scrlView setContentOffset:CGPointMake(kDetailViewWidth * _selectedCardIndex, 0) animated:YES];
+		[_scrlView setContentOffset:CGPointMake(self.view.bounds.size.width * _selectedCardIndex, 0) animated:YES];
 		[_cardTimer invalidate];
 		[_cardTimer release];
 		_cardTimer = [[NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(updateFlashCard) userInfo:nil repeats:NO] retain];
@@ -516,7 +512,7 @@ NSInteger todayOmerIndex=0;
 		--_selectedCardIndex;
 		_cardType = kCardTypeFront;
 		
-		[_scrlView setContentOffset:CGPointMake(kDetailViewWidth * _selectedCardIndex, 0) animated:YES];
+		[_scrlView setContentOffset:CGPointMake(self.view.bounds.size.width * _selectedCardIndex, 0) animated:YES];
 		[_cardTimer invalidate];
 		[_cardTimer release];
 		_cardTimer = [[NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(updateFlashCard) userInfo:nil repeats:NO] retain];
@@ -537,7 +533,7 @@ NSInteger todayOmerIndex=0;
 	[UIView setAnimationTransition:(UIViewAnimationTransitionFlipFromLeft)
 						   forView:_scrlView cache:NO];
 	
-	int tagVal = 1100 + _scrlView.contentOffset.x / kDetailViewWidth;
+	int tagVal = 1100 + _scrlView.contentOffset.x / self.view.frame.size.width;
 	CustomWebView* webView = (CustomWebView*)[_scrlView viewWithTag:tagVal];
 	[webView loadClearBgHTMLString:[[_arrayOfCards objectAtIndex:_selectedCardIndex] getCardOfType: _cardType].cardTitle];
 	
@@ -568,7 +564,7 @@ NSInteger todayOmerIndex=0;
                 _selectedCardIndex = ((_selectedCardIndex - 1) < 0) ? 0 : (_selectedCardIndex - 1);
             // if (SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(@"6.0"))
             // {
-			[_scrlView setContentSize:CGSizeMake(kDetailViewWidth * [_arrayOfCards count], _scrlView.frame.size.height)];
+			[_scrlView setContentSize:CGSizeMake(self.view.frame.size.width * [_arrayOfCards count], _scrlView.frame.size.height)];
             //}
             // else
             // {
@@ -641,8 +637,6 @@ NSInteger todayOmerIndex=0;
            [_toggle_note_btn setImage:[UIImage imageNamed:@"bottom_note_btn.png"] forState:UIControlStateNormal];
         }
             //[flipCard setImage:[UIImage imageNamed:@"exter-green.png"] forState:UIControlStateNormal];
-            
-        
     }
     else
     {
@@ -682,8 +676,7 @@ NSInteger todayOmerIndex=0;
         }
        
             //[flipCard setImage:[UIImage imageNamed:@"exter-green.png"] forState:UIControlStateNormal];
-        
-        
+  
     }
 	
 }
@@ -749,7 +742,7 @@ NSInteger todayOmerIndex=0;
 - (void) slidingAction:(NSTimer*)timer
 {
 	UIScrollView* scrollView = [timer userInfo];
-	_selectedCardIndex = scrollView.contentOffset.x / kDetailViewWidth;
+	_selectedCardIndex = scrollView.contentOffset.x / self.view.bounds.size.width;
 	_cardType = kCardTypeFront;
 	[self updateFlashCard];
 	[self updateFlashDetails];
@@ -797,7 +790,7 @@ NSInteger todayOmerIndex=0;
 		[detailViewController setFlashCardId:[card cardID]];
 		[detailViewController setParent:self];
 		
-		detailViewController.view.frame = CGRectMake(382, 0, kDetailViewWidth, 768);
+		detailViewController.view.frame = CGRectMake(382, 0, self.view.frame.size.width, self.view.frame.size.height);
         detailViewController.view.tag=8;
         if([self.view viewWithTag:8]!=nil)
         {
@@ -814,7 +807,7 @@ NSInteger todayOmerIndex=0;
 		[detailViewController setFlashCardId:[[_arrayOfCards objectAtIndex:_selectedCardIndex] cardID]];
 		[detailViewController setParent:self];
 		
-		detailViewController.view.frame = CGRectMake(382, 0, kDetailViewWidth, 768);
+		detailViewController.view.frame = CGRectMake(382, 0, self.view.frame.size.width, self.view.frame.size.height);
         detailViewController.view.tag=9;
         if([self.view viewWithTag:9]!=nil)
         {

@@ -15,22 +15,27 @@ import CoreLocation
     @IBOutlet var timePicker: UIDatePicker!
     @IBOutlet var sendAlertSwitch: UISwitch!
     @IBOutlet var setAlertAtSunsetButton: UIButton!
-    var time = Date()
+
     var locationmanager = CLLocationManager()
     let notification = UILocalNotification()
-
+    let isFromiPad = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUserDefualtsValues()
-        getDatePicketSetTime()
+    //    getDatePicketSetTime()
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (didAllow, error) in}
             
         } else {
-               self.navigationController?.popViewController(animated: true)
-               return
+            self.navigationController?.popViewController(animated: true)
+            return
             // Fallback on earlier versions
-        }}
+        }
+        if isFromiPad == true {
+          
+        }
+    }
     
     func setUpUserDefualtsValues() {
         if let setTime = UserDefaults.standard.object(forKey: "TIME_SET_IN_PICKER") as? String {
@@ -56,6 +61,7 @@ import CoreLocation
     
     @IBAction func sendAlertSwitchButtonTapped(_ sender: Any) {
         if sendAlertSwitch.isOn {
+            getDatePicketSetTime()
             sendAlertSwitch.setOn(true, animated: true)
             UserDefaults.standard.removeObject(forKey: "SWITCH_STATE")
             UserDefaults.standard.set(true, forKey: "SWITCH_STATE")
@@ -70,6 +76,11 @@ import CoreLocation
             UserDefaults.standard.set(false, forKey: "SWITCH_STATE")
             UserDefaults.standard.synchronize()
             sendAlertSwitch.setOn(false, animated: true)
+            if #available(iOS 10.0, *) {
+                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            } else {
+                // Fallback on earlier versions
+            }
             return
         }
     }
@@ -83,6 +94,7 @@ import CoreLocation
             {
                 (UIAlertAction) -> Void in
                 self.sendAlertSwitch.setOn(true, animated: true)
+                self.getDatePicketSetTime()
                 self.setAlertAtSunsetButton.setImage(#imageLiteral(resourceName: "check-box-empty.png"), for: .normal)
             }
             alert.addAction(alertAction)
@@ -91,36 +103,27 @@ import CoreLocation
     }
     
     func getDatePicketSetTime() {
-    //  check current date if the date in is list of array trigger notification for specified time
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .short
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateString = dateFormatter.string(from: timePicker.date)
-        let dateAvailableInArray = isCardAvailableForDate(date: dateString)
-        notification.repeatInterval = NSCalendar.Unit.day
-        dateFormatter.dateFormat = "yyyy-MM-dd,hh:mm aa"
-        let dateWithTimeString = dateFormatter.string(from: timePicker.date)
-        print(dateWithTimeString)
-        UserDefaults.standard.removeObject(forKey: "TIME_SET_IN_PICKER")
-        UserDefaults.standard.set(dateWithTimeString, forKey: "TIME_SET_IN_PICKER")
-        UserDefaults.standard.synchronize()
-        time = dateFormatter.date(from: dateWithTimeString)!
-        if dateAvailableInArray == true && sendAlertSwitch.isOn == true {
-                notification.fireDate = time
-                notification.alertTitle = "Test"
-                notification.alertBody = "Yeh it works!"
-                notification.applicationIconBadgeNumber = 1
-                UIApplication.shared.scheduleLocalNotification(notification)
-        }
-    }
-    
-    func isCardAvailableForDate(date:String)->Bool {
-        if Server.shared.array.contains(where: { $0.date == date }) {
-            print("found")
-            return true
-        } else {
-            print("Notfound")
-            return false
+        for item in Server.shared.array {
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = .short
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            if let dte = item.date {
+            let dateFromString = dte
+            print(dateFromString)
+            dateFormatter.dateFormat = "hh:mm:ss aa"
+            dateFormatter.timeZone = TimeZone.current
+            let TimeFromPicker = dateFormatter.string(from: timePicker.date)
+            UserDefaults.standard.removeObject(forKey: "TIME_SET_IN_PICKER")
+            UserDefaults.standard.synchronize()
+            let dateWithTimeInStr = dateFromString + "," + TimeFromPicker
+            dateFormatter.dateFormat = "yyyy-MM-dd,hh:mm:ss aa"
+            let time = dateFormatter.date(from: dateWithTimeInStr)!
+                //getting converted to utc
+            UserDefaults.standard.set(dateWithTimeInStr, forKey: "TIME_SET_IN_PICKER")
+            UserDefaults.standard.synchronize()
+            print(time)
+            triggerNotification(date: time)
+            }
         }
     }
     
@@ -138,13 +141,7 @@ import CoreLocation
             UserDefaults.standard.removeObject(forKey: "SWITCH_STATE")
             UserDefaults.standard.set(false, forKey: "SWITCH_STATE")
             UserDefaults.standard.synchronize()
-            let dateFormatter = DateFormatter()
-            dateFormatter.timeStyle = .short
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let dateString = dateFormatter.string(from: Date())
-            let dateAvailableInArray = isCardAvailableForDate(date: dateString)
-            notification.repeatInterval = NSCalendar.Unit.day
-            if dateAvailableInArray == true && setAlertAtSunsetButton.imageView?.image == #imageLiteral(resourceName: "check-box-filled.png") {
+            if setAlertAtSunsetButton.imageView?.image == #imageLiteral(resourceName: "check-box-filled.png") {
                 self.findMyCurrentLocation()
             }
         } else {
@@ -152,6 +149,11 @@ import CoreLocation
             UserDefaults.standard.set(false, forKey: "SUNSETBUTTON_STATE")
             UserDefaults.standard.synchronize()
             setAlertAtSunsetButton.setImage(#imageLiteral(resourceName: "check-box-empty.png"), for: .normal)
+            if #available(iOS 10.0, *) {
+                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
     
@@ -164,23 +166,30 @@ import CoreLocation
     }
 
 @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let currentDateTime = Date()
-        let dateFormatter = DateFormatter()
-        let location = CLLocation()
-        locationmanager.stopUpdatingLocation()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let startDateSunInfo = EDSunriseSet.sunriseset(with:currentDateTime ,timezone: NSTimeZone.local,latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let startSunsetTime: Date? = startDateSunInfo?.sunset
-        print(startSunsetTime as Any)
-        dateFormatter.dateFormat = "yyyy-MM-dd,hh:mm:ss aa"
-        let dateWithTimeString = dateFormatter.string(from: startSunsetTime!)
-        print(dateWithTimeString)
-        time = dateFormatter.date(from: dateWithTimeString)!
-        notification.fireDate = time
+        for item in Server.shared.array {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.timeZone = TimeZone.current
+            let currentDateTime = dateFormatter.date(from: item.date!)
+            let location = CLLocation()
+            locationmanager.stopUpdatingLocation()
+            let startDateSunInfo = EDSunriseSet.sunriseset(with:currentDateTime ,timezone:  NSTimeZone.local,latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let startSunsetTime: Date? = startDateSunInfo?.sunset
+            print(startSunsetTime as Any)
+            dateFormatter.dateFormat = "yyyy-MM-dd,hh:mm:ss aa"
+            let dateWithTimeString = dateFormatter.string(from: startSunsetTime ?? Date())
+            print(dateWithTimeString)
+            //sunset time varying
+            let time = dateFormatter.date(from: dateWithTimeString)!
+            triggerNotification(date: time)
+        }
+    }
+    
+    func triggerNotification(date:Date) {
+        notification.fireDate = date
         notification.alertTitle = "Test"
         notification.alertBody = "Yeh it works!"
         notification.applicationIconBadgeNumber = 1
         UIApplication.shared.scheduleLocalNotification(notification)
-    
     }
 }

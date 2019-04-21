@@ -333,14 +333,12 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
 		else if ([button isEqualToString:@"Clear All Proficiency"]) {
-			
 			UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all proficiencies?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
 			alert.tag = 0;
 			[alert show];
 			[alert release];
 			
 		}else if ([button isEqualToString:@"Clear All Bookmarks"]) {
-			
 			UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all bookmarks?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
 			alert.tag = 1;
 			[alert show];
@@ -354,14 +352,12 @@
 			[alert release];
 			
 		}else if ([button isEqualToString:@"Clear All Text Notes"]) {
-			
 			UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all Text Notes?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
 			alert.tag = 2;
 			[alert show];
 			[alert release];
 			
 		}else if ([button isEqualToString:@"Reset Application"]) {
-			
 			UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset application contents?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
 			alert.tag = 4;
 			[alert show];

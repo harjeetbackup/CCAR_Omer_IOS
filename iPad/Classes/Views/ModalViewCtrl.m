@@ -11,8 +11,9 @@
 #import "AppDelegate_iPad.h"
 #import "Appirater.h"
 #import "CardDetails.h"
-
+#import "Omer_Flash_Card-Swift.h"
 #import "ModalViewCtrl.h"
+
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -20,10 +21,7 @@
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 
-
-
 @implementation ModalViewCtrl
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil contentType:(ContentType) type
 {
@@ -38,6 +36,10 @@
 	}
 	
 	_settingButtons=[[NSMutableArray alloc] init];
+    AppDelegate_iPad.delegate.isSetAlert = true;
+    if ([AppDelegate_iPad delegate].isSetAlert) {
+        [_settingButtons addObject:@"Set Alerts"];
+    }
 	if([[[Utils getValueForVar:kProficiencyEnable] lowercaseString] isEqualToString: @"yes"])
     {
 	[_settingButtons addObject:@"Clear All Proficiency"];
@@ -58,20 +60,16 @@
 	[_settingButtons addObject:@"Application Rating"];
 	}
     return self;
-}
+    }
 
 - (void) setParentCtrl: (DeckViewController*) ctrl;
-{
+    {
 	_parentCtrl = ctrl;
-}
-
-
+    }
 
 - (void)viewDidLoad 
-{	
-	
+    {
 	[super viewDidLoad];
-	
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
     {
         [self.settingButton setImage:[UIImage imageNamed:@"backNew_1.png"] forState:UIControlStateNormal];
@@ -83,12 +81,15 @@
        // [_tableView.backgroundView :[UIImage imageNamed:@"back_btn.png"] forState:UIControlStateNormal];
         _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     }
-
 	//_tableView.backgroundView=[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"yellow_bg_iPad.png"]] autorelease];
+     _tableView.frame = CGRectMake(380.0, 0.0, UIScreen.mainScreen.bounds.size.width - 380.0, UIScreen.mainScreen.bounds.size.height);
+    
 	_tableView.backgroundColor=[UIColor clearColor];
+        
 	//NSURL *localFile;
     NSString *fileName;
     NSURLRequest *request;
+
 	switch(_contentType)
 	{
 		case kContentTypeSetting:
@@ -99,7 +100,7 @@
 			break;
 			
         case kcontentTypeIntro:
-           // _navItem.title = @"Introduction";
+           //_navItem.title = @"Introduction";
             _titleLabel.text=@"Introduction";
             fileName = [[NSBundle mainBundle] pathForResource:@"intro.html" ofType:nil inDirectory:nil];
             request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:fileName]];
@@ -120,6 +121,7 @@
             //[_webView loadHTMLString:[[AppDelegate_iPhone getDBAccess] GetHelpString] baseURL:nil];
             _tableView.hidden = YES;
             _webView.hidden = NO;
+            
             break;
         case kcontentTypeAfterCard:
            
@@ -132,6 +134,7 @@
             //[_webView loadHTMLString:[[AppDelegate_iPhone getDBAccess] GetHelpString] baseURL:nil];
             _tableView.hidden = YES;
             _webView.hidden = NO;
+           
             break;
             
 		case kContentTypeHelp:
@@ -141,7 +144,7 @@
             request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:fileName]];
 
             [_webView loadRequest:request];
-            _webView. scalesPageToFit=YES;
+            _webView.scalesPageToFit=YES;
 			//[_webView loadHTMLString:[[AppDelegate_iPad getDBAccess] GetHelpString] baseURL:nil];
 			_tableView.hidden = YES;
 			_webView.hidden = NO;
@@ -166,8 +169,6 @@
 	else {
 		_isRandomOption = NO;
 	}
-
-	
 }
 
 - (IBAction) done:(id) sender
@@ -291,14 +292,25 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	if (indexPath.row < [_settingButtons count]) {
 		NSString* button=[_settingButtons objectAtIndex:indexPath.row];
-		
-		if ([button isEqualToString:@"Clear All Proficiency"]) {
-			
+        if ([button isEqualToString:@"Set Alerts"]) {
+            NSString * storyboardName = @"SetAlerts";
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SetAlertViewController"];
+            
+            vc.modalPresentationStyle = UIModalPresentationFormSheet;
+            [self presentViewController:vc animated:true completion:nil];
+            
+//            [self.view addSubview:vc.view];
+//            [self.view layoutSubviews];
+//            [self.navigationController pushViewController:vc animated:YES];
+        }
+		else if ([button isEqualToString:@"Clear All Proficiency"]) {
+            
 			UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all proficiencies?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
 			alert.tag = 0;
 			[alert show];
 			[alert release];
-			
+            
 		}else if ([button isEqualToString:@"Clear All Bookmarks"]) {
 			
 			UIAlertView* alert  = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to reset all bookmarks?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
@@ -330,9 +342,7 @@
 		}else if ([button isEqualToString:@"Application Rating"]) {
 			
 			[Appirater rateApp];
-			
 		}
-	
 	}
 }
 

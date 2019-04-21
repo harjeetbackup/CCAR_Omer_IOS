@@ -42,10 +42,7 @@
 
 @end
 
-
 @implementation DeckViewController
-
-
 @synthesize cardDecks = _cardDecks;
 @synthesize _detail,_navLabel;
 
@@ -84,7 +81,7 @@
 
 	[_detail setParentViewCtrl:self];
 	_detail._selectedCardIndex=index;
-	_detail.view.frame = CGRectMake(384, 0, kDetailViewWidth, 768);
+	_detail.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
 	[_detail loadArrayOfCards:array withParentViewC:self];
     
    /* _detail.view.tag = 1;
@@ -92,9 +89,7 @@
     {
         [[self.view viewWithTag:1] removeFromSuperview];
     }*/
-    
-	[self.view addSubview:_detail.view];  
-  
+	[self.view addSubview:_detail.view];
 }
 
 - (void) showIndexViewForDeck:(FlashCardDeck *)objDeck
@@ -103,13 +98,15 @@
 	[_indexView setParentViewCtrl:self];
      if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
      {
-	   _indexView.view.frame = CGRectMake(382, 0, kDetailViewWidth+40, 768);
+	   _indexView.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+         //CGRectMake(382, 0, kDetailViewWidth+40, 768);
      }
     else
     {
-         _indexView.view.frame = CGRectMake(382, 0, kDetailViewWidth, 768);
+         _indexView.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+        //CGRectMake(382, 0, kDetailViewWidth, 768);
     }
-   // _indexView.view.frame = CGRectMake(382, 44, 980, 700);
+   //_indexView.view.frame = CGRectMake(382, 44, 980, 700);
     _indexView.view.tag = 2;
     if([self.view viewWithTag:2]!=nil)
     {
@@ -126,7 +123,8 @@
 	[_detail setParentViewCtrl:self];
 	_detail._selectedCardIndex=index;
 	_detail._searchText=text;
-	_detail.view.frame = CGRectMake(384, 0, kDetailViewWidth, 768);
+	_detail.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+    //CGRectMake(384, 0, kDetailViewWidth, 768);
 	_detail.basicCall = NO;
 	[_detail loadArrayOfCards:array withParentViewC:self];
     _detail.view.tag = 3;
@@ -155,7 +153,7 @@
 
 	self.navigationController.navigationBarHidden = NO;
 	self.navigationController.delegate = self;
-	//self.title = @"Meggs";
+  //self.title = @"Meggs";
 	self.title = [Utils getValueForVar:kHeaderTitle];
 	_navLabel.text = [Utils getValueForVar:kHeaderTitle];
     [_navLabel setHidden:YES];
@@ -181,8 +179,7 @@
 		[UIView setAnimationDuration:0.0];
 	}
 	
-	if (orientation == UIDeviceOrientationPortraitUpsideDown){
-    
+	if (orientation == UIDeviceOrientationPortraitUpsideDown) {
 		self.view.transform = CGAffineTransformRotate(CGAffineTransformIdentity, degreesToRadians(180));}
 	
 	else if (orientation == UIDeviceOrientationLandscapeLeft)
@@ -191,7 +188,7 @@
 	else if (orientation == UIDeviceOrientationLandscapeRight)
 		self.view.transform = CGAffineTransformRotate(CGAffineTransformIdentity, degreesToRadians(-90));
 	
-	else if(orientation==UIDeviceOrientationUnknown){
+	else if(orientation==UIDeviceOrientationUnknown) {
 		self.view.transform = CGAffineTransformRotate(CGAffineTransformIdentity, degreesToRadians(-90));
 	}
     
@@ -204,7 +201,8 @@
 {
     ModalViewCtrl* model = [[ModalViewCtrl alloc] initWithNibName:@"ModalViewiPad" bundle:nil contentType:kcontentTypeIntro];
     [model setParentCtrl:self];
-    model.view.frame = CGRectMake(382, 0, kDetailViewWidth+2, 768);
+     model.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+    //CGRectMake(382, 0, kDetailViewWidth+2, 768);
     model.view.tag = 1;
     if([self.view viewWithTag:1]!=nil)
     {
@@ -280,9 +278,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section>0)
-        return 73;
+        return (tableView.frame.size.height - 292.0 )/ 7.0;
     else
-        return 57;
+       return 73;
 }
 
 
@@ -305,33 +303,31 @@
             switch (indexPath.row)
             {
             case 0:
-        
-            tableView.separatorColor = [UIColor whiteColor];
-            introCell.textLabel.text=@"Introduction";
-            introCell.textLabel.textColor=[UIColor whiteColor];
-            introCell.backgroundColor=[UIColor clearColor];
-                 introCell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_intro.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
-            [introCell setSelectedBackgroundView:bgColorView];
-            return introCell;
-            break;
+                tableView.separatorColor = [UIColor whiteColor];
+                //introCell.textLabel.text=@"Introduction";
+                introCell = [DeckCell creatCellViewWithFlashCardDeck:_cardDecks.introDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kIntroDeckColor]]];
+                introCell.textLabel.textColor=[UIColor whiteColor];
+                introCell.backgroundColor=[UIColor clearColor];
+                introCell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_intro.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+                [introCell setSelectedBackgroundView:bgColorView];
+                return introCell;
+                break;
 		case 1:
-                    cell = [DeckCell creatCellViewWithFlashCardDeck:_cardDecks.todayReadingDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kBookmarkedCardsTextColor]]];
-                    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_today-reading.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+                cell = [DeckCell creatCellViewWithFlashCardDeck:_cardDecks.todayReadingDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kBookmarkedCardsTextColor]]];
+                cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_today-reading.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
           	break;
-            
-    
 		case 2:
-                    tableView.separatorColor = [UIColor whiteColor];
-                    cell = [DeckCell creatCellViewWithFlashCardDeck:_cardDecks.allCardDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kAllCardsTextColor]]];
-                    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_all-card.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
-                    //tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+                tableView.separatorColor = [UIColor whiteColor];
+                cell = [DeckCell creatCellViewWithFlashCardDeck:_cardDecks.allCardDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kAllCardsTextColor]]];
+                cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_all-card.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+            //tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
 			//tableView.separatorColor = [Utils colorFromString:[Utils getValueForVar:kSelectedCardsColor]];
 		
-			break;
-                case 3:
-                    tableView.separatorColor = [UIColor whiteColor];
-                    cell = [DeckCell creatCellViewWithFlashCardDeck:_cardDecks.bookMarkedCardDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kBookmarkedCardsTextColor]]];
-                    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_bookmark.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+                break;
+        case 3:
+            tableView.separatorColor = [UIColor whiteColor];
+            cell = [DeckCell creatCellViewWithFlashCardDeck:_cardDecks.bookMarkedCardDeck withTextColor:[Utils colorFromString:[Utils getValueForVar:kBookmarkedCardsTextColor]]];
+            cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg_bookmark.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
                     
                     break;
     		}
@@ -343,9 +339,6 @@
 			cell = [DeckCell creatCellViewWithFlashCardDeck:[_cardDecks.flashCardDeckList objectAtIndex:indexPath.row] withTextColor:[Utils colorFromString:[Utils getValueForVar:kDeckCardsTextColor]]];
 
         }
-
-    
- 
     [cell setSelectedBackgroundView:bgColorView];
    // cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -370,7 +363,7 @@
                 deckArray = nil;
                 ModalViewCtrl* model = [[ModalViewCtrl alloc] initWithNibName:@"ModalViewiPad" bundle:nil contentType:kcontentTypeIntro];
                 [model setParentCtrl:self];
-                model.view.frame = CGRectMake(382, 0, kDetailViewWidth+2, 768);
+                model.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
                 model.view.tag = 1;
                 if([self.view viewWithTag:1]!=nil)
                 {
@@ -388,7 +381,7 @@
                     
                     if (!netStatus==NotReachable)
                     {
-                    [self findMyCurrentLocation];
+                        [self findMyCurrentLocation];
                     }
                     else
                     {
@@ -451,7 +444,6 @@
             [self showDetailViewWithArray:deckArray cardIndex:0 caller:@"self"];
         }*/
     }
-    
 }
 
 
@@ -459,7 +451,7 @@
 {
 	ModalViewCtrl* model = [[ModalViewCtrl alloc] initWithNibName:@"ModalViewiPad" bundle:nil contentType:kContentTypeSetting];
 	[model setParentCtrl:self];
-	model.view.frame = CGRectMake(382, 0, kDetailViewWidth, 768);
+	model.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
     model.view.tag = 4;
     if([self.view viewWithTag:4]!=nil)
     {
@@ -472,7 +464,7 @@
 {
 	ModalViewCtrl* model = [[ModalViewCtrl alloc] initWithNibName:@"ModalViewiPad" bundle:nil contentType:kContentTypeHelp];
 	[model setParentCtrl:self];
-	model.view.frame = CGRectMake(382, 0, kDetailViewWidth+2, 768);
+	model.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
     model.view.tag = 5;
     if([self.view viewWithTag:5]!=nil)
     {
@@ -486,7 +478,8 @@
 {
 	ModalViewCtrl* model = [[ModalViewCtrl alloc] initWithNibName:@"ModalViewiPad" bundle:nil contentType:kContentTypeInfo];
 	[model setParentCtrl:self];
-	model.view.frame = CGRectMake(382, 0, kDetailViewWidth+2, 768);
+	model.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+    //CGRectMake(382, 0, kDetailViewWidth+2, 768);
     model.view.tag = 6;
     if([self.view viewWithTag:6]!=nil)
     {
@@ -500,7 +493,8 @@
 {
 	SearchViewController* searchView = [[SearchViewController alloc] initWithNibName:@"SearchViewiPad" bundle:nil];
 	[searchView setParentViewCtrl:self];
-	searchView.view.frame = CGRectMake(382, 0, kDetailViewWidth, 768);
+	searchView.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+    //CGRectMake(382, 0, kDetailViewWidth, 768);
     searchView.view.tag = 7;
     if([self.view viewWithTag:7]!=nil)
     {
@@ -514,7 +508,8 @@
 {
 	IndexViewController* indexView = [[IndexViewController alloc] initWithNibName:@"IndexViewiPad" bundle:nil forDeck:nil];
 	[indexView setParentViewCtrl:self];
-	indexView.view.frame = CGRectMake(382, 0, kDetailViewWidth, 768);
+	indexView.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+   // CGRectMake(382, 0, kDetailViewWidth, 768);
     indexView.view.tag = 8;
     if([self.view viewWithTag:8]!=nil)
     {
@@ -529,7 +524,8 @@
 - (void) myComments{
 	
 	MyCommentsViewController* commentsView = [[MyCommentsViewController alloc] initWithNibName:@"MyCommentsViewiPad" bundle:nil];
-	commentsView.view.frame = CGRectMake(382, 0, kDetailViewWidth, 768);
+	commentsView.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+    //CGRectMake(382, 0, kDetailViewWidth, 768);
     commentsView.view.tag = 9;
     if([self.view viewWithTag:9]!=nil)
     {
@@ -542,7 +538,8 @@
 - (void) myVoiceNotes{
 	
 	MyVoiceNotesViewController* notesView = [[MyVoiceNotesViewController alloc] initWithNibName:@"MyVoiceNotesViewiPad" bundle:nil];
-	notesView.view.frame = CGRectMake(382, 0, kDetailViewWidth, 768);
+	notesView.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+    //CGRectMake(382, 0, kDetailViewWidth, 768);
     notesView.view.tag = 10;
     if([self.view viewWithTag:10]!=nil)
     {
@@ -555,7 +552,6 @@
 
 /* Added By Ravindra */
 -(IBAction) showActionSheet{
-
 	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@""
 															 delegate:self
 													cancelButtonTitle:nil
@@ -599,8 +595,7 @@
 	if ([title isEqualToString:@"Info"]) {
 		[self displayInfo];
 	}
-	
-	
+
 	else if ([title isEqualToString:@"Publish to Twitter"]) {
 		[self publishToTwitter];
 	}
@@ -661,7 +656,8 @@
     {
         ModalViewCtrl* model = [[ModalViewCtrl alloc] initWithNibName:@"ModalViewiPad" bundle:nil contentType:kcontentTypeBeforeCard];
         [model setParentCtrl:self];
-        model.view.frame = CGRectMake(382, 0, kDetailViewWidth+2, 768);
+        model.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+        //CGRectMake(382, 0, kDetailViewWidth+2, 768);
         model.view.tag = 1;
         if([self.view viewWithTag:1]!=nil)
         {
@@ -674,7 +670,8 @@
     {
         ModalViewCtrl* model = [[ModalViewCtrl alloc] initWithNibName:@"ModalViewiPad" bundle:nil contentType:kcontentTypeAfterCard];
         [model setParentCtrl:self];
-        model.view.frame = CGRectMake(382, 0, kDetailViewWidth+2, 768);
+        model.view.frame = CGRectMake(_tableView.frame.size.width, 0, UIScreen.mainScreen.bounds.size.width - _tableView.frame.size.width, UIScreen.mainScreen.bounds.size.height);
+       // CGRectMake(382, 0, kDetailViewWidth+2, 768);
         model.view.tag = 1;
         if([self.view viewWithTag:1]!=nil)
         {
@@ -735,11 +732,7 @@
         
         [self presentViewController:facebookSheet animated:YES completion:nil];
     }  
-	
 }
-
-
-
 
 -(void) publishToTwitter{
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
@@ -747,10 +740,7 @@
         [tweetSheet setInitialText:[Utils getValueForVar:kTwitterMessage]];
         [self presentModalViewController:tweetSheet animated:YES];
     }
-    
-	
 }
-
 
 - (void)updateInfo
 {
@@ -763,7 +753,6 @@
 	if (viewController == self)
 		[self updateInfo];
 }
-
 
 - (void) clearView{
 	[_detail.view removeFromSuperview];

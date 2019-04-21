@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Set Alert View Controller-->
+        <!--Set Alerts-->
         <scene sceneID="Q3S-lI-rUG">
             <objects>
                 <viewController storyboardIdentifier="SetAlertViewController" id="uIh-Mh-rIs" customClass="SetAlertViewController" customModule="Omer_Flash_Card" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,8 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khr-dL-54K">
+                                <rect key="frame" x="184" y="384" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7JD-4B-5Ys"/>
+                                    <constraint firstAttribute="width" constant="30" id="aQ5-ih-yId"/>
+                                </constraints>
+                                <state key="normal" image="check-box-empty.png"/>
+                                <connections>
+                                    <action selector="setAlertAtSunsetTapped:" destination="uIh-Mh-rIs" eventType="touchUpInside" id="f6v-YD-Vqj"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Alerts :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYG-hO-6LK">
-                                <rect key="frame" x="20" y="70" width="124.5" height="30"/>
+                                <rect key="frame" x="20" y="70" width="125" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3Kc-wc-ehM"/>
                                 </constraints>
@@ -28,14 +39,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time of Alert :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhu-xh-dCA">
-                                <rect key="frame" x="20" y="121" width="135.5" height="26"/>
+                                <rect key="frame" x="20" y="121" width="136" height="26"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert at Sunset :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3C-3c-H0K">
-                                <rect key="frame" x="20" y="384" width="155.5" height="30"/>
+                                <rect key="frame" x="20" y="384" width="156" height="30"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="FiH-ud-sb2"/>
                                     <constraint firstAttribute="height" constant="30" id="evK-8e-BLz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
@@ -43,14 +55,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bCp-RV-8Ds">
-                                <rect key="frame" x="266" y="70" width="51" height="31"/>
+                                <rect key="frame" x="155" y="70" width="51" height="31"/>
                                 <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="sendAlertSwitchButtonTapped:" destination="uIh-Mh-rIs" eventType="valueChanged" id="2jr-qF-hFa"/>
                                 </connections>
                             </switch>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TOZ-NV-kuw">
-                                <rect key="frame" x="57" y="179" width="261" height="180"/>
+                                <rect key="frame" x="20" y="179" width="298" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="MRz-5K-LtZ"/>
                                 </constraints>
@@ -61,37 +73,39 @@
                                     <action selector="timePickerTapped:" destination="uIh-Mh-rIs" eventType="valueChanged" id="Xx7-5p-xfd"/>
                                 </connections>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khr-dL-54K">
-                                <rect key="frame" x="285" y="384" width="30" height="30"/>
+                            <navigationBar contentMode="scaleToFill" backIndicatorImage="back_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="wy3-eC-GDM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="DOe-c4-mxT"/>
-                                    <constraint firstAttribute="height" constant="30" id="FbZ-Vh-Umt"/>
+                                    <constraint firstAttribute="height" constant="44" id="PWr-85-M9Q"/>
                                 </constraints>
-                                <state key="normal" image="check-box-empty.png"/>
-                                <connections>
-                                    <action selector="setAlertAtSunsetTapped:" destination="uIh-Mh-rIs" eventType="touchUpInside" id="f6v-YD-Vqj"/>
-                                </connections>
-                            </button>
+                                <items>
+                                    <navigationItem title="Set Alerts" id="0Qd-Eg-b3B"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="khr-dL-54K" firstAttribute="centerY" secondItem="d3C-3c-H0K" secondAttribute="centerY" id="4Da-7r-Pkd"/>
                             <constraint firstItem="ICD-2T-urA" firstAttribute="trailing" secondItem="TOZ-NV-kuw" secondAttribute="trailing" constant="57" id="61F-YL-jfs"/>
-                            <constraint firstItem="khr-dL-54K" firstAttribute="trailing" secondItem="bCp-RV-8Ds" secondAttribute="trailing" id="BOF-7x-h8t"/>
                             <constraint firstItem="oYG-hO-6LK" firstAttribute="leading" secondItem="ICD-2T-urA" secondAttribute="leading" constant="20" id="BPN-qx-tOt"/>
                             <constraint firstItem="bCp-RV-8Ds" firstAttribute="centerY" secondItem="oYG-hO-6LK" secondAttribute="centerY" id="ET4-rp-y7a"/>
                             <constraint firstItem="d3C-3c-H0K" firstAttribute="leading" secondItem="zhu-xh-dCA" secondAttribute="leading" id="FYS-Z6-GjL"/>
                             <constraint firstItem="d3C-3c-H0K" firstAttribute="top" secondItem="TOZ-NV-kuw" secondAttribute="bottom" constant="25" id="Hed-ZM-HnM"/>
-                            <constraint firstItem="khr-dL-54K" firstAttribute="centerY" secondItem="d3C-3c-H0K" secondAttribute="centerY" id="Muj-z0-Nm2"/>
                             <constraint firstItem="zhu-xh-dCA" firstAttribute="height" secondItem="oYG-hO-6LK" secondAttribute="height" constant="-4" id="TxL-xC-8NH"/>
-                            <constraint firstItem="TOZ-NV-kuw" firstAttribute="leading" secondItem="ICD-2T-urA" secondAttribute="leading" constant="57" id="afs-9h-gWj"/>
-                            <constraint firstItem="ICD-2T-urA" firstAttribute="trailing" secondItem="bCp-RV-8Ds" secondAttribute="trailing" constant="60" id="kDE-bP-9sL"/>
+                            <constraint firstItem="bCp-RV-8Ds" firstAttribute="leading" secondItem="oYG-hO-6LK" secondAttribute="trailing" constant="10" id="VNR-k6-iha"/>
+                            <constraint firstItem="TOZ-NV-kuw" firstAttribute="leading" secondItem="zhu-xh-dCA" secondAttribute="leading" id="YXq-w7-Bmi"/>
+                            <constraint firstItem="khr-dL-54K" firstAttribute="leading" secondItem="d3C-3c-H0K" secondAttribute="trailing" constant="8" id="Zrr-X4-iJD"/>
+                            <constraint firstItem="wy3-eC-GDM" firstAttribute="leading" secondItem="ICD-2T-urA" secondAttribute="leading" id="i9W-tf-TfU"/>
+                            <constraint firstItem="wy3-eC-GDM" firstAttribute="top" secondItem="nYP-pu-jDN" secondAttribute="top" id="lri-8q-Vih"/>
                             <constraint firstItem="zhu-xh-dCA" firstAttribute="leading" secondItem="oYG-hO-6LK" secondAttribute="leading" id="qKe-G8-dYG"/>
                             <constraint firstItem="oYG-hO-6LK" firstAttribute="top" secondItem="ICD-2T-urA" secondAttribute="top" constant="50" id="sgA-eV-NaS"/>
                             <constraint firstItem="zhu-xh-dCA" firstAttribute="top" secondItem="oYG-hO-6LK" secondAttribute="bottom" constant="21" id="wid-po-jqs"/>
                             <constraint firstItem="TOZ-NV-kuw" firstAttribute="top" secondItem="zhu-xh-dCA" secondAttribute="bottom" constant="32" id="yX1-f1-imK"/>
+                            <constraint firstItem="wy3-eC-GDM" firstAttribute="trailing" secondItem="ICD-2T-urA" secondAttribute="trailing" id="ycc-Cd-d1T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ICD-2T-urA"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Set Alerts" id="PtP-3t-L6f"/>
                     <connections>
                         <outlet property="sendAlertSwitch" destination="bCp-RV-8Ds" id="7wr-mt-Lli"/>
                         <outlet property="setAlertAtSunsetButton" destination="khr-dL-54K" id="zb3-wy-fec"/>
@@ -100,10 +114,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5zW-5s-n8E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-780" y="46"/>
+            <point key="canvasLocation" x="-87" y="63"/>
         </scene>
     </scenes>
     <resources>
+        <image name="back_1.png" width="50" height="20"/>
         <image name="check-box-empty.png" width="30" height="30"/>
     </resources>
 </document>

@@ -517,7 +517,6 @@ NSInteger todayOmerIndex_iPhone=0;
 		_nextButton.enabled=NO;
         buttonNext.enabled = NO;
 	}
-
 }
 
 - (void)userDidTapWebView:(id)tapPoint
@@ -526,7 +525,6 @@ NSInteger todayOmerIndex_iPhone=0;
         //[self showCardBack];
 	}
 }
-
 
 - (void)updateCardDetails
 {	
@@ -570,7 +568,6 @@ NSInteger todayOmerIndex_iPhone=0;
 		}
 		
 	//}
-	
 }
 
 
