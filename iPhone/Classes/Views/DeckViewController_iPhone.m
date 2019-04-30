@@ -70,43 +70,20 @@ NSArray *allDates;
     }
     [_tableView setBackgroundColor:[UIColor blackColor]];
     _tableView.contentInset = UIEdgeInsetsMake(5.0, 0.0, 5.0, 0.0);
-    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        //code here
-        self.navigationController.navigationBarHidden = NO;
-        UIImage *image = [UIImage imageNamed:@"background.png"];
-        [self.dailyBlessingImgView setImage:image];
-        self.dailyBlessingToolBar.tintColor = [UIColor blackColor];
-        self.searchButton.tintColor = [UIColor whiteColor];
-        self.indexButton.tintColor = [UIColor whiteColor];
-        self.settingButton.tintColor = [UIColor whiteColor];
-        self.helpButton.tintColor = [UIColor whiteColor];
-        self.infoButton.tintColor = [UIColor whiteColor];
-    }
-    
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        self.view.backgroundColor = [UIColor clearColor];
-        /* CGRect copyRight = self.coprrightLabel.frame;
-         copyRight.origin.y = 505;
-         self.coprrightLabel.frame = copyRight;*/
-        
-        // self.coprrightLabel.backgroundColor = [UIColor redColor];
-        // UIImage *image = [UIImage imageNamed:@"Launching_iphone568@2x.png"];
-        //[self.dailyBlessingImgView setImage:image];
-        
-        CGRect myFrameImg = self.dailyBlessingImg.frame;
-        // myFrame.origin.x = 634;
-        myFrameImg.origin.y = -2;
-        self.dailyBlessingImg.frame = myFrameImg;
-        
-        CGRect myFrameTable = self.blessingTable.frame;
-        myFrameTable.origin.y = 71;
-        //self.blessingTable.frame = myFrameTable;
-        //self.dailyBlessingsTable.backgroundColor = [UIColor whiteColor];
-        
-        CGRect myFrameTableHeight = self.blessingTable.frame;
-        myFrameTableHeight.size.height = 395;
-        //  self.blessingTable.frame = myFrameTableHeight;
-    }
+    self.view.backgroundColor = [UIColor clearColor];
+
+    CGRect myFrameImg = self.dailyBlessingImg.frame;
+    myFrameImg.origin.y = -2;
+    self.dailyBlessingImg.frame = myFrameImg;
+
+    CGRect myFrameTable = self.blessingTable.frame;
+    myFrameTable.origin.y = 71;
+    //self.blessingTable.frame = myFrameTable;
+    //self.dailyBlessingsTable.backgroundColor = [UIColor whiteColor];
+
+    CGRect myFrameTableHeight = self.blessingTable.frame;
+    myFrameTableHeight.size.height = 395;
+    //  self.blessingTable.frame = myFrameTableHeight;
     
     self.navigationController.navigationBarHidden = NO;
     self.navigationController.delegate = self;
@@ -121,8 +98,6 @@ NSArray *allDates;
     [tlabel setTextAlignment: UITextAlignmentCenter];
     [self getStartAndEndDates];
 }
-
-
 
 - (BOOL)prefersStatusBarHidden
 {
@@ -473,13 +448,13 @@ NSArray *allDates;
         [startDatecomps setYear:self.startDateYear];
         
         NSDate *currentDateTime=[NSDate date];
-        NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
+        NSTimeInterval timeZoneSeconds = [[NSTimeZone systemTimeZone] secondsFromGMT];
         NSDate *dateInLocalTimezone = [currentDateTime dateByAddingTimeInterval:timeZoneSeconds];
         NSCalendar *gregorian = [[NSCalendar alloc]
                                  initWithCalendarIdentifier:NSGregorianCalendar];
         NSDate *startDate = [gregorian dateFromComponents:startDatecomps];
 
-        EDSunriseSet *startDateSunInfo = [EDSunriseSet sunrisesetWithDate:startDate timezone:[NSTimeZone localTimeZone]
+        EDSunriseSet *startDateSunInfo = [EDSunriseSet sunrisesetWithDate:startDate timezone:[NSTimeZone systemTimeZone]
                                                                  latitude:location.coordinate.latitude
                                                                 longitude:location.coordinate.longitude];
         NSDate *startSunsetTime= startDateSunInfo.sunset;
@@ -489,22 +464,21 @@ NSArray *allDates;
         [endDatecomps setMonth:self.endDateMonth];
         [endDatecomps setYear:self.endDateYear];
         NSDate *endDate = [gregorian dateFromComponents:endDatecomps];
-        EDSunriseSet *endDateSunInfo = [EDSunriseSet sunrisesetWithDate:endDate timezone:[NSTimeZone localTimeZone]
+        EDSunriseSet *endDateSunInfo = [EDSunriseSet sunrisesetWithDate:endDate timezone:[NSTimeZone systemTimeZone]
                                                                latitude:location.coordinate.latitude
                                                               longitude:location.coordinate.longitude];
         NSDate *endSunsetTime= endDateSunInfo.sunset;
 
-        NSDate *now = [NSDate date];
-        EDSunriseSet *sunInfo = [EDSunriseSet sunrisesetWithDate:now timezone:[NSTimeZone localTimeZone]
+        EDSunriseSet *sunInfo = [EDSunriseSet sunrisesetWithDate:dateInLocalTimezone timezone:[NSTimeZone systemTimeZone]
                                                         latitude:location.coordinate.latitude
                                                        longitude:location.coordinate.longitude];
 
         NSDate *sunsetTime= sunInfo.sunset;
-        NSDateComponents *dayComponents = [gregorian components:NSCalendarUnitDay fromDate:startDate toDate:now options:0];
+        NSDateComponents *dayComponents = [gregorian components:NSCalendarUnitDay fromDate:startDate toDate:dateInLocalTimezone options:0];
         NSInteger dayDifference = [dayComponents day];
 
         NSInteger cardNumber = dayDifference + 1;
-        if ([now compare:sunsetTime] != NSOrderedAscending) { // After sunset sun set
+        if ([dateInLocalTimezone compare:sunsetTime] != NSOrderedAscending) { // After sunset sun set
             cardNumber += 1;
         }
 
