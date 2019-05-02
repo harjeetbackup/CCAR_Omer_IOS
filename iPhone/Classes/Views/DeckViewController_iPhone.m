@@ -445,28 +445,25 @@ NSArray *allDates;
     //  cell.backgroundColor = [Utils colorFromString:[Utils getValueForVar:kIndexRowColor]];    
 }
 
-- (void)getTodaysReading
-{
+- (void)getTodaysReading {
      [self findMyCurrentLocation];
 }
 
--(void)findMyCurrentLocation
-{
+-(void)findMyCurrentLocation {
     locationmanager=[[CLLocationManager alloc]init];
     locationmanager.delegate=self;
-//  check before requesting, otherwise it might crash in older version
+    //  check before requesting, otherwise it might crash in older version
     if ([locationmanager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [locationmanager requestWhenInUseAuthorization];
     }
     [locationmanager stopUpdatingLocation];
     [locationmanager startUpdatingLocation];
 }
+
 #pragma mark - CLLocationManagerDelegate
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    if(!isTappedTodaysReading)
-    {
-        isTappedTodaysReading=YES;
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    if(isTappedTodaysReading == false) {
+        isTappedTodaysReading = YES;
         NSLog(@"locations %@",locations);
         //CLLocation* location = [locations lastObject];
         [locationmanager stopUpdatingLocation];
@@ -481,6 +478,7 @@ NSArray *allDates;
         NSCalendar *gregorian = [[NSCalendar alloc]
                                  initWithCalendarIdentifier:NSGregorianCalendar];
         NSDate *startDate = [gregorian dateFromComponents:startDatecomps];
+
         EDSunriseSet *startDateSunInfo = [EDSunriseSet sunrisesetWithDate:startDate timezone:[NSTimeZone localTimeZone]
                                                                  latitude:location.coordinate.latitude
                                                                 longitude:location.coordinate.longitude];
@@ -495,67 +493,41 @@ NSArray *allDates;
                                                                latitude:location.coordinate.latitude
                                                               longitude:location.coordinate.longitude];
         NSDate *endSunsetTime= endDateSunInfo.sunset;
-        if ([dateInLocalTimezone compare:startSunsetTime] ==  NSOrderedAscending)
-        {
-            ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kcontentTypeBeforeCard];
-            
 
-            navBar=NO;
-            [model setParentCtrl:self];
-            [self.navigationController pushViewController:model animated:YES];
-            [model release];
+        NSDate *now = [NSDate date];
+        EDSunriseSet *sunInfo = [EDSunriseSet sunrisesetWithDate:now timezone:[NSTimeZone localTimeZone]
+                                                        latitude:location.coordinate.latitude
+                                                       longitude:location.coordinate.longitude];
+
+        NSDate *sunsetTime= sunInfo.sunset;
+        NSDateComponents *dayComponents = [gregorian components:NSCalendarUnitDay fromDate:startDate toDate:now options:0];
+        NSInteger dayDifference = [dayComponents day];
+
+        NSInteger cardNumber = dayDifference + 1;
+        if ([now compare:sunsetTime] != NSOrderedAscending) { // After sunset sun set
+            cardNumber += 1;
         }
-        
-        else if ([endSunsetTime compare:dateInLocalTimezone] ==  NSOrderedAscending)
-        {
-            ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kcontentTypeAfterCard];
-            navBar = NO;
-            [model setParentCtrl:self];
-            [self.navigationController pushViewController:model animated:YES];
-            [model release];
-        }
-        else
-        {
-            EDSunriseSet *sunInfo = [EDSunriseSet sunrisesetWithDate:[NSDate date] timezone:[NSTimeZone localTimeZone]
-                                                            latitude:location.coordinate.latitude
-                                                           longitude:location.coordinate.longitude];
-            
-            NSDate *sunsetTime= sunInfo.sunset;
-            NSDateComponents *difference = [gregorian components:NSCalendarUnitDay
-                                                        fromDate:startSunsetTime toDate:sunsetTime options:0];
-            NSInteger dayDifference=[difference day];
-            if(dayDifference>48)
-                dayDifference=48;
-    
-            if ([startSunsetTime compare:sunsetTime] ==  NSOrderedSame && dayDifference==0)
-            {
-                NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
-                CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
-                detail.arrCards=deckArray;
-                detail._selectedCardIndex=0;
-                detail.basicCall=YES;
-                [self.navigationController pushViewController:detail animated:YES];
-            }
-            else if ([dateInLocalTimezone compare:sunsetTime] ==  NSOrderedAscending || dayDifference==48)
-            {
-                NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+1];
-                CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
-                detail.arrCards=deckArray;
-                detail._selectedCardIndex=0;
-                detail.basicCall=YES;
-                [self.navigationController pushViewController:detail animated:YES];
-            }
-            else
-            {
-                NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading:dayDifference+2];
-                CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
-                detail.arrCards=deckArray;
-                detail._selectedCardIndex=0;
-                detail.basicCall=YES;
-                [self.navigationController pushViewController:detail animated:YES];
-            }
+
+        if (cardNumber < 1 || cardNumber > 49) {
+            [self showNotAnOmerCard];
+        } else {
+            NSMutableArray*  deckArray = [[AppDelegate_iPhone getDBAccess] getCardForTodaysReading: cardNumber];
+            CardDetails_iPhone* detail = [[CardDetails_iPhone alloc] initWithNibName:@"CardDetails_iPhone" bundle:nil];
+            detail.arrCards = deckArray;
+            detail._selectedCardIndex = 0;
+            detail.basicCall=YES;
+            [self.navigationController pushViewController:detail animated:YES];
+            [detail release];
         }
     }
+}
+
+- (void)showNotAnOmerCard {
+    ModalViewCtrl_iPhone* model = [[ModalViewCtrl_iPhone alloc] initWithNibName:@"ModalView_iPhone" bundle:nil contentType:kcontentTypeBeforeCard];
+    navBar = NO;
+    [model setParentCtrl:self];
+    [self.navigationController pushViewController:model animated:YES];
+    [model release];
 }
 
 -(void) getYearString {

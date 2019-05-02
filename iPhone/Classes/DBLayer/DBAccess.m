@@ -628,7 +628,7 @@
 	return nil;
 }
 
-- (NSMutableArray*) getCardForTodaysReading:(NSUInteger) cardId
+- (NSMutableArray*) getCardForTodaysReading:(NSUInteger)cardId
 {
     return [self  getFlashCardForQuery:[NSString stringWithFormat:SELECT_Today_Reading_DECK_CARD_QUERY, cardId]];
 }
