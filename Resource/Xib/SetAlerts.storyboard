@@ -25,6 +25,7 @@
                                     <constraint firstAttribute="width" constant="30" id="aQ5-ih-yId"/>
                                 </constraints>
                                 <state key="normal" image="check-box-empty.png"/>
+                                <state key="selected" image="check-box-filled.png"/>
                                 <connections>
                                     <action selector="setAlertAtSunsetTapped:" destination="uIh-Mh-rIs" eventType="touchUpInside" id="zh3-gG-5Zk"/>
                                 </connections>
@@ -64,6 +65,7 @@
                                     <constraint firstAttribute="height" constant="30" id="vns-7M-ab7"/>
                                 </constraints>
                                 <state key="normal" image="check-box-empty.png"/>
+                                <state key="selected" image="check-box-filled.png"/>
                                 <connections>
                                     <action selector="sendAlertSwitchButtonTapped:" destination="uIh-Mh-rIs" eventType="touchUpInside" id="E4R-QO-9pI"/>
                                 </connections>
@@ -103,9 +105,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="customAlarmButton" destination="099-mT-eB5" id="Wr0-qg-32A"/>
                         <outlet property="datePickerHeight" destination="MRz-5K-LtZ" id="YFT-82-LxI"/>
-                        <outlet property="sendAlertSwitch" destination="099-mT-eB5" id="6kt-aa-Neu"/>
-                        <outlet property="setAlertAtSunsetButton" destination="khr-dL-54K" id="zb3-wy-fec"/>
+                        <outlet property="sunsetAlarmButton" destination="khr-dL-54K" id="bhi-TR-ITv"/>
                         <outlet property="timePicker" destination="TOZ-NV-kuw" id="gdw-nK-g36"/>
                         <outlet property="verticalSpacing" destination="Hed-ZM-HnM" id="aPp-lj-ffh"/>
                     </connections>
@@ -118,5 +120,6 @@
     <resources>
         <image name="backNew_1.png" width="50" height="20"/>
         <image name="check-box-empty.png" width="30" height="30"/>
+        <image name="check-box-filled.png" width="30" height="30"/>
     </resources>
 </document>

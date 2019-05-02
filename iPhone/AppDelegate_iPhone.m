@@ -86,23 +86,6 @@
     return YES;
 }
 
-//- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void(^)())completionHandler
-//{
-//    UIApplicationState state = [application applicationState];
-//    if (state == UIApplicationStateBackground) {
-//       //call todays reading tapped
-//        printf("hi notification");
-//
-//    }
-//
-//    // Request to reload table view data
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
-//    // Set icon badge number to zero
-//    application.applicationIconBadgeNumber = 0;
-//    completionHandler(UNNotificationPresentationOptionSound);
-//
-//}
-
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
@@ -158,14 +141,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     printf("active");
-   
-//    if (locationNotification) {
-//        // Set icon badge number to zero
-//        application.applicationIconBadgeNumber = 0;
-//        self.launchedFromLoacalNotification = true;
-//    } else {
-//        self.launchedFromLoacalNotification = false;
-//    }
+   application.applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

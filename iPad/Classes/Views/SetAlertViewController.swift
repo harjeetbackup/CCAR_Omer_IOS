@@ -14,24 +14,78 @@ import CoreLocation
     func getTodaysReading()
 }
 
+enum AlarmType: String {
+    case custom
+    case sunset
+    case none
+}
+
+class Alarm: NSObject, NSCoding {
+    static let alarmKey = "AlarmKey"
+    var type: AlarmType = .none
+    var time: Date
+
+    init(type: AlarmType, time: Date) {
+        self.type = type
+        self.time = time
+    }
+
+    required convenience init(coder aDecoder: NSCoder) {
+        let _typeString = aDecoder.decodeObject(forKey: "type") as? String ?? AlarmType.none.rawValue
+        let _type = AlarmType(rawValue: _typeString) ?? .none
+        let _time = aDecoder.decodeObject(forKey: "time") as? Date ?? Date(timeIntervalSince1970: 0)
+        self.init(type: _type, time: _time)
+    }
+
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(type.rawValue, forKey: "type")
+        aCoder.encode(time, forKey: "time")
+    }
+
+    func save() {
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: self)
+        UserDefaults.standard.set(encodedData, forKey: Alarm.alarmKey)
+        UserDefaults.standard.synchronize()
+    }
+
+    static func savedAlarm() -> Alarm {
+        guard let decoded  = UserDefaults.standard.data(forKey: Alarm.alarmKey),
+            let alarm = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? Alarm else {
+            return Alarm(type: .none, time: Date(timeIntervalSince1970: 0))
+        }
+        return alarm
+    }
+}
+
 @objc class SetAlertViewController: UIViewController,CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
-    
+    private enum Constants {
+        static let SWITCH_STATE = "SWITCH_STATE"
+        static let TIME_SET_IN_PICKER = "TIME_SET_IN_PICKER"
+        static let SUNSETBUTTON_STATE = "SUNSETBUTTON_STATE"
+    }
+
+    var alarm: Alarm = Alarm.savedAlarm()
+
+    @IBOutlet var sunsetAlarmButton: UIButton!
+    @IBOutlet var customAlarmButton: UIButton!
+
     @IBOutlet var leftBarButtonItem: UIBarButtonItem!
     @IBOutlet var datePickerHeight: NSLayoutConstraint!
     @IBOutlet var timePicker: UIDatePicker!
-    @IBOutlet var setAlertAtSunsetButton: UIButton!
-    @IBOutlet var sendAlertSwitch: UIButton!
     @objc var isFromIphone = false
-    var delegate : GetTodaysReadingDelegate?
     var locationmanager = CLLocationManager()
     let notification = UILocalNotification()
     @IBOutlet var verticalSpacing: NSLayoutConstraint!
-    
+    let dateFormatter = DateFormatter()
+    var currentLocation: CLLocation?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         timePicker.layer.borderColor = UIColor.black.cgColor
         timePicker.layer.borderWidth = 1.0
         timePicker.layer.cornerRadius = 4.0
+        setupButtons()
+        findMyCurrentLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,96 +97,124 @@ import CoreLocation
             self.navigationController?.popViewController(animated: true)
             return
         }
-        setUpUserDefualtsValues()
         if isFromIphone == false {
             self.leftBarButtonItem.image = #imageLiteral(resourceName: "Omer-new-cover-text")
         }
     }
-    
-    
-    func setUpUserDefualtsValues() {
-        if let setTime = UserDefaults.standard.object(forKey: "TIME_SET_IN_PICKER") as? Date {
-            print(setTime)
-            UserDefaults.standard.synchronize()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd,hh:mm:ss aa"
-            formatter.timeZone = NSTimeZone.local
-            formatter.dateStyle = .short
-            self.timePicker.setDate(setTime, animated: true)
-        }
-        let state = UserDefaults.standard.object(forKey: "SWITCH_STATE")
-        UserDefaults.standard.synchronize()
-        if state as? Bool == true {
-            sendAlertSwitch.setImage(#imageLiteral(resourceName: "check-box-filled.png"), for: .normal)
-            datePickerHeight.constant = 250.0
-            verticalSpacing.constant = 25.0
-        } else {
-            sendAlertSwitch.setImage(#imageLiteral(resourceName: "check-box-empty.png"), for: .normal)
-            datePickerHeight.constant = 0.0
-            verticalSpacing.constant = 0.0
-        }
-        let val:Bool = (UserDefaults.standard.object(forKey: "SUNSETBUTTON_STATE") as? Bool ?? false)
-        if val == true {
-            SunsetAlert()
-            setAlertAtSunsetButton.setImage(#imageLiteral(resourceName: "check-box-filled.png"), for: .normal)
-        }else {
-            setAlertAtSunsetButton.setImage(#imageLiteral(resourceName: "check-box-empty.png"), for: .normal)
-        }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        alarm.save()
     }
-    
-    @IBAction func sendAlertSwitchButtonTapped(_ sender: Any) {
-        if sendAlertSwitch.imageView?.image == #imageLiteral(resourceName: "check-box-empty.png") {
-            self.removeAllActiveNotification()
-            getDatePicketSetTime()
-            sendAlertSwitch.setImage(#imageLiteral(resourceName: "check-box-filled.png"), for: .normal)
-            datePickerHeight.constant = 250.0
-            verticalSpacing.constant = 25.0
-            UserDefaults.standard.removeObject(forKey: "SWITCH_STATE")
-            UserDefaults.standard.set(true, forKey: "SWITCH_STATE")
-            UserDefaults.standard.synchronize()
-            setAlertAtSunsetButton.setImage(#imageLiteral(resourceName: "check-box-empty.png"), for: .normal)
-            UserDefaults.standard.removeObject(forKey: "SUNSETBUTTON_STATE")
-            UserDefaults.standard.set(false, forKey: "SUNSETBUTTON_STATE")
-            UserDefaults.standard.synchronize()
-            return
+
+    func setupButtons() {
+        customAlarmButton.isSelected = (alarm.type == .custom)
+        sunsetAlarmButton.isSelected = (alarm.type == .sunset)
+        timePicker.date = alarm.time
+    }
+
+    // MARK: - IB ACTIONS
+    @IBAction func sendAlertSwitchButtonTapped(_ button: UIButton) {
+        removeAllActiveNotification()
+        if button.isSelected {
+            button.isSelected = false
+            alarm.type = .none
         } else {
-            UserDefaults.standard.removeObject(forKey: "SWITCH_STATE")
-            UserDefaults.standard.set(false, forKey: "SWITCH_STATE")
-            UserDefaults.standard.synchronize()
-            sendAlertSwitch.setImage(#imageLiteral(resourceName: "check-box-empty.png"), for: .normal)
-            datePickerHeight.constant = 0.0
-            verticalSpacing.constant = 0.0
-            self.removeAllActiveNotification()
-            return
+            button.isSelected = true
+            sunsetAlarmButton.isSelected = false
+            alarm.type = .custom
+            setLocalNotificationsForCustomTime()
         }
     }
     
     @IBAction func timePickerTapped(_ sender: UIDatePicker){
-        if datePickerHeight.constant == 250.0 {
-            self.removeAllActiveNotification()
-            getDatePicketSetTime()
+        if alarm.type == .custom {
+            removeAllActiveNotification()
+            setLocalNotificationsForCustomTime()
         }
     }
-    
-    func getDatePicketSetTime() {
+
+    @IBAction func setAlertAtSunsetTapped(_ button: UIButton) {
+        if CLLocationManager.locationServicesEnabled()  {
+            setAlarmAtSunsetTime(button: button)
+        } else {
+            showAcessDeniedAlert()
+        }
+    }
+
+    func setAlarmAtSunsetTime(button: UIButton) {
+        removeAllActiveNotification()
+        if button.isSelected {
+            button.isSelected = false
+            alarm.type = .none
+        } else {
+            button.isSelected = true
+            customAlarmButton.isSelected = false
+            alarm.type = .sunset
+            setLocalNotificationsForSunsetTime()
+        }
+    }
+
+    func sunsetTime(for dateString: String) -> Date {
+        guard let location = currentLocation else {
+            showAlert("Fetching location")
+            return Date()
+        }
+        dateFormatter.dateFormat = "yyyy-MM-dd,hh:mm:ss z"
+        let currentLocalDateTime = dateFormatter.date(from: dateString + ",00:00:00 +0000")
+        let startDateSunInfo = EDSunriseSet.sunriseset(with: currentLocalDateTime,
+                                                       timezone: TimeZone.current,
+                                                       latitude: location.coordinate.latitude,
+                                                       longitude: location.coordinate.longitude)
+
+        guard let startSunsetTime: Date = startDateSunInfo?.sunset else {
+            showAlert("Fetching location")
+            return Date()
+        }
+        return startSunsetTime
+    }
+
+    func setLocalNotificationsForSunsetTime() {
+        var index = 0
         for item in Server.shared.array {
-            let dateFormatter = DateFormatter()
+            let time = sunsetTime(for: item.date!)
+            var title: String = item.title ?? ""
+            index += 1
+            if (Server.shared.array.count > index) {
+                let nextItem = Server.shared.array[index]
+                title = nextItem.title ?? item.title ?? ""
+            }
+            addLocalNotification(date: time, title: title)
+        }
+    }
+
+    func setLocalNotificationsForCustomTime() {
+        var index = 0
+        for item in Server.shared.array {
+            index += 1
             dateFormatter.timeStyle = .short
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            if let dte = item.date {
-            let dateFromString = dte
+            guard let dateString = item.date else { continue }
             dateFormatter.dateFormat = "hh:mm:ss aa"
             dateFormatter.timeZone = TimeZone.current
             let TimeFromPicker = dateFormatter.string(from: timePicker.date)
-            let dateWithTimeInStr = dateFromString + "," + TimeFromPicker
+            let dateWithTimeInStr = dateString + "," + TimeFromPicker
             dateFormatter.dateFormat = "yyyy-MM-dd,hh:mm:ss aa"
-            UserDefaults.standard.removeObject(forKey: "TIME_SET_IN_PICKER")
-            UserDefaults.standard.set(timePicker.date, forKey: "TIME_SET_IN_PICKER")
-            UserDefaults.standard.synchronize()
+            alarm.time = timePicker.date
             let time = dateFormatter.date(from: dateWithTimeInStr)!
-            print(time)
-                triggerNotification(date: time, title: item.title!)
+            var title: String = item.title ?? ""
+
+            let sunSetTime = sunsetTime(for: item.date!)
+            let interval = Double(NSTimeZone.system.secondsFromGMT()) as TimeInterval
+            let now = Date().addingTimeInterval(interval)
+
+            let isSunSetCompleted = now.compare(sunSetTime) == .orderedDescending
+
+            if (isSunSetCompleted && Server.shared.array.count > index ) {
+                let nextItem = Server.shared.array[index]
+                title = nextItem.title ?? item.title ?? ""
             }
+            addLocalNotification(date: time, title: title)
         }
     }
     
@@ -157,85 +239,25 @@ import CoreLocation
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
     }
-
-    @IBAction func setAlertAtSunsetTapped(_ sender: Any) {
-        if CLLocationManager.locationServicesEnabled()  {
-            SunsetAlert()
-        } else {
-            showAcessDeniedAlert()
-        }
-    }
-
-    func SunsetAlert() {
-        if setAlertAtSunsetButton.imageView?.image == #imageLiteral(resourceName: "check-box-empty.png") {
-            setAlertAtSunsetButton.setImage(#imageLiteral(resourceName: "check-box-filled.png"), for: .normal)
-            sendAlertSwitch.setImage(#imageLiteral(resourceName: "check-box-empty.png"), for: .normal)
-            datePickerHeight.constant = 0.0
-            verticalSpacing.constant = 0.0
-            UserDefaults.standard.removeObject(forKey: "SUNSETBUTTON_STATE")
-            UserDefaults.standard.set(true, forKey: "SUNSETBUTTON_STATE")
-            UserDefaults.standard.synchronize()
-            UserDefaults.standard.removeObject(forKey: "SWITCH_STATE")
-            UserDefaults.standard.set(false, forKey: "SWITCH_STATE")
-            UserDefaults.standard.synchronize()
-            if setAlertAtSunsetButton.imageView?.image == #imageLiteral(resourceName: "check-box-filled.png") {
-                self.removeAllActiveNotification()
-                self.findMyCurrentLocation()
-            }
-        } else {
-            UserDefaults.standard.removeObject(forKey: "SUNSETBUTTON_STATE")
-            UserDefaults.standard.set(false, forKey: "SUNSETBUTTON_STATE")
-            UserDefaults.standard.synchronize()
-            setAlertAtSunsetButton.setImage(#imageLiteral(resourceName: "check-box-empty.png"), for: .normal)
-            self.removeAllActiveNotification()
-        }
-    }
     
     func findMyCurrentLocation() {
         locationmanager = CLLocationManager()
         locationmanager.delegate = self
         locationmanager.requestWhenInUseAuthorization()
-        locationmanager.stopUpdatingLocation()
         locationmanager.startUpdatingLocation()
     }
 
     @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        var index = 0
-        for item in Server.shared.array {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd,hh:mm:ss z"
-            let currentLocalDateTime = dateFormatter.date(from: item.date! + ",00:00:00 +0000")
-            locationmanager.stopUpdatingLocation()
-            let startDateSunInfo = EDSunriseSet.sunriseset(with: currentLocalDateTime ,timezone:  TimeZone.current,latitude: (locations.first?.coordinate.latitude)!, longitude: (locations.first?.coordinate.longitude)!)
-            let startSunsetTime: Date? = startDateSunInfo?.sunset
-            print("SunsetTime time \(String(describing: startSunsetTime))")
-            let dateWithTimeString = dateFormatter.string(from: startSunsetTime ?? Date())
-            print("local sunset time \(dateWithTimeString)")
-            if startSunsetTime != nil {
-                var title: String = item.title ?? ""
-                index += 1
-                if (Server.shared.array.count > index) {
-                    let nextItem = Server.shared.array[index]
-                    title = nextItem.title ?? item.title ?? ""
-                }
-
-                triggerNotification(date: (startSunsetTime)!, title: title)
-                print("Local time \(String(describing: startDateSunInfo?.sunset))")
-            }
-        }
+        currentLocation = locations.first
+        locationmanager.stopUpdatingLocation()
     }
     
-    func triggerNotification(date: Date, title:String) {
+    func addLocalNotification(date: Date, title:String) {
         notification.fireDate = date
         notification.alertTitle = title
-        notification.alertBody = "click here to see card of the day"
+        notification.alertBody = "Click here to see card of the day"
         notification.applicationIconBadgeNumber = 1
         UIApplication.shared.scheduleLocalNotification(notification)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadData"), object: self)
-    }
-    
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
     
     func removeAllActiveNotification() {
@@ -243,5 +265,20 @@ import CoreLocation
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
     }
+}
 
+public extension UIViewController {
+    @objc public func showAlert(_ title: String) {
+        self.showAlert(title, message: "")
+    }
+    @objc public func showAlert(_ title: String, message: String) {
+        self.showAlert(title, message: message, onDismiss: nil)
+    }
+    @objc public func showAlert(_ title: String, message: String, onDismiss:(() -> Void)?) {
+        let alert = UIAlertController.init(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction.init(title: "OK", style: .cancel, handler: { (_ action) in
+            onDismiss?()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
