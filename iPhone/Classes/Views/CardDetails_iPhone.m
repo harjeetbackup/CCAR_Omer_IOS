@@ -356,6 +356,7 @@ NSInteger todayOmerIndex_iPhone=0;
         rect.origin.x += index * deviceWidth;
         rect.origin.y = 0.0;
         CustomWebView_iPhone* page = [[CustomWebView_iPhone alloc] initWithFrame:rect];
+        page.userInteractionEnabled = false;
         Card* card = [[_arrayOfCards objectAtIndex:i] getCardOfType: kCardTypeFront];
 
         page.tag = 1000 + i;
@@ -385,7 +386,7 @@ NSInteger todayOmerIndex_iPhone=0;
         self.title = [NSString stringWithFormat:@"%d of %d", _selectedCardIndex + 1, [_arrayOfCards count]];
     }
     
-    //scrollview
+
     [self updateCardDetails];
     if (_totalCard >= 2 && _selectedCardIndex >= 1) {
         [self updateFlashCard];
