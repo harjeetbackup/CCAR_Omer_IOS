@@ -167,7 +167,7 @@
         case kcontentTypeBeforeCard:
         case kcontentTypeAfterCard:
             self.title = @"Not Omer.";
-            [_webView loadHTMLString:[AfterAndBeforOmerHtmlString htmlString] baseURL:nil];
+       //     [_webView loadHTMLString:[AfterAndBeforOmerHtmlString htmlString] baseURL:nil];
             _webView. scalesPageToFit=YES;
             fileName = [[NSBundle mainBundle] pathForResource:@"aftercard.html" ofType:nil inDirectory:nil];
             request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:fileName]];
