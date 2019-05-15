@@ -181,8 +181,8 @@ class Alarm: NSObject, NSCoding {
             var title: String = item.title ?? ""
             index += 1
             if (Server.shared.array.count > index) {
-                let nextItem = Server.shared.array[index]
-                title = nextItem.title ?? item.title ?? ""
+                //let nextItem = Server.shared.array[index]
+                //title = nextItem.title ?? item.title ?? ""
             }
             addLocalNotification(date: time, title: title)
         }
@@ -211,8 +211,8 @@ class Alarm: NSObject, NSCoding {
             let isSunSetCompleted = now.compare(sunSetTime) == .orderedDescending
 
             if (isSunSetCompleted && Server.shared.array.count > index ) {
-                let nextItem = Server.shared.array[index]
-                title = nextItem.title ?? item.title ?? ""
+                //let nextItem = Server.shared.array[index]
+                //title = nextItem.title ?? item.title ?? ""
             }
             addLocalNotification(date: time, title: title)
         }
