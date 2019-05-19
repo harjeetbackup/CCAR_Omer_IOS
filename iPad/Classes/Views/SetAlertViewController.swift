@@ -157,7 +157,7 @@ class Alarm: NSObject, NSCoding {
 
     func sunsetTime(for dateString: String) -> Date {
         guard let location = currentLocation else {
-            showAlert("Fetching location")
+            showAlert("Sorry!, We can not ablet fetch your location", message: "Please make sure you have enabled the location access")
             return Date()
         }
         dateFormatter.dateFormat = "yyyy-MM-dd,hh:mm:ss z"
@@ -181,8 +181,8 @@ class Alarm: NSObject, NSCoding {
             var title: String = item.title ?? ""
             index += 1
             if (Server.shared.array.count > index) {
-                //let nextItem = Server.shared.array[index]
-                //title = nextItem.title ?? item.title ?? ""
+                let nextItem = Server.shared.array[index]
+                title = nextItem.title ?? item.title ?? ""
             }
             addLocalNotification(date: time, title: title)
         }
@@ -205,17 +205,39 @@ class Alarm: NSObject, NSCoding {
             var title: String = item.title ?? ""
 
             let sunSetTime = sunsetTime(for: item.date!)
-            let interval = Double(NSTimeZone.system.secondsFromGMT()) as TimeInterval
-            let now = Date().addingTimeInterval(interval)
-
-            let isSunSetCompleted = now.compare(sunSetTime) == .orderedDescending
-
-            if (isSunSetCompleted && Server.shared.array.count > index ) {
-                //let nextItem = Server.shared.array[index]
-                //title = nextItem.title ?? item.title ?? ""
+            let sunSetCompleted = isSunSetCompleted(pickedDate: timePicker.date, sunsetDate: sunSetTime)
+            if (sunSetCompleted && Server.shared.array.count > index ) {
+                let nextItem = Server.shared.array[index]
+                title = nextItem.title ?? item.title ?? ""
             }
             addLocalNotification(date: time, title: title)
         }
+    }
+
+    func isSunSetCompleted(pickedDate: Date, sunsetDate: Date) -> Bool {
+        let pickedInitial = setToInitialDay(date: pickedDate)
+        let sunSetInitial = setToInitialDay(date: sunsetDate)
+
+        let hoursResult = Calendar.current.compare(pickedInitial, to: sunSetInitial, toGranularity: .hour)
+        if hoursResult == .orderedDescending {
+            return true
+        } else if hoursResult == .orderedAscending {
+            return false
+        }
+
+        let minuteResult = Calendar.current.compare(pickedInitial, to: sunSetInitial, toGranularity: .minute)
+        return minuteResult != .orderedAscending
+    }
+
+    func setToInitialDay(date: Date) -> Date {
+        let calender = Calendar.current
+        var components = calender.dateComponents([.year, .month, .day], from: date)
+        components.year = 1970
+        components.month = 1
+        components.day = 1
+        components.hour = calender.component(.hour, from: date)
+        components.minute = calender.component(.minute, from: date)
+        return Calendar.current.date(from: components)!
     }
     
     func showAcessDeniedAlert() {
@@ -255,7 +277,7 @@ class Alarm: NSObject, NSCoding {
     func addLocalNotification(date: Date, title:String) {
         notification.fireDate = date
         notification.alertTitle = title
-        notification.alertBody = "Click here to see card of the day"
+        notification.alertBody = "Tap here to see card of the day"
         notification.applicationIconBadgeNumber = 1
         UIApplication.shared.scheduleLocalNotification(notification)
     }

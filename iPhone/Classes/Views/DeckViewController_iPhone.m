@@ -440,7 +440,7 @@ NSArray *allDates;
     if(isTappedTodaysReading == false) {
         isTappedTodaysReading = YES;
         NSLog(@"locations %@",locations);
-        //CLLocation* location = [locations lastObject];
+        location = [locations lastObject];
         [locationmanager stopUpdatingLocation];
         NSDateComponents *startDatecomps = [[NSDateComponents alloc] init];
         [startDatecomps setDay: self.startDateDay];
@@ -454,26 +454,12 @@ NSArray *allDates;
                                  initWithCalendarIdentifier:NSGregorianCalendar];
         NSDate *startDate = [gregorian dateFromComponents:startDatecomps];
 
-        EDSunriseSet *startDateSunInfo = [EDSunriseSet sunrisesetWithDate:startDate timezone:[NSTimeZone systemTimeZone]
-                                                                 latitude:location.coordinate.latitude
-                                                                longitude:location.coordinate.longitude];
-        NSDate *startSunsetTime= startDateSunInfo.sunset;
-        
-        NSDateComponents *endDatecomps = [[NSDateComponents alloc] init];
-        [endDatecomps setDay:self.endDateDay];
-        [endDatecomps setMonth:self.endDateMonth];
-        [endDatecomps setYear:self.endDateYear];
-        NSDate *endDate = [gregorian dateFromComponents:endDatecomps];
-        EDSunriseSet *endDateSunInfo = [EDSunriseSet sunrisesetWithDate:endDate timezone:[NSTimeZone systemTimeZone]
-                                                               latitude:location.coordinate.latitude
-                                                              longitude:location.coordinate.longitude];
-        NSDate *endSunsetTime= endDateSunInfo.sunset;
-
         EDSunriseSet *sunInfo = [EDSunriseSet sunrisesetWithDate:dateInLocalTimezone timezone:[NSTimeZone systemTimeZone]
                                                         latitude:location.coordinate.latitude
                                                        longitude:location.coordinate.longitude];
 
-        NSDate *sunsetTime= sunInfo.sunset;
+
+        NSDate *sunsetTime= [sunInfo.sunset dateByAddingTimeInterval:timeZoneSeconds];
         NSDateComponents *dayComponents = [gregorian components:NSCalendarUnitDay fromDate:startDate toDate:dateInLocalTimezone options:0];
         NSInteger dayDifference = [dayComponents day];
 
