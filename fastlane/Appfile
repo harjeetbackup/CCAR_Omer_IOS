@@ -1,0 +1,8 @@
+app_identifier("org.ccarnet.OmerApp") # The bundle identifier of your app
+apple_id("m.prabhu174@gmail.com") # Your Apple email address
+
+itc_team_id("701047") # App Store Connect Team ID
+team_id("MTLWNYBR52") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

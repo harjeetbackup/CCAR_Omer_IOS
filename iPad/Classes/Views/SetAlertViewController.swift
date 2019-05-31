@@ -62,6 +62,7 @@ class Alarm: NSObject, NSCoding {
         static let SWITCH_STATE = "SWITCH_STATE"
         static let TIME_SET_IN_PICKER = "TIME_SET_IN_PICKER"
         static let SUNSETBUTTON_STATE = "SUNSETBUTTON_STATE"
+        static let notificationTitle = "It's time to count the Omer."
     }
 
     var alarm: Alarm = Alarm.savedAlarm()
@@ -276,7 +277,7 @@ class Alarm: NSObject, NSCoding {
     
     func addLocalNotification(date: Date, title:String) {
         notification.fireDate = date
-        notification.alertTitle = title
+        notification.alertTitle = Constants.notificationTitle
         notification.alertBody = "Tap here to see card of the day"
         notification.applicationIconBadgeNumber = 1
         UIApplication.shared.scheduleLocalNotification(notification)
