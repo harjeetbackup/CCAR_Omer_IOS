@@ -516,8 +516,9 @@ int endDateYear;
     {
         [[self.view viewWithTag:15] removeFromSuperview];
     }
+    [self addChildViewController:vc];
     [self.view addSubview:vc.view];
-  //  [self.navigationController pushViewController:vc animated:YES];
+    [vc didMoveToParentViewController:self];
 }
 
 - (IBAction)displayHelp
